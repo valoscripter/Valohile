@@ -2761,7 +2761,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 To ToolFE",
+    Name = "• R6 To Tool FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
         
