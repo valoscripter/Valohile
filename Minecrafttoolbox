@@ -129,7 +129,7 @@ Tab2:AddButton({
         local currentIndex = 1
         local cancelAll = false
 
-        -- **Menüyü Kapatınca Tüm Eski Süreçleri Temizle**
+        -- **Sıfırla ve Süreçleri Durdur**
         local function resetAllProcesses()
             isRunning = false
             isPaused = true
@@ -137,9 +137,20 @@ Tab2:AddButton({
             currentIndex = 1
         end
 
-        -- **Menü Oluşturma Fonksiyonu**
+        -- **Karakteri Zıplatma**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            else
+                warn("Humanoid bulunamadı, karakter zıplayamıyor!")
+            end
+        end
+
+        -- **Menü Açma Fonksiyonu**
         local function createMenu()
-            resetAllProcesses() -- Önceki süreçleri temizle
+            resetAllProcesses()
+            cancelAll = false -- Menü açıldığında iptal olmasın
 
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
@@ -148,7 +159,6 @@ Tab2:AddButton({
             local menu = Instance.new("ScreenGui")
             menu.Name = "JJMenu"
             menu.Parent = playerGui
-            menu.Enabled = true
 
             local frame = Instance.new("Frame")
             frame.Size = UDim2.new(0, 200, 0, 180)
@@ -162,16 +172,6 @@ Tab2:AddButton({
             local uiCorner = Instance.new("UICorner")
             uiCorner.CornerRadius = UDim.new(0, 12)
             uiCorner.Parent = frame
-
-            local titleLabel = Instance.new("TextLabel")
-            titleLabel.Size = UDim2.new(1, 0, 0, 30)
-            titleLabel.Position = UDim2.new(0, 0, 0, 0)
-            titleLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-            titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-            titleLabel.Text = "15 JJ Menü"
-            titleLabel.Font = Enum.Font.SourceSansBold
-            titleLabel.TextSize = 18
-            titleLabel.Parent = frame
 
             local function createButton(name, positionY, textColor, callback)
                 local button = Instance.new("TextButton")
@@ -233,32 +233,44 @@ Tab2:AddButton({
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
-            if channel then
-                while currentIndex <= #messages do
-                    if cancelAll then
-                        isRunning = false
-                        return
-                    end
+            if not channel then
+                warn("Chat kanalı bulunamadı!")
+                return
+            end
 
-                    while isPaused do
-                        task.wait(0.1)
-                    end
-
-                    if not isPaused then
-                        channel:SendAsync(messages[currentIndex])
-                        task.wait(0.5)
-                    end
-
-                    if messages[currentIndex] == "ON BEŞ" then
-                        if playerGui:FindFirstChild("JJMenu") then
-                            playerGui:FindFirstChild("JJMenu"):Destroy()
-                        end
-                        return
-                    end
-
-                    currentIndex = currentIndex + 1
-                    task.wait(interval - 0.5)
+            while currentIndex <= #messages do
+                if cancelAll then
+                    isRunning = false
+                    return
                 end
+
+                while isPaused do
+                    task.wait(0.1)
+                end
+
+                if not isPaused then
+                    local success, errorMessage = pcall(function()
+                        channel:SendAsync(messages[currentIndex])
+                    end)
+
+                    if not success then
+                        warn("Mesaj gönderme hatası: " .. errorMessage)
+                        break
+                    end
+
+                    task.wait(0.5)
+                    forceJump()
+                end
+
+                if messages[currentIndex] == "ON BEŞ" then
+                    if playerGui:FindFirstChild("JJMenu") then
+                        playerGui:FindFirstChild("JJMenu"):Destroy()
+                    end
+                    return
+                end
+
+                currentIndex = currentIndex + 1
+                task.wait(interval - 0.5)
             end
 
             isRunning = false
@@ -266,8 +278,9 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            resetAllProcesses() -- Önceki süreçleri tamamen sıfırla
-            local menu = createMenu()
+            resetAllProcesses()
+            cancelAll = false -- Tool aktif edildiğinde tekrar başlatmaya izin ver
+            createMenu()
             sendMessages(true)
         end)
     end
