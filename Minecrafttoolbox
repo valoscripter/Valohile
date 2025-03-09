@@ -87,7 +87,6 @@ OrionLib:MakeNotification({
 
 
 
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -128,9 +127,9 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
-        local cancelAll = false -- **Tüm süreçleri tamamen temizlemek için değişken eklendi!**
+        local cancelAll = false
 
-        -- **Tüm Çalışan İşlemleri Sıfırla (Önceki Menüden Gelenleri Temizle)**
+        -- **Menüyü Kapatınca Tüm Eski Süreçleri Temizle**
         local function resetAllProcesses()
             isRunning = false
             isPaused = true
@@ -140,7 +139,7 @@ Tab2:AddButton({
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
-            resetAllProcesses() -- **Önceki menüden kalan her şeyi sıfırla!**
+            resetAllProcesses() -- Önceki süreçleri temizle
 
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
@@ -158,13 +157,12 @@ Tab2:AddButton({
             frame.BorderSizePixel = 0
             frame.Parent = menu
             frame.Active = true
-            frame.Draggable = true -- **Menü taşınabilir**
+            frame.Draggable = true
 
             local uiCorner = Instance.new("UICorner")
             uiCorner.CornerRadius = UDim.new(0, 12)
             uiCorner.Parent = frame
 
-            -- **Menü Başlığı**
             local titleLabel = Instance.new("TextLabel")
             titleLabel.Size = UDim2.new(1, 0, 0, 30)
             titleLabel.Position = UDim2.new(0, 0, 0, 0)
@@ -194,7 +192,6 @@ Tab2:AddButton({
                 return button
             end
 
-            -- **Başlat/Durdur Butonu**
             local toggleButton
             toggleButton = createButton("Durdur", 40, Color3.fromRGB(255, 255, 255), function()
                 if isPaused then
@@ -207,27 +204,25 @@ Tab2:AddButton({
                 end
             end)
 
-            -- **Sıfırla Butonu**
             createButton("Sıfırla", 80, Color3.fromRGB(255, 255, 255), function()
                 resetAllProcesses()
                 toggleButton.Text = "Durdur"
                 sendMessages(true)
             end)
 
-            -- **Kapat Butonu**
             createButton("Kapat", 120, Color3.fromRGB(255, 0, 0), function()
                 if playerGui:FindFirstChild("JJMenu") then
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
-                resetAllProcesses() -- **Kapat’a basınca eski süreçler tamamen sıfırlanacak!**
+                resetAllProcesses()
             end)
 
             return menu
         end
 
-        -- **Mesaj Gönderme ve Zıplama**
+        -- **Mesaj Gönderme Fonksiyonu**
         local function sendMessages(reset)
-            if cancelAll then return end -- **Kapat'a basıldıysa işlem başlamasın!**
+            if cancelAll then return end
             if isRunning then return end
             isRunning = true
 
@@ -240,7 +235,7 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if cancelAll then -- **Kapat'a basıldıysa çık!**
+                    if cancelAll then
                         isRunning = false
                         return
                     end
@@ -271,7 +266,7 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            resetAllProcesses() -- **Tüm eski süreçleri temizle**
+            resetAllProcesses() -- Önceki süreçleri tamamen sıfırla
             local menu = createMenu()
             sendMessages(true)
         end)
