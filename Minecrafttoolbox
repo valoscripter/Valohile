@@ -86,10 +86,8 @@ OrionLib:MakeNotification({
 
 
 
-
-        -- **GUI Menü Oluşturma**
 Tab2:AddButton({
-    Name = "• TRY JJ Tool",
+    Name = "• 15 JJ Tool",
     Callback = function()
         local player = game.Players.LocalPlayer
         local backpack = player:FindFirstChild("Backpack")
@@ -101,7 +99,7 @@ Tab2:AddButton({
             return
         end
 
-        local toolName = "TRY JJ ÇEK!"
+        local toolName = "15 JJ ÇEK!"
 
         -- Eğer tool zaten varsa, tekrar oluşturma
         for _, item in ipairs(backpack:GetChildren()) do
@@ -163,10 +161,11 @@ Tab2:AddButton({
             isActive = false
         end
 
-        -- **GUI Menü Oluşturma**
+        -- **GUI Menü Oluşturma (Ama Başlangıçta Gizli)**
         local menu = Instance.new("ScreenGui")
         menu.Name = "JJMenu"
-        menu.Parent = playerGui -- **Doğru yere eklendi**
+        menu.Parent = playerGui
+        menu.Enabled = false -- **Başlangıçta menüyü gizli tut!**
 
         local frame = Instance.new("Frame")
         frame.Size = UDim2.new(0, 200, 0, 150)
@@ -206,14 +205,14 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            menu.Enabled = true
+            menu.Enabled = true -- **Artık menü AÇILIYOR**
             isPaused = false
             sendMessages()
         end)
 
-        -- **Tool Kullanımı Bitince Menü Otomatik Kapanır**
-        tool.Deactivated:Connect(function()
-            menu.Enabled = false
+        -- **Tool bırakıldığında menü otomatik kapanır**
+        tool.Unequipped:Connect(function()
+            menu.Enabled = false -- **Artık menü KAPANIYOR**
         end)
     end
 })
