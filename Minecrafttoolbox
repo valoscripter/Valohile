@@ -149,9 +149,11 @@ Tab2:AddButton({
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- Zıplat
 
-                    -- **Eğer bu son sayıysa, menüyü hemen kapat ve çık**
+                    -- **Eğer bu son sayıysa, menüyü hemen kapat ve her şeyi sıfırla**
                     if i == #messages then
-                        menu.Enabled = false
+                        menu.Enabled = false -- **Menüyü kapat**
+                        isPaused = false -- **Durumu sıfırla**
+                        currentIndex = 1 -- **Başa döndür**
                         return
                     end
 
