@@ -185,6 +185,7 @@ Tab2:AddButton({
             createButton("Sıfırla", 50, Color3.fromRGB(255, 255, 255), function()
                 isPaused = false
                 currentIndex = 1 -- **En başa döndür**
+                toggleButton.Text = "Durdur" -- **Sıfırlayınca hemen başlasın ve "Durdur" gözüksün**
                 sendMessages(true)
             end)
 
@@ -196,7 +197,7 @@ Tab2:AddButton({
                 isRunning = false
                 isPaused = true
                 currentIndex = 1 -- **Tam reset at, tekrar tool’a basınca sadece "BİR" başlasın**
-                task.wait(0.1) -- **Tüm eski süreçleri temizle**
+                task.wait(0.1)
             end)
 
             return menu
