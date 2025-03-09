@@ -87,6 +87,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -127,10 +128,20 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
-        local cancelAll = false -- **Kapatıldığında her şeyi sıfırlamak için değişken eklendi!**
+        local cancelAll = false -- **Tüm süreçleri tamamen temizlemek için değişken eklendi!**
+
+        -- **Tüm Çalışan İşlemleri Sıfırla (Önceki Menüden Gelenleri Temizle)**
+        local function resetAllProcesses()
+            isRunning = false
+            isPaused = true
+            cancelAll = true
+            currentIndex = 1
+        end
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
+            resetAllProcesses() -- **Önceki menüden kalan her şeyi sıfırla!**
+
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
             end
@@ -198,10 +209,7 @@ Tab2:AddButton({
 
             -- **Sıfırla Butonu**
             createButton("Sıfırla", 80, Color3.fromRGB(255, 255, 255), function()
-                isPaused = false
-                isRunning = false
-                cancelAll = false
-                currentIndex = 1
+                resetAllProcesses()
                 toggleButton.Text = "Durdur"
                 sendMessages(true)
             end)
@@ -211,10 +219,7 @@ Tab2:AddButton({
                 if playerGui:FindFirstChild("JJMenu") then
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
-                isRunning = false
-                isPaused = true
-                cancelAll = true -- **Kapatıldığında eski işlemleri tamamen iptal et!**
-                currentIndex = 1
+                resetAllProcesses() -- **Kapat’a basınca eski süreçler tamamen sıfırlanacak!**
             end)
 
             return menu
@@ -266,10 +271,7 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            isRunning = false
-            isPaused = false
-            cancelAll = false -- **Önceki süreçleri tamamen sıfırla**
-            currentIndex = 1 -- **Sadece "BİR" ile başlat**
+            resetAllProcesses() -- **Tüm eski süreçleri temizle**
             local menu = createMenu()
             sendMessages(true)
         end)
