@@ -127,31 +127,10 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
-        local cancelAll = false
+        local cancelAll = false -- **Kapatıldığında her şeyi sıfırlamak için değişken eklendi!**
 
-        -- **Sıfırla ve Süreçleri Durdur**
-        local function resetAllProcesses()
-            isRunning = false
-            isPaused = true
-            cancelAll = true
-            currentIndex = 1
-        end
-
-        -- **Karakteri Zıplatma**
-        local function forceJump()
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            else
-                warn("Humanoid bulunamadı, karakter zıplayamıyor!")
-            end
-        end
-
-        -- **Menü Açma Fonksiyonu**
+        -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
-            resetAllProcesses()
-            cancelAll = false -- Menü açıldığında iptal olmasın
-
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
             end
@@ -159,6 +138,7 @@ Tab2:AddButton({
             local menu = Instance.new("ScreenGui")
             menu.Name = "JJMenu"
             menu.Parent = playerGui
+            menu.Enabled = true
 
             local frame = Instance.new("Frame")
             frame.Size = UDim2.new(0, 200, 0, 180)
@@ -167,11 +147,22 @@ Tab2:AddButton({
             frame.BorderSizePixel = 0
             frame.Parent = menu
             frame.Active = true
-            frame.Draggable = true
+            frame.Draggable = true -- **Menü taşınabilir**
 
             local uiCorner = Instance.new("UICorner")
             uiCorner.CornerRadius = UDim.new(0, 12)
             uiCorner.Parent = frame
+
+            -- **Menü Başlığı**
+            local titleLabel = Instance.new("TextLabel")
+            titleLabel.Size = UDim2.new(1, 0, 0, 30)
+            titleLabel.Position = UDim2.new(0, 0, 0, 0)
+            titleLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+            titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            titleLabel.Text = "15 JJ Menü"
+            titleLabel.Font = Enum.Font.SourceSansBold
+            titleLabel.TextSize = 18
+            titleLabel.Parent = frame
 
             local function createButton(name, positionY, textColor, callback)
                 local button = Instance.new("TextButton")
@@ -192,6 +183,7 @@ Tab2:AddButton({
                 return button
             end
 
+            -- **Başlat/Durdur Butonu**
             local toggleButton
             toggleButton = createButton("Durdur", 40, Color3.fromRGB(255, 255, 255), function()
                 if isPaused then
@@ -204,25 +196,33 @@ Tab2:AddButton({
                 end
             end)
 
+            -- **Sıfırla Butonu**
             createButton("Sıfırla", 80, Color3.fromRGB(255, 255, 255), function()
-                resetAllProcesses()
+                isPaused = false
+                isRunning = false
+                cancelAll = false
+                currentIndex = 1
                 toggleButton.Text = "Durdur"
                 sendMessages(true)
             end)
 
+            -- **Kapat Butonu**
             createButton("Kapat", 120, Color3.fromRGB(255, 0, 0), function()
                 if playerGui:FindFirstChild("JJMenu") then
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
-                resetAllProcesses()
+                isRunning = false
+                isPaused = true
+                cancelAll = true -- **Kapatıldığında eski işlemleri tamamen iptal et!**
+                currentIndex = 1
             end)
 
             return menu
         end
 
-        -- **Mesaj Gönderme Fonksiyonu**
+        -- **Mesaj Gönderme ve Zıplama**
         local function sendMessages(reset)
-            if cancelAll then return end
+            if cancelAll then return end -- **Kapat'a basıldıysa işlem başlamasın!**
             if isRunning then return end
             isRunning = true
 
@@ -233,44 +233,32 @@ Tab2:AddButton({
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
-            if not channel then
-                warn("Chat kanalı bulunamadı!")
-                return
-            end
+            if channel then
+                while currentIndex <= #messages do
+                    if cancelAll then -- **Kapat'a basıldıysa çık!**
+                        isRunning = false
+                        return
+                    end
 
-            while currentIndex <= #messages do
-                if cancelAll then
-                    isRunning = false
-                    return
-                end
+                    while isPaused do
+                        task.wait(0.1)
+                    end
 
-                while isPaused do
-                    task.wait(0.1)
-                end
-
-                if not isPaused then
-                    local success, errorMessage = pcall(function()
+                    if not isPaused then
                         channel:SendAsync(messages[currentIndex])
-                    end)
-
-                    if not success then
-                        warn("Mesaj gönderme hatası: " .. errorMessage)
-                        break
+                        task.wait(0.5)
                     end
 
-                    task.wait(0.5)
-                    forceJump()
-                end
-
-                if messages[currentIndex] == "ON BEŞ" then
-                    if playerGui:FindFirstChild("JJMenu") then
-                        playerGui:FindFirstChild("JJMenu"):Destroy()
+                    if messages[currentIndex] == "ON BEŞ" then
+                        if playerGui:FindFirstChild("JJMenu") then
+                            playerGui:FindFirstChild("JJMenu"):Destroy()
+                        end
+                        return
                     end
-                    return
-                end
 
-                currentIndex = currentIndex + 1
-                task.wait(interval - 0.5)
+                    currentIndex = currentIndex + 1
+                    task.wait(interval - 0.5)
+                end
             end
 
             isRunning = false
@@ -278,13 +266,17 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            resetAllProcesses()
-            cancelAll = false -- Tool aktif edildiğinde tekrar başlatmaya izin ver
-            createMenu()
+            isRunning = false
+            isPaused = false
+            cancelAll = false -- **Önceki süreçleri tamamen sıfırla**
+            currentIndex = 1 -- **Sadece "BİR" ile başlat**
+            local menu = createMenu()
             sendMessages(true)
         end)
     end
 })
+
+
 
 
 
