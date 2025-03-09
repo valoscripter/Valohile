@@ -126,6 +126,7 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
+        local stopRequested = false -- **Durdurma isteği kontrolü eklendi!**
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
@@ -173,10 +174,12 @@ Tab2:AddButton({
             toggleButton = createButton("Durdur", 10, Color3.fromRGB(255, 255, 255), function()
                 if isPaused then
                     isPaused = false
+                    stopRequested = false -- **Durdurmayı iptal et, devam etmesini sağla!**
                     toggleButton.Text = "Durdur"
                     sendMessages(false)
                 else
                     isPaused = true
+                    stopRequested = true -- **Durdurmayı etkinleştir!**
                     toggleButton.Text = "Başlat"
                 end
             end)
@@ -184,8 +187,10 @@ Tab2:AddButton({
             -- **Sıfırla Butonu**
             createButton("Sıfırla", 50, Color3.fromRGB(255, 255, 255), function()
                 isPaused = false
+                isRunning = false -- **Tüm işlemleri sıfırla**
+                stopRequested = false -- **Durdurma isteğini sıfırla**
                 currentIndex = 1 -- **En başa döndür**
-                toggleButton.Text = "Durdur" -- **Sıfırlayınca hemen başlasın ve "Durdur" gözüksün**
+                toggleButton.Text = "Durdur"
                 sendMessages(true)
             end)
 
@@ -196,8 +201,8 @@ Tab2:AddButton({
                 end
                 isRunning = false
                 isPaused = true
-                currentIndex = 1 -- **Tam reset at, tekrar tool’a basınca sadece "BİR" başlasın**
-                task.wait(0.1)
+                stopRequested = false -- **Tüm işlemleri temizle**
+                currentIndex = 1 -- **Tekrar açınca "BİR"den başlasın**
             end)
 
             return menu
@@ -233,10 +238,10 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if isPaused then
+                    if stopRequested then
                         isRunning = false
                         return
-                    end
+                    end -- **Durdurma isteği varsa çık**
 
                     channel:SendAsync(messages[currentIndex])
                     task.wait(0.5)
@@ -259,6 +264,7 @@ Tab2:AddButton({
         tool.Activated:Connect(function()
             isRunning = false -- **Önceki süreçleri tamamen temizle**
             isPaused = false
+            stopRequested = false -- **Durdurma isteğini sıfırla**
             currentIndex = 1 -- **Sadece "BİR" ile başlat**
             local menu = createMenu()
             sendMessages(true)
