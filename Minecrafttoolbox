@@ -121,7 +121,7 @@ Tab2:AddButton({
         local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isPaused = false -- Duraklatma kontrolü
         local currentIndex = 1 -- Hangi sayıda kaldığını takip eder
-        local isRunning = false -- Tekrar başlamayı engeller
+        local isRunning = false -- Aynı anda iki kere çalışmayı önler
 
         -- **Menüyü oluştur**
         local menu = Instance.new("ScreenGui")
@@ -163,8 +163,8 @@ Tab2:AddButton({
         resetButton.Parent = frame
         resetButton.MouseButton1Click:Connect(function()
             isPaused = false
-            currentIndex = 1 -- Başa dön
-            sendMessages() -- Tekrar başlat
+            currentIndex = 1 -- Baştan başlat
+            sendMessages()
         end)
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -177,7 +177,7 @@ Tab2:AddButton({
             end
         end
 
-        -- **Menüyü Tamamen Yok Etme Fonksiyonu**
+        -- **Menüyü tamamen yok etme fonksiyonu**
         local function destroyMenu()
             if menu then
                 menu:Destroy()
@@ -188,30 +188,30 @@ Tab2:AddButton({
 
         -- **Mesaj ve Zıplama Fonksiyonu**
         local function sendMessages()
-            if isPaused or isRunning then return end -- Eğer durdurulduysa veya zaten çalışıyorsa çalışmasın!
-            isRunning = true -- Aynı anda iki kere başlamasın
+            if isRunning then return end -- Zaten çalışıyorsa ikinci kez başlatma
+            isRunning = true
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
             if channel then
-                for i = currentIndex, #messages do
+                while currentIndex <= #messages do
                     if isPaused then
                         isRunning = false
                         return
                     end -- Durdurulduğunda çık
 
-                    channel:SendAsync(messages[i]) -- Mesaj gönder
-                    currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
+                    channel:SendAsync(messages[currentIndex]) -- Mesaj gönder
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- Zıplat
 
                     -- **Eğer bu "ON BEŞ" ise, MENÜYÜ SİL**
-                    if i == #messages then
+                    if messages[currentIndex] == "ON BEŞ" then
                         destroyMenu()
                         return
                     end
 
+                    currentIndex = currentIndex + 1
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
             else
@@ -223,7 +223,6 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            if isRunning then return end -- Eğer zaten çalışıyorsa tekrar başlamasın
             if menu == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
                 menu = Instance.new("ScreenGui")
                 menu.Name = "JJMenu"
