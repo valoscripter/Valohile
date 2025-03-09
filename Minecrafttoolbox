@@ -153,35 +153,29 @@ Tab2:AddButton({
             uiCorner.CornerRadius = UDim.new(0, 12)  
             uiCorner.Parent = frame  
 
-            -- **Başlık ekleyelim ve taşıma özelliği ekleyelim**
-            local title = Instance.new("TextLabel")
-            title.Size = UDim2.new(1, 0, 0, 30)
-            title.Position = UDim2.new(0, 0, 0, 0)
-            title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-            title.TextColor3 = Color3.fromRGB(255, 255, 255)
-            title.Text = "15 JJ Menü"
-            title.Font = Enum.Font.SourceSansBold
-            title.TextSize = 20
-            title.Parent = frame
-
+            -- **Menüyü Taşınabilir Yapma (Sürükleme)**  
             local dragStart
             local dragPos
 
-            -- Menüyü sürükleyebilmek için eventler ekleyelim
-            title.MouseButton1Down:Connect(function()
-                dragStart = game:GetService("UserInputService").Mouse.Position
-                dragPos = frame.Position
+            -- Menü çerçevesini taşıyabilmek için eventler ekleyelim
+            frame.InputBegan:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                    dragStart = input.Position
+                    dragPos = frame.Position
+                end
             end)
 
-            title.MouseMoved:Connect(function()
+            frame.InputChanged:Connect(function(input)
                 if dragStart then
-                    local delta = game:GetService("UserInputService").Mouse.Position - dragStart
+                    local delta = input.Position - dragStart
                     frame.Position = UDim2.new(dragPos.X.Scale, dragPos.X.Offset + delta.X, dragPos.Y.Scale, dragPos.Y.Offset + delta.Y)
                 end
             end)
 
-            title.MouseButton1Up:Connect(function()
-                dragStart = nil
+            frame.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                    dragStart = nil
+                end
             end)
 
             -- Menüdeki butonları oluşturma fonksiyonu
