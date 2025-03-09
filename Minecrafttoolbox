@@ -148,11 +148,15 @@ Tab2:AddButton({
                     currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- Zıplat
+
+                    -- **Eğer bu son sayıysa, menüyü hemen kapat ve çık**
+                    if i == #messages then
+                        menu.Enabled = false
+                        return
+                    end
+
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
-                -- **Son sayıyı söyledikten hemen sonra menü KESİNLİKLE kapanacak**
-                task.wait(1) -- 1 saniye bekleyip menüyü kapat
-                menu.Enabled = false
             else
                 warn("Chat kanalı bulunamadı!")
             end
