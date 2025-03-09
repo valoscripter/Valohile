@@ -87,6 +87,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -151,26 +152,33 @@ Tab2:AddButton({
             uiCorner.CornerRadius = UDim.new(0, 12)  
             uiCorner.Parent = frame  
 
-            -- Menü hareket ettirilebilir yapılıyor
+            -- **Taşıma Barı Ekleniyor**  
+            local dragBar = Instance.new("Frame")  
+            dragBar.Size = UDim2.new(1, 0, 0, 20)  
+            dragBar.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  
+            dragBar.Position = UDim2.new(0, 0, 0, 0)  
+            dragBar.Parent = frame  
+
+            -- Menü çerçevesini taşıyabilmek için eventler ekliyoruz
             local dragStart
             local dragPos
 
-            -- Menü çerçevesini taşıyabilmek için eventler ekleyelim
-            frame.InputBegan:Connect(function(input)
+            -- Taşıma barına tıklama ile sürükleme başlasın
+            dragBar.InputBegan:Connect(function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     dragStart = input.Position
                     dragPos = frame.Position
                 end
             end)
 
-            frame.InputChanged:Connect(function(input)
+            dragBar.InputChanged:Connect(function(input)
                 if dragStart then
                     local delta = input.Position - dragStart
                     frame.Position = UDim2.new(dragPos.X.Scale, dragPos.X.Offset + delta.X, dragPos.Y.Scale, dragPos.Y.Offset + delta.Y)
                 end
             end)
 
-            frame.InputEnded:Connect(function(input)
+            dragBar.InputEnded:Connect(function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     dragStart = nil
                 end
