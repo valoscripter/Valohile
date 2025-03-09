@@ -86,7 +86,6 @@ OrionLib:MakeNotification({
 
 
 
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -126,7 +125,7 @@ Tab2:AddButton({
         local interval = 3
         local isPaused = false
         local isRunning = false
-        local currentIndex = 1 -- **Şimdi sıfırla ve kapat işlemleri tamamen sıfırlayacak**
+        local currentIndex = 1
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
@@ -140,7 +139,7 @@ Tab2:AddButton({
             menu.Enabled = true
 
             local frame = Instance.new("Frame")
-            frame.Size = UDim2.new(0, 180, 0, 150) -- **Menü küçüldü**
+            frame.Size = UDim2.new(0, 180, 0, 150)
             frame.Position = UDim2.new(0.5, -90, 0.5, -75)
             frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             frame.BorderSizePixel = 0
@@ -152,7 +151,7 @@ Tab2:AddButton({
 
             local function createButton(name, positionY, textColor, callback)
                 local button = Instance.new("TextButton")
-                button.Size = UDim2.new(1, -20, 0, 30) -- **Butonlar küçüldü**
+                button.Size = UDim2.new(1, -20, 0, 30)
                 button.Position = UDim2.new(0, 10, 0, positionY)
                 button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
                 button.TextColor3 = textColor
@@ -189,14 +188,15 @@ Tab2:AddButton({
                 sendMessages(true)
             end)
 
-            -- **Kapat Butonu**
+            -- **Kapat Butonu (TAM RESET)**
             createButton("Kapat", 90, Color3.fromRGB(255, 0, 0), function()
                 if playerGui:FindFirstChild("JJMenu") then
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
                 isRunning = false
                 isPaused = true
-                currentIndex = 1 -- **Tam reset at, tekrar tool’a basınca "BİR" ile başlasın**
+                currentIndex = 1 -- **Tam reset at, tekrar tool’a basınca sadece "BİR" başlasın**
+                task.wait(0.1) -- **Tüm eski süreçleri temizle**
             end)
 
             return menu
@@ -232,8 +232,9 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    while isPaused do
-                        task.wait(0.1)
+                    if isPaused then
+                        isRunning = false
+                        return
                     end
 
                     channel:SendAsync(messages[currentIndex])
@@ -255,9 +256,11 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            local menu = createMenu()
+            isRunning = false -- **Önceki süreçleri tamamen temizle**
             isPaused = false
-            sendMessages(true) -- **Tool’a tekrar basınca sadece "BİR" yazacak şekilde ayarlandı**
+            currentIndex = 1 -- **Sadece "BİR" ile başlat**
+            local menu = createMenu()
+            sendMessages(true)
         end)
     end
 })
