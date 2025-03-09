@@ -85,20 +85,24 @@ OrionLib:MakeNotification({
 
 
 
+
+
+        -- **GUI Menü Oluşturma**
 Tab2:AddButton({
-    Name = "• TRY Tool",
+    Name = "• TRY JJ Tool",
     Callback = function()
         local player = game.Players.LocalPlayer
         local backpack = player:FindFirstChild("Backpack")
         local character = player.Character or player.CharacterAdded:Wait()
+        local playerGui = player:FindFirstChildOfClass("PlayerGui")
 
-        if not backpack or not character then
-            warn("Backpack veya Character bulunamadı!")
+        if not backpack or not character or not playerGui then
+            warn("Backpack, Character veya PlayerGui bulunamadı!")
             return
         end
 
-        local toolName = "15 JJ ÇEK!"
-        
+        local toolName = "TRY JJ ÇEK!"
+
         -- Eğer tool zaten varsa, tekrar oluşturma
         for _, item in ipairs(backpack:GetChildren()) do
             if item:IsA("Tool") and item.Name == toolName then
@@ -106,7 +110,7 @@ Tab2:AddButton({
                 return
             end
         end
-        
+
         -- Yeni Tool oluştur
         local tool = Instance.new("Tool")
         tool.Name = toolName
@@ -161,8 +165,8 @@ Tab2:AddButton({
 
         -- **GUI Menü Oluşturma**
         local menu = Instance.new("ScreenGui")
-        menu.Parent = game.CoreGui
-        menu.Enabled = false
+        menu.Name = "JJMenu"
+        menu.Parent = playerGui -- **Doğru yere eklendi**
 
         local frame = Instance.new("Frame")
         frame.Size = UDim2.new(0, 200, 0, 150)
