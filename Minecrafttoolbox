@@ -120,7 +120,6 @@ Tab2:AddButton({
 
         local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isPaused = false -- Duraklatma kontrolü
-        local currentIndex = 1 -- Hangi sayıda kaldığını takip eder
         local isRunning = false -- Aynı anda iki kere çalışmayı önler
 
         -- **Menüyü oluştur**
@@ -163,8 +162,7 @@ Tab2:AddButton({
         resetButton.Parent = frame
         resetButton.MouseButton1Click:Connect(function()
             isPaused = false
-            currentIndex = 1 -- Baştan başlat
-            sendMessages()
+            sendMessages(true) -- Baştan başlat
         end)
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -187,9 +185,14 @@ Tab2:AddButton({
         end
 
         -- **Mesaj ve Zıplama Fonksiyonu**
-        local function sendMessages()
+        local function sendMessages(reset)
             if isRunning then return end -- Zaten çalışıyorsa ikinci kez başlatma
             isRunning = true
+
+            local currentIndex = 1 -- **Tekrar başlatıldığında ilk sayıya dönmesi için sıfırladık!**
+            if not reset then
+                currentIndex = 1
+            end
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
@@ -242,11 +245,10 @@ Tab2:AddButton({
             end
 
             isPaused = false
-            sendMessages()
+            sendMessages(true) -- **Tekrar başladığında en baştan başlat**
         end)
     end
 })
-
 
 
 
