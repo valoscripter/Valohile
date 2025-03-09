@@ -85,6 +85,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -133,12 +134,12 @@ Tab2:AddButton({
             isPaused = true
             cancelAll = true
             currentIndex = 1
-            task.wait(0.1) -- **Eski süreçleri tamamen bitirmesi için bekleme ekledim**
+            task.wait(0.1) -- **Önceki süreçleri tamamen iptal etmek için bekletiyoruz**
         end
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
-            resetAllProcesses() -- **Menü açıldığında eski süreçleri sıfırla!**
+            resetAllProcesses() -- **Menü açıldığında önceki süreçleri sıfırla!**
 
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
@@ -217,7 +218,7 @@ Tab2:AddButton({
                 if playerGui:FindFirstChild("JJMenu") then
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
-                resetAllProcesses() -- **Menü kapatıldığında tüm süreçleri sıfırla!**
+                resetAllProcesses()
             end)
 
             return menu
@@ -238,7 +239,7 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if cancelAll then -- **Kapat'a basıldıysa çık!**
+                    if cancelAll then
                         isRunning = false
                         return
                     end
@@ -269,7 +270,7 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            resetAllProcesses() -- **Tüm eski süreçleri temizle**
+            resetAllProcesses()
             local menu = createMenu()
             sendMessages(true)
         end)
