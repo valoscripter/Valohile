@@ -121,6 +121,7 @@ Tab2:AddButton({
         local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isPaused = false -- Duraklatma kontrolü
         local currentIndex = 1 -- Hangi sayıda kaldığını takip eder
+        local isRunning = false -- Tekrar başlamayı engeller
 
         -- **Menüyü oluştur**
         local menu = Instance.new("ScreenGui")
@@ -180,19 +181,25 @@ Tab2:AddButton({
         local function destroyMenu()
             if menu then
                 menu:Destroy()
+                menu = nil
             end
+            isRunning = false
         end
 
         -- **Mesaj ve Zıplama Fonksiyonu**
         local function sendMessages()
-            if isPaused then return end -- Eğer durdurulduysa çalışmasın!
+            if isPaused or isRunning then return end -- Eğer durdurulduysa veya zaten çalışıyorsa çalışmasın!
+            isRunning = true -- Aynı anda iki kere başlamasın
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
             if channel then
                 for i = currentIndex, #messages do
-                    if isPaused then return end -- Durdurulduğunda çık
+                    if isPaused then
+                        isRunning = false
+                        return
+                    end -- Durdurulduğunda çık
 
                     channel:SendAsync(messages[i]) -- Mesaj gönder
                     currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
@@ -210,11 +217,14 @@ Tab2:AddButton({
             else
                 warn("Chat kanalı bulunamadı!")
             end
+
+            isRunning = false
         end
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            if menu.Parent == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
+            if isRunning then return end -- Eğer zaten çalışıyorsa tekrar başlamasın
+            if menu == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
                 menu = Instance.new("ScreenGui")
                 menu.Name = "JJMenu"
                 menu.Parent = playerGui
@@ -238,7 +248,6 @@ Tab2:AddButton({
         end)
     end
 })
-
 
 
 
