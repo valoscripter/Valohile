@@ -136,38 +136,46 @@ Tab2:AddButton({
             menu.Enabled = true
 
             local frame = Instance.new("Frame")
-            frame.Size = UDim2.new(0, 200, 0, 150)
-            frame.Position = UDim2.new(0.5, -100, 0.5, -75)
-            frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+            frame.Size = UDim2.new(0, 220, 0, 180)  -- Menü biraz daha büyük
+            frame.Position = UDim2.new(0.5, -110, 0.5, -90)
+            frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Daha koyu gri arka plan
+            frame.BorderSizePixel = 0
             frame.Parent = menu
 
-            local stopButton = Instance.new("TextButton")
-            stopButton.Size = UDim2.new(1, 0, 0, 50)
-            stopButton.Position = UDim2.new(0, 0, 0, 0)
-            stopButton.Text = "Durdur"
-            stopButton.Parent = frame
-            stopButton.MouseButton1Click:Connect(function()
+            local uiCorner = Instance.new("UICorner")
+            uiCorner.CornerRadius = UDim.new(0, 12) -- Köşeleri oval yap
+            uiCorner.Parent = frame
+
+            local function createButton(name, positionY, callback)
+                local button = Instance.new("TextButton")
+                button.Size = UDim2.new(1, -20, 0, 40)  -- Butonlar daha küçük
+                button.Position = UDim2.new(0, 10, 0, positionY) -- Boşluklu hizalama
+                button.BackgroundColor3 = Color3.fromRGB(0, 0, 0) -- Siyah buton
+                button.TextColor3 = Color3.fromRGB(255, 255, 255) -- Beyaz yazı
+                button.Text = name
+                button.Font = Enum.Font.SourceSansBold -- Kalın yazı fontu
+                button.TextSize = 20
+                button.Parent = frame
+
+                local buttonCorner = Instance.new("UICorner")
+                buttonCorner.CornerRadius = UDim.new(0, 8) -- Buton köşeleri oval
+                buttonCorner.Parent = button
+
+                button.MouseButton1Click:Connect(callback)
+            end
+
+            createButton("Durdur", 10, function()
                 isPaused = true
             end)
 
-            local startButton = Instance.new("TextButton")
-            startButton.Size = UDim2.new(1, 0, 0, 50)
-            startButton.Position = UDim2.new(0, 0, 0, 50)
-            startButton.Text = "Başlat"
-            startButton.Parent = frame
-            startButton.MouseButton1Click:Connect(function()
+            createButton("Başlat", 60, function()
                 if isPaused then
                     isPaused = false
                     sendMessages(false)
                 end
             end)
 
-            local resetButton = Instance.new("TextButton")
-            resetButton.Size = UDim2.new(1, 0, 0, 50)
-            resetButton.Position = UDim2.new(0, 0, 0, 100)
-            resetButton.Text = "Sıfırla"
-            resetButton.Parent = frame
-            resetButton.MouseButton1Click:Connect(function()
+            createButton("Sıfırla", 110, function()
                 isPaused = false
                 sendMessages(true)
             end)
