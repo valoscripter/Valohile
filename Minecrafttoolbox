@@ -119,7 +119,7 @@ Tab2:AddButton({
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -199,7 +199,7 @@ Tab2:AddButton({
             "ON ALTı", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -278,7 +278,7 @@ Tab2:AddButton({
             "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -359,7 +359,7 @@ Tab2:AddButton({
             "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -522,7 +522,7 @@ Tab2:AddButton({
             "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"
         }
 
-        local interval = 3.5 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -604,7 +604,7 @@ Tab2:AddButton({
             "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -688,7 +688,7 @@ Tab2:AddButton({
             "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -782,7 +782,7 @@ Tab2:AddButton({
             "DOKSAN ALTI", "DOKSAN YEDİ", "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -877,7 +877,7 @@ Tab3:AddButton({
             "On bir.", "On iki.", "On üç.", "On dört.", "On beş."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -956,7 +956,7 @@ Tab3:AddButton({
             "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1036,7 +1036,7 @@ Tab3:AddButton({
             "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1117,7 +1117,7 @@ Tab3:AddButton({
             "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1198,7 +1198,7 @@ Tab3:AddButton({
             "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1280,7 +1280,7 @@ Tab3:AddButton({
             "Otuz altı.", "Otuz yedi.", "Otuz sekiz.", "Otuz dokuz.", "Kırk."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1364,7 +1364,7 @@ Tab3:AddButton({
             "Kırk bir.", "Kırk iki.", "Kırk üç.", "Kırk dört.", "Kırk beş."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1448,7 +1448,7 @@ Tab3:AddButton({
             "Kırk altı.", "Kırk yedi.", "Kırk sekiz.", "Kırk dokuz.", "Elli."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1542,7 +1542,7 @@ Tab3:AddButton({
             "Doksan altı.", "Doksan yedi.", "Doksan sekiz.", "Doksan dokuz.", "Yüz."
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1632,7 +1632,7 @@ Tab6:AddButton({
             "İ", "K", "İ", "İKİ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1710,7 +1710,7 @@ Tab6:AddButton({
             "Ü", "Ç", "ÜÇ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1789,7 +1789,7 @@ Tab6:AddButton({
             "D", "Ö", "R", "T", "DÖRT"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1869,7 +1869,7 @@ Tab6:AddButton({
             "B", "E", "Ş", "BEŞ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -1949,7 +1949,7 @@ Tab6:AddButton({
             "A", "L", "T", "I", "ALTI"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -2030,7 +2030,7 @@ Tab6:AddButton({
             "Y", "E", "D", "İ", "YEDİ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -2113,7 +2113,7 @@ Tab6:AddButton({
             "S", "E", "K", "İ", "Z", "SEKİZ"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -2197,7 +2197,7 @@ Tab6:AddButton({
             "O", "N", "ON"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -2280,7 +2280,7 @@ Tab6:AddButton({
             "O", "N", "ON"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.5 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
