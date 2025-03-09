@@ -83,7 +83,6 @@ OrionLib:MakeNotification({
 
 
 
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -134,16 +133,16 @@ Tab2:AddButton({
             end
         end
 
-        -- **Mesaj ve Zıplama Fonksiyonu (Düzeltildi!)**
+        -- **Mesaj ve Zıplama Fonksiyonu**
         local function sendMessages()
-            if isPaused then return end -- **Eğer durdurulduysa çalışmasın!**
+            if isPaused then return end -- Eğer durdurulduysa çalışmasın!
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
             if channel then
                 for i = currentIndex, #messages do
-                    if isPaused then return end -- **Durdurulduğunda çık**
+                    if isPaused then return end -- Durdurulduğunda çık
                     
                     channel:SendAsync(messages[i]) -- Mesaj gönder
                     currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
@@ -151,7 +150,8 @@ Tab2:AddButton({
                     forceJump() -- Zıplat
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
-                -- **Son sayı söylenince menü kapansın**
+                -- **Son sayıyı söyledikten hemen sonra menü KESİNLİKLE kapanacak**
+                task.wait(1) -- 1 saniye bekleyip menüyü kapat
                 menu.Enabled = false
             else
                 warn("Chat kanalı bulunamadı!")
@@ -187,7 +187,7 @@ Tab2:AddButton({
         startButton.MouseButton1Click:Connect(function()
             if isPaused then
                 isPaused = false
-                sendMessages() -- **Kaldığı yerden devam et**
+                sendMessages() -- Kaldığı yerden devam et
             end
         end)
 
@@ -198,8 +198,8 @@ Tab2:AddButton({
         resetButton.Parent = frame
         resetButton.MouseButton1Click:Connect(function()
             isPaused = false
-            currentIndex = 1 -- **Başa dön**
-            sendMessages() -- **Tekrar başlat**
+            currentIndex = 1 -- Başa dön
+            sendMessages() -- Tekrar başlat
         end)
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
