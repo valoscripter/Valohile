@@ -83,6 +83,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -133,37 +134,6 @@ Tab2:AddButton({
             end
         end
 
-        -- **Mesaj ve Zıplama Fonksiyonu**
-        local function sendMessages()
-            if isPaused then return end -- Eğer durdurulduysa çalışmasın!
-
-            local chatService = game:GetService("TextChatService")
-            local channel = chatService.TextChannels.RBXGeneral
-
-            if channel then
-                for i = currentIndex, #messages do
-                    if isPaused then return end -- Durdurulduğunda çık
-
-                    channel:SendAsync(messages[i]) -- Mesaj gönder
-                    currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
-                    task.wait(0.5) -- 0.5 saniye bekle
-                    forceJump() -- Zıplat
-
-                    -- **Eğer bu sayı "ON BEŞ" ise, MENÜYÜ TAMAMEN YOK ET**
-                    if messages[i] == "ON BEŞ" then
-                        if menu then
-                            menu:Destroy() -- **Menüyü tamamen yok et**
-                        end
-                        return
-                    end
-
-                    task.wait(interval - 0.5) -- Kalan süreyi bekle
-                end
-            else
-                warn("Chat kanalı bulunamadı!")
-            end
-        end
-
         -- **GUI Menü Oluşturma**
         local menu = Instance.new("ScreenGui")
         menu.Name = "JJMenu"
@@ -208,9 +178,46 @@ Tab2:AddButton({
             sendMessages() -- Tekrar başlat
         end)
 
+        -- **Menüyü Tamamen Yok Etme Fonksiyonu**
+        local function destroyMenu()
+            if menu then
+                menu:Destroy()
+                menu = nil
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu**
+        local function sendMessages()
+            if isPaused then return end -- Eğer durdurulduysa çalışmasın!
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+
+            if channel then
+                for i = currentIndex, #messages do
+                    if isPaused then return end -- Durdurulduğunda çık
+
+                    channel:SendAsync(messages[i]) -- Mesaj gönder
+                    currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- Zıplat
+
+                    -- **Eğer bu sayı "ON BEŞ" ise, MENÜYÜ KESİN OLARAK SİL**
+                    if messages[i] == "ON BEŞ" then
+                        destroyMenu()
+                        return
+                    end
+
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                end
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
+        end
+
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            if menu.Parent == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
+            if menu == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
                 menu = Instance.new("ScreenGui")
                 menu.Name = "JJMenu"
                 menu.Parent = playerGui
@@ -219,21 +226,7 @@ Tab2:AddButton({
                 local frame = Instance.new("Frame")
                 frame.Size = UDim2.new(0, 200, 0, 150)
                 frame.Position = UDim2.new(0.5, -100, 0.5, -75)
-                frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-                frame.Parent = menu
-
-                stopButton.Parent = frame
-                startButton.Parent = frame
-                resetButton.Parent = frame
-            else
-                menu.Enabled = true
-            end
-
-            isPaused = false
-            sendMessages()
-        end)
-    end
-})
+                frame.BackgroundColor3 = Color3.fromRGB(50, 50
 
 
 
