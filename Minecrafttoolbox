@@ -88,6 +88,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -142,8 +143,8 @@ Tab2:AddButton({
             menu.Enabled = true  
 
             local frame = Instance.new("Frame")  
-            frame.Size = UDim2.new(0, 150, 0, 80)  -- Boyutları küçültüyoruz
-            frame.Position = UDim2.new(0.5, -75, 0.5, -40)  -- Ortalamayı koruyalım
+            frame.Size = UDim2.new(0, 180, 0, 150)  -- Eski boyutları geri getirdik
+            frame.Position = UDim2.new(0.5, -90, 0.5, -75)  -- Ortalamayı koruyalım
             frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)  
             frame.BorderSizePixel = 0  
             frame.Parent = menu  
@@ -152,26 +153,42 @@ Tab2:AddButton({
             uiCorner.CornerRadius = UDim.new(0, 12)  
             uiCorner.Parent = frame  
 
+            -- **Başlık Çubuğu (TitleBar)**  
+            local titleBar = Instance.new("Frame")  
+            titleBar.Size = UDim2.new(1, 0, 0, 30)  
+            titleBar.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  
+            titleBar.Parent = frame  
+
+            local titleLabel = Instance.new("TextLabel")  
+            titleLabel.Size = UDim2.new(1, 0, 1, 0)  
+            titleLabel.BackgroundTransparency = 1  
+            titleLabel.Text = "15 JJ Menü"  
+            titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)  
+            titleLabel.Font = Enum.Font.SourceSansBold  
+            titleLabel.TextSize = 18  
+            titleLabel.TextAlign = Enum.TextXAlignment.Center  
+            titleLabel.Parent = titleBar  
+
             -- **Taşıma İşlevi**  
             local dragStart
             local dragPos
 
-            -- Menü çerçevesini her yerinden tutarak sürükleyebilmek için:
-            frame.InputBegan:Connect(function(input)
+            -- Başlık çubuğunu sürükleyebilmek için:
+            titleBar.InputBegan:Connect(function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     dragStart = input.Position
                     dragPos = frame.Position
                 end
             end)
 
-            frame.InputChanged:Connect(function(input)
+            titleBar.InputChanged:Connect(function(input)
                 if dragStart then
                     local delta = input.Position - dragStart
                     frame.Position = UDim2.new(dragPos.X.Scale, dragPos.X.Offset + delta.X, dragPos.Y.Scale, dragPos.Y.Offset + delta.Y)
                 end
             end)
 
-            frame.InputEnded:Connect(function(input)
+            titleBar.InputEnded:Connect(function(input)
                 if input.UserInputType == Enum.UserInputType.MouseButton1 then
                     dragStart = nil
                 end
@@ -180,13 +197,13 @@ Tab2:AddButton({
             -- Menüdeki butonları oluşturma fonksiyonu
             local function createButton(name, positionY, textColor, callback)  
                 local button = Instance.new("TextButton")  
-                button.Size = UDim2.new(1, -20, 0, 20)  -- Buton boyutlarını küçültüyoruz
+                button.Size = UDim2.new(1, -20, 0, 30)  
                 button.Position = UDim2.new(0, 10, 0, positionY)  
                 button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  
                 button.TextColor3 = textColor  
                 button.Text = name  
                 button.Font = Enum.Font.SourceSansBold  
-                button.TextSize = 14  -- Text boyutunu küçültüyoruz
+                button.TextSize = 18  
                 button.Parent = frame  
 
                 local buttonCorner = Instance.new("UICorner")  
@@ -199,7 +216,7 @@ Tab2:AddButton({
 
             -- **Başlat/Durdur Butonu**  
             local toggleButton  
-            toggleButton = createButton("Durdur", 10, Color3.fromRGB(255, 255, 255), function()  
+            toggleButton = createButton("Durdur", 40, Color3.fromRGB(255, 255, 255), function()  
                 if isPaused then  
                     isPaused = false  
                     toggleButton.Text = "Durdur"  
@@ -211,7 +228,7 @@ Tab2:AddButton({
             end)  
 
             -- **Sıfırla Butonu**  
-            createButton("Sıfırla", 40, Color3.fromRGB(255, 255, 255), function()  
+            createButton("Sıfırla", 80, Color3.fromRGB(255, 255, 255), function()  
                 isPaused = false  
                 isRunning = false  
                 cancelAll = false  
@@ -221,7 +238,7 @@ Tab2:AddButton({
             end)  
 
             -- **Kapat Butonu (TAM RESET)**  
-            createButton("Kapat", 70, Color3.fromRGB(255, 0, 0), function()  
+            createButton("Kapat", 120, Color3.fromRGB(255, 0, 0), function()  
                 if playerGui:FindFirstChild("JJMenu") then  
                     playerGui:FindFirstChild("JJMenu"):Destroy()  
                 end  
