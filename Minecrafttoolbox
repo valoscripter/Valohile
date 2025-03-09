@@ -162,11 +162,11 @@ Tab2:AddButton({
             isActive = false
         end
 
-        -- **GUI Menü Oluşturma (Ama Başlangıçta Gizli)**
+        -- **GUI Menü Oluşturma (Başlangıçta Gizli)**
         local menu = Instance.new("ScreenGui")
         menu.Name = "JJMenu"
         menu.Parent = playerGui
-        menu.Enabled = false -- **Başlangıçta menüyü gizli tut!**
+        menu.Enabled = false -- **Başlangıçta gizli**
 
         local frame = Instance.new("Frame")
         frame.Size = UDim2.new(0, 200, 0, 150)
@@ -211,7 +211,7 @@ Tab2:AddButton({
             sendMessages()
         end)
 
-        -- **Menü tool bırakılınca gitmeyecek!**
+        -- **Menü tool bırakılınca kaybolmayacak!**
         tool.Unequipped:Connect(function()
             -- Menü açık kalmaya devam edecek
         end)
