@@ -522,7 +522,7 @@ Tab2:AddButton({
             "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"
         }
 
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local interval = 4 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
