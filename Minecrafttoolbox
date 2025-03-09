@@ -127,7 +127,7 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
-        local cancelAll = false -- **Tüm eski süreçleri iptal etme değişkeni eklendi!**
+        local cancelAll = false -- **Kapatıldığında her şeyi sıfırlamak için değişken eklendi!**
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
@@ -141,19 +141,19 @@ Tab2:AddButton({
             menu.Enabled = true
 
             local frame = Instance.new("Frame")
-            frame.Size = UDim2.new(0, 200, 0, 180) -- Menü boyutunu biraz büyüttüm
+            frame.Size = UDim2.new(0, 200, 0, 180)
             frame.Position = UDim2.new(0.5, -100, 0.5, -90)
             frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
             frame.BorderSizePixel = 0
             frame.Parent = menu
             frame.Active = true
-            frame.Draggable = true -- **Menü artık taşınabilir!**
+            frame.Draggable = true -- **Menü taşınabilir**
 
             local uiCorner = Instance.new("UICorner")
             uiCorner.CornerRadius = UDim.new(0, 12)
             uiCorner.Parent = frame
 
-            -- **Menü Başlığı (15 JJ Menü)**
+            -- **Menü Başlığı**
             local titleLabel = Instance.new("TextLabel")
             titleLabel.Size = UDim2.new(1, 0, 0, 30)
             titleLabel.Position = UDim2.new(0, 0, 0, 0)
@@ -213,32 +213,16 @@ Tab2:AddButton({
                 end
                 isRunning = false
                 isPaused = true
-                cancelAll = true
+                cancelAll = true -- **Kapatıldığında eski işlemleri tamamen iptal et!**
                 currentIndex = 1
             end)
 
             return menu
         end
 
-        -- **Zıplama işlemi**
-        local function forceJump()
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            end
-        end
-
-        -- **Menüyü Yok Etme**
-        local function destroyMenu()
-            if playerGui:FindFirstChild("JJMenu") then
-                playerGui:FindFirstChild("JJMenu"):Destroy()
-            end
-            isRunning = false
-        end
-
         -- **Mesaj Gönderme ve Zıplama**
         local function sendMessages(reset)
-            if cancelAll then return end
+            if cancelAll then return end -- **Kapat'a basıldıysa işlem başlamasın!**
             if isRunning then return end
             isRunning = true
 
@@ -251,7 +235,7 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if cancelAll then
+                    if cancelAll then -- **Kapat'a basıldıysa çık!**
                         isRunning = false
                         return
                     end
@@ -263,11 +247,12 @@ Tab2:AddButton({
                     if not isPaused then
                         channel:SendAsync(messages[currentIndex])
                         task.wait(0.5)
-                        forceJump()
                     end
 
                     if messages[currentIndex] == "ON BEŞ" then
-                        destroyMenu()
+                        if playerGui:FindFirstChild("JJMenu") then
+                            playerGui:FindFirstChild("JJMenu"):Destroy()
+                        end
                         return
                     end
 
@@ -283,8 +268,8 @@ Tab2:AddButton({
         tool.Activated:Connect(function()
             isRunning = false
             isPaused = false
-            cancelAll = false
-            currentIndex = 1
+            cancelAll = false -- **Önceki süreçleri tamamen sıfırla**
+            currentIndex = 1 -- **Sadece "BİR" ile başlat**
             local menu = createMenu()
             sendMessages(true)
         end)
