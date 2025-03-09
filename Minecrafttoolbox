@@ -2,7 +2,7 @@ local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/SydearrHubLibrary'))()
 
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  V1.3",
+    Name = "Sydearr Hub - TA  V1.4",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
@@ -46,15 +46,15 @@ Tab1:AddParagraph("GUI Developers:", [[
 - @ross_x1
 ]])
 
-Tab1:AddParagraph("Content Finders:", [[
+Tab1:AddParagraph("Content Creators:", [[
 
 - @ross_x1 
 
-- @rip_sigma_31
-
-- @rewaqz
-
 - @kaansfriztche
+
+- @xenty1111
+
+- @swuuuxyzz
 ]])
 
 
@@ -2440,7 +2440,29 @@ Tab4:AddButton({
 })
 
 
+Tab4:AddButton({
+    Name = "• Safe Zone",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(2641.71, 31.82, 198.66)
+        }
 
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
 
 
 
