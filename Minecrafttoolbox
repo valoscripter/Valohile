@@ -196,10 +196,9 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if isPaused then
-                        isRunning = false
-                        return
-                    end -- Durdurulduğunda çık
+                    while isPaused do
+                        task.wait(0.1) -- **Bekleme süresi, duraklatmayı düzgün yapar**
+                    end
 
                     channel:SendAsync(messages[currentIndex]) -- Mesaj gönder
                     task.wait(0.5) -- 0.5 saniye bekle
