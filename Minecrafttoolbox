@@ -87,6 +87,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -127,6 +128,7 @@ Tab2:AddButton({
         local isPaused = false
         local isRunning = false
         local currentIndex = 1
+        local cancelAll = false -- **Tüm eski süreçleri iptal etme değişkeni eklendi!**
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
@@ -186,6 +188,7 @@ Tab2:AddButton({
             createButton("Sıfırla", 50, Color3.fromRGB(255, 255, 255), function()
                 isPaused = false
                 isRunning = false -- **Tüm işlemleri sıfırla**
+                cancelAll = false -- **Önceki işlemleri iptal etme değişkenini sıfırla**
                 currentIndex = 1 -- **En başa döndür**
                 toggleButton.Text = "Durdur"
                 sendMessages(true)
@@ -198,6 +201,7 @@ Tab2:AddButton({
                 end
                 isRunning = false
                 isPaused = true
+                cancelAll = true -- **Tüm önceki mesajları ve süreçleri tamamen iptal et!**
                 currentIndex = 1 -- **Tekrar açınca "BİR"den başlasın**
             end)
 
@@ -222,6 +226,10 @@ Tab2:AddButton({
 
         -- **Mesaj Gönderme ve Zıplama**
         local function sendMessages(reset)
+            if cancelAll then return end -- **Eğer Kapat’a basılmışsa, işlem başlamasın!**
+            if isRunning then return end
+            isRunning = true
+
             if reset then
                 currentIndex = 1 -- **Sıfırla yapınca en baştan başlasın**
             end
@@ -231,11 +239,16 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    while isPaused do
-                        task.wait(0.1) -- **Sonsuz bekleme sorunu çözüldü!**
+                    if cancelAll then -- **Kapat’a basılmışsa döngüden çık!**
+                        isRunning = false
+                        return
                     end
 
-                    if not isPaused then -- **Durdurma sonrası tekrar çalıştırma kontrolü**
+                    while isPaused do
+                        task.wait(0.1) -- **Durdurulduğunda sürekli kontrol et**
+                    end
+
+                    if not isPaused then
                         channel:SendAsync(messages[currentIndex])
                         task.wait(0.5)
                         forceJump()
@@ -258,6 +271,7 @@ Tab2:AddButton({
         tool.Activated:Connect(function()
             isRunning = false -- **Önceki süreçleri tamamen temizle**
             isPaused = false
+            cancelAll = false -- **Önceki süreçleri kesin olarak sıfırla!**
             currentIndex = 1 -- **Sadece "BİR" ile başlat**
             local menu = createMenu()
             sendMessages(true)
