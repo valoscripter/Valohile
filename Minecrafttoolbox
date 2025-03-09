@@ -82,6 +82,8 @@ OrionLib:MakeNotification({
 
 
 
+
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -118,81 +120,83 @@ Tab2:AddButton({
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
         }
 
-        local interval = 3 -- Mesajlar arası toplam süre (saniye)
-        local isPaused = false -- Duraklatma kontrolü
-        local isRunning = false -- Aynı anda iki kere çalışmayı önler
+        local interval = 3
+        local isPaused = false
+        local isRunning = false
 
-        -- **Menüyü oluştur**
-        local menu = Instance.new("ScreenGui")
-        menu.Name = "JJMenu"
-        menu.Parent = playerGui
-        menu.Enabled = false
-
-        local frame = Instance.new("Frame")
-        frame.Size = UDim2.new(0, 200, 0, 150)
-        frame.Position = UDim2.new(0.5, -100, 0.5, -75)
-        frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-        frame.Parent = menu
-
-        local stopButton = Instance.new("TextButton")
-        stopButton.Size = UDim2.new(1, 0, 0, 50)
-        stopButton.Position = UDim2.new(0, 0, 0, 0)
-        stopButton.Text = "Durdur"
-        stopButton.Parent = frame
-        stopButton.MouseButton1Click:Connect(function()
-            isPaused = true
-        end)
-
-        local startButton = Instance.new("TextButton")
-        startButton.Size = UDim2.new(1, 0, 0, 50)
-        startButton.Position = UDim2.new(0, 0, 0, 50)
-        startButton.Text = "Başlat"
-        startButton.Parent = frame
-        startButton.MouseButton1Click:Connect(function()
-            if isPaused then
-                isPaused = false
-                sendMessages() -- Kaldığı yerden devam et
+        -- **Menü Oluşturma Fonksiyonu**
+        local function createMenu()
+            if playerGui:FindFirstChild("JJMenu") then
+                playerGui:FindFirstChild("JJMenu"):Destroy()
             end
-        end)
 
-        local resetButton = Instance.new("TextButton")
-        resetButton.Size = UDim2.new(1, 0, 0, 50)
-        resetButton.Position = UDim2.new(0, 0, 0, 100)
-        resetButton.Text = "Sıfırla"
-        resetButton.Parent = frame
-        resetButton.MouseButton1Click:Connect(function()
-            isPaused = false
-            sendMessages(true) -- Baştan başlat
-        end)
+            local menu = Instance.new("ScreenGui")
+            menu.Name = "JJMenu"
+            menu.Parent = playerGui
+            menu.Enabled = true
 
-        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+            local frame = Instance.new("Frame")
+            frame.Size = UDim2.new(0, 200, 0, 150)
+            frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+            frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+            frame.Parent = menu
+
+            local stopButton = Instance.new("TextButton")
+            stopButton.Size = UDim2.new(1, 0, 0, 50)
+            stopButton.Position = UDim2.new(0, 0, 0, 0)
+            stopButton.Text = "Durdur"
+            stopButton.Parent = frame
+            stopButton.MouseButton1Click:Connect(function()
+                isPaused = true
+            end)
+
+            local startButton = Instance.new("TextButton")
+            startButton.Size = UDim2.new(1, 0, 0, 50)
+            startButton.Position = UDim2.new(0, 0, 0, 50)
+            startButton.Text = "Başlat"
+            startButton.Parent = frame
+            startButton.MouseButton1Click:Connect(function()
+                if isPaused then
+                    isPaused = false
+                    sendMessages(false)
+                end
+            end)
+
+            local resetButton = Instance.new("TextButton")
+            resetButton.Size = UDim2.new(1, 0, 0, 50)
+            resetButton.Position = UDim2.new(0, 0, 0, 100)
+            resetButton.Text = "Sıfırla"
+            resetButton.Parent = frame
+            resetButton.MouseButton1Click:Connect(function()
+                isPaused = false
+                sendMessages(true)
+            end)
+
+            return menu
+        end
+
+        -- **Zıplama işlemi**
         local function forceJump()
             local humanoid = character:FindFirstChildOfClass("Humanoid")
             if humanoid then
                 humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            else
-                warn("Humanoid bulunamadı!")
             end
         end
 
-        -- **Menüyü tamamen yok etme fonksiyonu**
+        -- **Menüyü Yok Etme**
         local function destroyMenu()
-            if menu then
-                menu:Destroy()
-                menu = nil
+            if playerGui:FindFirstChild("JJMenu") then
+                playerGui:FindFirstChild("JJMenu"):Destroy()
             end
             isRunning = false
         end
 
-        -- **Mesaj ve Zıplama Fonksiyonu**
+        -- **Mesaj Gönderme ve Zıplama**
         local function sendMessages(reset)
-            if isRunning then return end -- Zaten çalışıyorsa ikinci kez başlatma
+            if isRunning then return end
             isRunning = true
 
-            local currentIndex = 1 -- **Tekrar başlatıldığında ilk sayıya dönmesi için sıfırladık!**
-            if not reset then
-                currentIndex = 1
-            end
+            local currentIndex = reset and 1 or 1
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
@@ -200,24 +204,21 @@ Tab2:AddButton({
             if channel then
                 while currentIndex <= #messages do
                     while isPaused do
-                        task.wait(0.1) -- **Bekleme süresi, duraklatmayı düzgün yapar**
+                        task.wait(0.1)
                     end
 
-                    channel:SendAsync(messages[currentIndex]) -- Mesaj gönder
-                    task.wait(0.5) -- 0.5 saniye bekle
-                    forceJump() -- Zıplat
+                    channel:SendAsync(messages[currentIndex])
+                    task.wait(0.5)
+                    forceJump()
 
-                    -- **Eğer bu "ON BEŞ" ise, MENÜYÜ SİL**
                     if messages[currentIndex] == "ON BEŞ" then
                         destroyMenu()
                         return
                     end
 
                     currentIndex = currentIndex + 1
-                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                    task.wait(interval - 0.5)
                 end
-            else
-                warn("Chat kanalı bulunamadı!")
             end
 
             isRunning = false
@@ -225,30 +226,18 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            if menu == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
-                menu = Instance.new("ScreenGui")
-                menu.Name = "JJMenu"
-                menu.Parent = playerGui
-                menu.Enabled = true
-
-                local frame = Instance.new("Frame")
-                frame.Size = UDim2.new(0, 200, 0, 150)
-                frame.Position = UDim2.new(0.5, -100, 0.5, -75)
-                frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-                frame.Parent = menu
-
-                stopButton.Parent = frame
-                startButton.Parent = frame
-                resetButton.Parent = frame
-            else
-                menu.Enabled = true
-            end
-
+            local menu = createMenu()
             isPaused = false
-            sendMessages(true) -- **Tekrar başladığında en baştan başlat**
+            sendMessages(true)
         end)
     end
 })
+
+
+
+
+
+
 
 
 
