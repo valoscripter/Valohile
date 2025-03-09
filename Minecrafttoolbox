@@ -143,17 +143,17 @@ Tab2:AddButton({
             if channel then
                 for i = currentIndex, #messages do
                     if isPaused then return end -- Durdurulduğunda çık
-                    
+
                     channel:SendAsync(messages[i]) -- Mesaj gönder
                     currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- Zıplat
 
-                    -- **Eğer bu son sayıysa, menüyü hemen kapat ve her şeyi sıfırla**
-                    if i == #messages then
-                        menu.Enabled = false -- **Menüyü kapat**
-                        isPaused = false -- **Durumu sıfırla**
-                        currentIndex = 1 -- **Başa döndür**
+                    -- **Eğer bu sayı "ON BEŞ" ise, MENÜYÜ TAMAMEN YOK ET**
+                    if messages[i] == "ON BEŞ" then
+                        if menu then
+                            menu:Destroy() -- **Menüyü tamamen yok et**
+                        end
                         return
                     end
 
@@ -210,7 +210,25 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            menu.Enabled = true
+            if menu.Parent == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
+                menu = Instance.new("ScreenGui")
+                menu.Name = "JJMenu"
+                menu.Parent = playerGui
+                menu.Enabled = true
+
+                local frame = Instance.new("Frame")
+                frame.Size = UDim2.new(0, 200, 0, 150)
+                frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+                frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+                frame.Parent = menu
+
+                stopButton.Parent = frame
+                startButton.Parent = frame
+                resetButton.Parent = frame
+            else
+                menu.Enabled = true
+            end
+
             isPaused = false
             sendMessages()
         end)
