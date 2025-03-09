@@ -126,20 +126,19 @@ Tab2:AddButton({
         local isRunning = false
         local currentIndex = 1
         local cancelAll = false
-        local menuOpen = false -- **Menünün açık olup olmadığını takip eden değişken**
 
-        -- **Tüm Süreçleri Sıfırlama Fonksiyonu**
+        -- **Tüm Süreçleri %100 Sıfırlama Fonksiyonu**
         local function resetAllProcesses()
             isRunning = false
             isPaused = true
             cancelAll = true
             currentIndex = 1
+            task.wait(0.1) -- **Eski süreçleri tamamen bitirmesi için bekleme ekledim**
         end
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
-            resetAllProcesses() -- **Menü açıldığında tüm süreçleri sıfırla!**
-            menuOpen = true -- **Menü açıldığında bunu işaretle**
+            resetAllProcesses() -- **Menü açıldığında eski süreçleri sıfırla!**
 
             if playerGui:FindFirstChild("JJMenu") then
                 playerGui:FindFirstChild("JJMenu"):Destroy()
@@ -219,7 +218,6 @@ Tab2:AddButton({
                     playerGui:FindFirstChild("JJMenu"):Destroy()
                 end
                 resetAllProcesses() -- **Menü kapatıldığında tüm süreçleri sıfırla!**
-                menuOpen = false -- **Menü kapandığında işaret kaldır**
             end)
 
             return menu
@@ -227,7 +225,7 @@ Tab2:AddButton({
 
         -- **Mesaj Gönderme ve Zıplama**
         local function sendMessages(reset)
-            if cancelAll or not menuOpen then return end -- **Menü kapalıysa veya kapat'a basıldıysa işlem başlamasın!**
+            if cancelAll then return end -- **Kapat'a basıldıysa işlem başlamasın!**
             if isRunning then return end
             isRunning = true
 
@@ -240,7 +238,7 @@ Tab2:AddButton({
 
             if channel then
                 while currentIndex <= #messages do
-                    if cancelAll or not menuOpen then -- **Menü kapalıysa veya kapat'a basıldıysa çık!**
+                    if cancelAll then -- **Kapat'a basıldıysa çık!**
                         isRunning = false
                         return
                     end
