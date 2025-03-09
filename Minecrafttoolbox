@@ -82,8 +82,6 @@ OrionLib:MakeNotification({
 
 
 
-
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -226,7 +224,21 @@ Tab2:AddButton({
                 local frame = Instance.new("Frame")
                 frame.Size = UDim2.new(0, 200, 0, 150)
                 frame.Position = UDim2.new(0.5, -100, 0.5, -75)
-                frame.BackgroundColor3 = Color3.fromRGB(50, 50
+                frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+                frame.Parent = menu
+
+                stopButton.Parent = frame
+                startButton.Parent = frame
+                resetButton.Parent = frame
+            else
+                menu.Enabled = true
+            end
+
+            isPaused = false
+            sendMessages()
+        end)
+    end
+})
 
 
 
