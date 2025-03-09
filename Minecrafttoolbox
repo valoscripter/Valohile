@@ -126,6 +126,7 @@ Tab2:AddButton({
         local interval = 3
         local isPaused = false
         local isRunning = false
+        local currentIndex = 1 -- **Şimdi sıfırla ve kapat işlemleri tamamen sıfırlayacak**
 
         -- **Menü Oluşturma Fonksiyonu**
         local function createMenu()
@@ -184,6 +185,7 @@ Tab2:AddButton({
             -- **Sıfırla Butonu**
             createButton("Sıfırla", 50, Color3.fromRGB(255, 255, 255), function()
                 isPaused = false
+                currentIndex = 1 -- **En başa döndür**
                 sendMessages(true)
             end)
 
@@ -194,6 +196,7 @@ Tab2:AddButton({
                 end
                 isRunning = false
                 isPaused = true
+                currentIndex = 1 -- **Tam reset at, tekrar tool’a basınca "BİR" ile başlasın**
             end)
 
             return menu
@@ -220,7 +223,9 @@ Tab2:AddButton({
             if isRunning then return end
             isRunning = true
 
-            local currentIndex = reset and 1 or 1
+            if reset then
+                currentIndex = 1 -- **Sıfırla yapınca en baştan başlasın**
+            end
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
@@ -252,7 +257,7 @@ Tab2:AddButton({
         tool.Activated:Connect(function()
             local menu = createMenu()
             isPaused = false
-            sendMessages(true)
+            sendMessages(true) -- **Tool’a tekrar basınca sadece "BİR" yazacak şekilde ayarlandı**
         end)
     end
 })
