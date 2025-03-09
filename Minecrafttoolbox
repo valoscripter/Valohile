@@ -85,7 +85,6 @@ OrionLib:MakeNotification({
 
 
 
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -154,6 +153,8 @@ Tab2:AddButton({
                     forceJump() -- Zıplat
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
+                -- **Son sayı söylenince menü kapansın**
+                menu.Enabled = false
             else
                 warn("Chat kanalı bulunamadı!")
             end
@@ -205,18 +206,17 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            menu.Enabled = true -- **Artık menü AÇILIYOR**
+            menu.Enabled = true -- **Menü açılıyor**
             isPaused = false
             sendMessages()
         end)
 
-        -- **Tool bırakıldığında menü otomatik kapanır**
+        -- **Menü tool bırakılınca gitmeyecek!**
         tool.Unequipped:Connect(function()
-            menu.Enabled = false -- **Artık menü KAPANIYOR**
+            -- Menü açık kalmaya devam edecek
         end)
     end
 })
-
 
 
 
