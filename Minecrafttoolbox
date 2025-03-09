@@ -86,6 +86,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -150,7 +151,7 @@ Tab2:AddButton({
             uiCorner.CornerRadius = UDim.new(0, 12)  
             uiCorner.Parent = frame  
 
-            -- **Menüyü Taşınabilir Yapma (Sürükleme)**  
+            -- Menü hareket ettirilebilir yapılıyor
             local dragStart
             local dragPos
 
