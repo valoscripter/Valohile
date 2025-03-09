@@ -84,7 +84,132 @@ OrionLib:MakeNotification({
 
 
 
+Tab2:AddButton({
+    Name = "• 15 JJ Tool",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
+        local playerGui = player:FindFirstChildOfClass("PlayerGui")
 
+        if not backpack or not character or not playerGui then
+            warn("Backpack, Character veya PlayerGui bulunamadı!")
+            return
+        end
+
+        local toolName = "15 JJ ÇEK!"
+
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
+        end
+
+        -- Yeni Tool oluştur
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
+
+        -- Mesaj Listesi
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
+        }
+
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
+        local isPaused = false -- Duraklatma kontrolü
+        local currentIndex = 1 -- Hangi sayıda kaldığını takip eder
+
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu (Düzeltildi!)**
+        local function sendMessages()
+            if isPaused then return end -- **Eğer durdurulduysa çalışmasın!**
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+
+            if channel then
+                for i = currentIndex, #messages do
+                    if isPaused then return end -- **Durdurulduğunda çık**
+                    
+                    channel:SendAsync(messages[i]) -- Mesaj gönder
+                    currentIndex = i + 1 -- Hangi sayıda kaldığını güncelle
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- Zıplat
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                end
+                -- **Son sayı söylenince menü kapansın**
+                menu.Enabled = false
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
+        end
+
+        -- **GUI Menü Oluşturma**
+        local menu = Instance.new("ScreenGui")
+        menu.Name = "JJMenu"
+        menu.Parent = playerGui
+        menu.Enabled = false
+
+        local frame = Instance.new("Frame")
+        frame.Size = UDim2.new(0, 200, 0, 150)
+        frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+        frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        frame.Parent = menu
+
+        local stopButton = Instance.new("TextButton")
+        stopButton.Size = UDim2.new(1, 0, 0, 50)
+        stopButton.Position = UDim2.new(0, 0, 0, 0)
+        stopButton.Text = "Durdur"
+        stopButton.Parent = frame
+        stopButton.MouseButton1Click:Connect(function()
+            isPaused = true
+        end)
+
+        local startButton = Instance.new("TextButton")
+        startButton.Size = UDim2.new(1, 0, 0, 50)
+        startButton.Position = UDim2.new(0, 0, 0, 50)
+        startButton.Text = "Başlat"
+        startButton.Parent = frame
+        startButton.MouseButton1Click:Connect(function()
+            if isPaused then
+                isPaused = false
+                sendMessages() -- **Kaldığı yerden devam et**
+            end
+        end)
+
+        local resetButton = Instance.new("TextButton")
+        resetButton.Size = UDim2.new(1, 0, 0, 50)
+        resetButton.Position = UDim2.new(0, 0, 0, 100)
+        resetButton.Text = "Sıfırla"
+        resetButton.Parent = frame
+        resetButton.MouseButton1Click:Connect(function()
+            isPaused = false
+            currentIndex = 1 -- **Başa dön**
+            sendMessages() -- **Tekrar başlat**
+        end)
+
+        -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
+        tool.Activated:Connect(function()
+            menu.Enabled = true
+            isPaused = false
+            sendMessages()
+        end)
+    end
+})
 
 
 
