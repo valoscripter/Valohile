@@ -122,17 +122,7 @@ Tab2:AddButton({
         local isPaused = false -- Duraklatma kontrolü
         local currentIndex = 1 -- Hangi sayıda kaldığını takip eder
 
-        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
-        local function forceJump()
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-            else
-                warn("Humanoid bulunamadı!")
-            end
-        end
-
-        -- **GUI Menü Oluşturma**
+        -- **Menüyü oluştur**
         local menu = Instance.new("ScreenGui")
         menu.Name = "JJMenu"
         menu.Parent = playerGui
@@ -176,11 +166,20 @@ Tab2:AddButton({
             sendMessages() -- Tekrar başlat
         end)
 
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
         -- **Menüyü Tamamen Yok Etme Fonksiyonu**
         local function destroyMenu()
             if menu then
                 menu:Destroy()
-                menu = nil
             end
         end
 
@@ -200,8 +199,8 @@ Tab2:AddButton({
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- Zıplat
 
-                    -- **Eğer bu sayı "ON BEŞ" ise, MENÜYÜ KESİN OLARAK SİL**
-                    if messages[i] == "ON BEŞ" then
+                    -- **Eğer bu "ON BEŞ" ise, MENÜYÜ SİL**
+                    if i == #messages then
                         destroyMenu()
                         return
                     end
@@ -215,7 +214,7 @@ Tab2:AddButton({
 
         -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**
         tool.Activated:Connect(function()
-            if menu == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
+            if menu.Parent == nil then -- **Eğer menü silindiyse, yeni menü oluştur**
                 menu = Instance.new("ScreenGui")
                 menu.Name = "JJMenu"
                 menu.Parent = playerGui
