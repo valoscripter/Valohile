@@ -90,6 +90,7 @@ OrionLib:MakeNotification({
 
 
 
+
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -151,8 +152,9 @@ Tab2:AddButton({
             if channel then
                 for _, message in ipairs(messages) do
                     -- Eğer karakter öldü ya da yazma işlemi durdurulmuşsa çık
-                    if character:FindFirstChildOfClass("Humanoid") == nil then
+                    if not character or not character:FindFirstChildOfClass("Humanoid") then
                         isActive = false
+                        isReset = true -- Reset durumu aktive edilir
                         return
                     end
 
@@ -173,34 +175,34 @@ Tab2:AddButton({
             -- Yazma işlemini ve zıplamayı durdur
             isActive = false
             isPaused = false
-            isReset = true
+            isReset = true -- Reset durumu aktif
             print("Yazma ve zıplama işlemleri sıfırlandı.")
             
             -- Menüyü kapatma ya da başka bir işlem gereksizse burada yapılabilir.
         end
 
-        -- **Karakter Ölürse Yazma İşlemini Durdurma**
-        character:WaitForChild("Humanoid").Died:Connect(function()
-            reset() -- Karakter ölünce reset fonksiyonunu çağır
-        end)
-
         -- **Tool Kullanıldığında Mesaj Gönderme**
-        tool.Activated:Connect(sendMessages)
-
-        -- Yeni Reset butonu ekleyelim
-        local resetButton = Instance.new("TextButton")
-        resetButton.Size = UDim2.new(0, 200, 0, 50)
-        resetButton.Position = UDim2.new(0.5, -100, 0.5, 50)
-        resetButton.Text = "Reset"
-        resetButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-        resetButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-        resetButton.Parent = player.PlayerGui
-
-        -- Reset butonuna tıklanınca reset fonksiyonunu çağır
-        resetButton.MouseButton1Click:Connect(function()
-            reset()
-            resetButton:Destroy()  -- Reset butonunu yok et
+        tool.Activated:Connect(function()
+            if isReset then
+                -- Reset durumunda sıfırlama işlemi yapılacak
+                isReset = false
+                sendMessages() -- Yazma işlemini başlat
+            else
+                sendMessages() -- Yazma işlemi başlat
+            end
         end)
+
+        -- **Karakter Ölünce veya Reset Atılınca Yazma İşlemini Durdur**
+        player.CharacterAdded:Connect(function()
+            -- Yeni karakter geldiğinde sıfırlama işlemi yapılacak
+            isActive = false
+            isReset = true
+            print("Karakter sıfırlandı!")
+        end)
+        
+        -- **Reset Butonu** (Yeni karakter eklediğinizde, reset butonu ile işlemi durdurabilirsiniz)
+        -- Sıfırlama fonksiyonu burada bir buton aracılığıyla da tetiklenebilir.
+
     end
 })
 
