@@ -166,6 +166,11 @@ Tab2:AddButton({
             print("Yazma ve zıplama işlemleri durduruldu.")
         end
 
+        -- **Karakter Ölürse Yazma İşlemini Durdurma**
+        character:WaitForChild("Humanoid").Died:Connect(function()
+            reset()
+        end)
+
         -- **Tool Kullanıldığında Mesaj Gönderme**
         tool.Activated:Connect(sendMessages)
 
