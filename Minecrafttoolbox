@@ -89,7 +89,6 @@ OrionLib:MakeNotification({
 
 
 
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -127,6 +126,7 @@ Tab2:AddButton({
 
         local interval = 3 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
+        local isPaused = false -- Pause durumunu takip ederiz
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
         local function forceJump()
@@ -140,7 +140,7 @@ Tab2:AddButton({
 
         -- **Mesaj ve Zıplama Fonksiyonu**
         local function sendMessages()
-            if isActive then return end
+            if isActive or isPaused then return end
             isActive = true
 
             local chatService = game:GetService("TextChatService")
@@ -148,6 +148,12 @@ Tab2:AddButton({
 
             if channel then
                 for _, message in ipairs(messages) do
+                    -- Eğer karakter öldü ya da yazma işlemi durdurulmuşsa çık
+                    if character:FindFirstChildOfClass("Humanoid") == nil then
+                        isActive = false
+                        return
+                    end
+
                     channel:SendAsync(message) -- Mesaj gönder
                     task.wait(0.5) -- 0.5 saniye bekle
                     forceJump() -- **Yeni zıplama fonksiyonunu çağır**
@@ -160,15 +166,16 @@ Tab2:AddButton({
             isActive = false
         end
 
-        -- **Reset fonksiyonu**: Mesajları ve zıplamayı durdurur
+        -- **Reset fonksiyonu**: Yazma ve zıplamayı durdurur
         local function reset()
             isActive = false
+            isPaused = false
             print("Yazma ve zıplama işlemleri durduruldu.")
         end
 
         -- **Karakter Ölürse Yazma İşlemini Durdurma**
         character:WaitForChild("Humanoid").Died:Connect(function()
-            reset()
+            reset() -- Karakter ölünce reset fonksiyonunu çağır
         end)
 
         -- **Tool Kullanıldığında Mesaj Gönderme**
