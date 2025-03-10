@@ -79,6 +79,9 @@ OrionLib:MakeNotification({
 })
 
 
+     
+
+
 
 
 
@@ -93,233 +96,97 @@ Tab2:AddButton({
         local player = game.Players.LocalPlayer
         local backpack = player:FindFirstChild("Backpack")
         local character = player.Character or player.CharacterAdded:Wait()
-        local playerGui = player:FindFirstChildOfClass("PlayerGui")
 
-        if not backpack or not character or not playerGui then  
-            warn("Backpack, Character veya PlayerGui bulunamadı!")  
-            return  
-        end  
+        if not backpack or not character then
+            warn("Backpack veya Character bulunamadı!")
+            return
+        end
 
-        local toolName = "15 JJ ÇEK!"  
+        local toolName = "15 JJ ÇEK!"
 
-        -- Eğer tool zaten varsa, tekrar oluşturma  
-        for _, item in ipairs(backpack:GetChildren()) do  
-            if item:IsA("Tool") and item.Name == toolName then  
-                print("Tool zaten var, tekrar eklenmeyecek.")  
-                return  
-            end  
-        end  
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
+        end
 
-        -- Yeni Tool oluştur  
-        local tool = Instance.new("Tool")  
-        tool.Name = toolName  
-        tool.RequiresHandle = false  
-        tool.Parent = backpack  
+        -- Yeni Tool oluştur
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
 
-        -- Mesaj Listesi  
-        local messages = {  
-            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",  
-            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",  
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"  
-        }  
+        -- Mesaj Listesi
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
+        }
 
-        local interval = 3  
-        local isPaused = false  
-        local isRunning = false  
-        local currentIndex = 1  
-        local cancelAll = false  
+        local interval = 3 -- Mesajlar arası toplam süre (saniye)
+        local isActive = false -- Tekrar kullanım engelleme
 
-        -- **Menü Oluşturma Fonksiyonu**  
-        local function createMenu()  
-            if playerGui:FindFirstChild("JJMenu") then  
-                playerGui:FindFirstChild("JJMenu"):Destroy()  
-            end  
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
 
-            local menu = Instance.new("ScreenGui")  
-            menu.Name = "JJMenu"  
-            menu.Parent = playerGui  
-            menu.Enabled = true  
+        -- **Mesaj ve Zıplama Fonksiyonu**
+        local function sendMessages()
+            if isActive then return end
+            isActive = true
 
-            local frame = Instance.new("Frame")  
-            frame.Size = UDim2.new(0, 180, 0, 150)  -- Eski boyutları geri getirdik
-            frame.Position = UDim2.new(0.5, -90, 0.5, -75)  -- Ortalamayı koruyalım
-            frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)  
-            frame.BorderSizePixel = 0  
-            frame.Parent = menu  
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
 
-            local uiCorner = Instance.new("UICorner")  
-            uiCorner.CornerRadius = UDim.new(0, 12)  
-            uiCorner.Parent = frame  
-
-            -- **Başlık Çubuğu (TitleBar)**  
-            local titleBar = Instance.new("Frame")  
-            titleBar.Size = UDim2.new(1, 0, 0, 30)  
-            titleBar.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  
-            titleBar.Parent = frame  
-
-            local titleLabel = Instance.new("TextLabel")  
-            titleLabel.Size = UDim2.new(1, 0, 1, 0)  
-            titleLabel.BackgroundTransparency = 1  
-            titleLabel.Text = "15 JJ Menü"  
-            titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)  
-            titleLabel.Font = Enum.Font.SourceSansBold  
-            titleLabel.TextSize = 18  
-            titleLabel.TextAlign = Enum.TextXAlignment.Center  
-            titleLabel.Parent = titleBar  
-
-            -- **Taşıma İşlevi**  
-            local dragStart
-            local dragPos
-
-            -- Başlık çubuğunu sürükleyebilmek için:
-            titleBar.InputBegan:Connect(function(input)
-                if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                    dragStart = input.Position
-                    dragPos = frame.Position
+            if channel then
+                for _, message in ipairs(messages) do
+                    channel:SendAsync(message) -- Mesaj gönder
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
-            end)
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
 
-            titleBar.InputChanged:Connect(function(input)
-                if dragStart then
-                    local delta = input.Position - dragStart
-                    frame.Position = UDim2.new(dragPos.X.Scale, dragPos.X.Offset + delta.X, dragPos.Y.Scale, dragPos.Y.Offset + delta.Y)
-                end
-            end)
+            isActive = false
+        end
 
-            titleBar.InputEnded:Connect(function(input)
-                if input.UserInputType == Enum.UserInputType.MouseButton1 then
-                    dragStart = nil
-                end
-            end)
+        -- **Reset fonksiyonu**: Mesajları ve zıplamayı durdurur
+        local function reset()
+            isActive = false
+            print("Yazma ve zıplama işlemleri durduruldu.")
+        end
 
-            -- Menüdeki butonları oluşturma fonksiyonu
-            local function createButton(name, positionY, textColor, callback)  
-                local button = Instance.new("TextButton")  
-                button.Size = UDim2.new(1, -20, 0, 30)  
-                button.Position = UDim2.new(0, 10, 0, positionY)  
-                button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)  
-                button.TextColor3 = textColor  
-                button.Text = name  
-                button.Font = Enum.Font.SourceSansBold  
-                button.TextSize = 18  
-                button.Parent = frame  
+        -- **Tool Kullanıldığında Mesaj Gönderme**
+        tool.Activated:Connect(sendMessages)
 
-                local buttonCorner = Instance.new("UICorner")  
-                buttonCorner.CornerRadius = UDim.new(0, 8)  
-                buttonCorner.Parent = button  
+        -- Yeni Reset butonu ekleyelim
+        local resetButton = Instance.new("TextButton")
+        resetButton.Size = UDim2.new(0, 200, 0, 50)
+        resetButton.Position = UDim2.new(0.5, -100, 0.5, 50)
+        resetButton.Text = "Reset"
+        resetButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        resetButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+        resetButton.Parent = player.PlayerGui
 
-                button.MouseButton1Click:Connect(callback)  
-                return button  
-            end  
-
-            -- **Başlat/Durdur Butonu**  
-            local toggleButton  
-            toggleButton = createButton("Durdur", 40, Color3.fromRGB(255, 255, 255), function()  
-                if isPaused then  
-                    isPaused = false  
-                    toggleButton.Text = "Durdur"  
-                    sendMessages(false)  
-                else  
-                    isPaused = true  
-                    toggleButton.Text = "Başlat"  
-                end  
-            end)  
-
-            -- **Sıfırla Butonu**  
-            createButton("Sıfırla", 80, Color3.fromRGB(255, 255, 255), function()  
-                isPaused = false  
-                isRunning = false  
-                cancelAll = false  
-                currentIndex = 1  
-                toggleButton.Text = "Durdur"  
-                sendMessages(true)  
-            end)  
-
-            -- **Kapat Butonu (TAM RESET)**  
-            createButton("Kapat", 120, Color3.fromRGB(255, 0, 0), function()  
-                if playerGui:FindFirstChild("JJMenu") then  
-                    playerGui:FindFirstChild("JJMenu"):Destroy()  
-                end  
-                isRunning = false  
-                isPaused = true  
-                cancelAll = true  
-                currentIndex = 1  
-            end)  
-
-            return menu  
-        end  
-
-        -- **Zıplama işlemi**  
-        local function forceJump()  
-            local humanoid = character:FindFirstChildOfClass("Humanoid")  
-            if humanoid then  
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)  
-            end  
-        end  
-
-        -- **Menüyü Yok Etme**  
-        local function destroyMenu()  
-            if playerGui:FindFirstChild("JJMenu") then  
-                playerGui:FindFirstChild("JJMenu"):Destroy()  
-            end  
-            isRunning = false  
-        end  
-
-        -- **Mesaj Gönderme ve Zıplama**  
-        local function sendMessages(reset)  
-            if cancelAll then return end  
-            if isRunning then return end  
-            isRunning = true  
-
-            if reset then  
-                currentIndex = 1  
-            end  
-
-            local chatService = game:GetService("TextChatService")  
-            local channel = chatService.TextChannels.RBXGeneral  
-
-            if channel then  
-                while currentIndex <= #messages do  
-                    if cancelAll then  
-                        isRunning = false  
-                        return  
-                    end  
-
-                    while isPaused do  
-                        task.wait(0.1)  
-                    end  
-
-                    if not isPaused then  
-                        channel:SendAsync(messages[currentIndex])  
-                        task.wait(0.5)  
-                        forceJump()  
-                    end  
-
-                    if messages[currentIndex] == "ON BEŞ" then  
-                        destroyMenu()  
-                        return  
-                    end  
-
-                    currentIndex = currentIndex + 1  
-                    task.wait(interval - 0.5)  
-                end  
-            end  
-
-            isRunning = false  
-        end  
-
-        -- **Tool Kullanıldığında Menü Aç ve Mesaj Gönder**  
-        tool.Activated:Connect(function()  
-            isRunning = false  
-            isPaused = false  
-            cancelAll = false  
-            currentIndex = 1  
-            local menu = createMenu()  
-            sendMessages(true)  
-        end)  
+        -- Reset butonuna tıklanınca reset fonksiyonunu çağır
+        resetButton.MouseButton1Click:Connect(function()
+            reset()
+            resetButton:Destroy()  -- Reset butonunu yok et
+        end)
     end
 })
-     
+
+
 
 
 
