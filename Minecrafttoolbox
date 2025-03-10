@@ -167,13 +167,10 @@ Tab2:AddButton({
         -- **Mesajları sıfırlama fonksiyonu (reset)**
         local function resetMessages()
             isActive = false
-            -- Eğer karakter hala yazıyorsa durdur
-            local chatService = game:GetService("TextChatService")
-            local channel = chatService.TextChannels.RBXGeneral
-
-            if channel then
-                -- Sadece yazıyı durdur
-                channel:SendAsync("Mesaj gönderme işlemi sıfırlandı!") -- İsteğe bağlı bir mesaj
+            -- Zıplama işlemini durdur
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Physics) -- Zıplamayı durdur
             end
         end
 
