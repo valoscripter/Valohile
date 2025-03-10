@@ -87,8 +87,6 @@ OrionLib:MakeNotification({
 
 
 
-
-
 Tab2:AddButton({
     Name = "• 15 JJ Tool",
     Callback = function()
@@ -321,6 +319,8 @@ Tab2:AddButton({
         end)  
     end
 })
+     
+
 
 
 
