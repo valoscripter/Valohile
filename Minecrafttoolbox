@@ -2332,9 +2332,10 @@ local Tab4 = Window:MakeTab({
     PremiumOnly = false
 })
 
-local Section = Tab:AddSection({
-    Name = "- Metro İstasyonları -"
-})
+
+Tab4:AddLabel("Metro İstasyonları")
+
+
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
@@ -2476,9 +2477,7 @@ Tab4:AddButton({
 
 
 
-local Section = Tab:AddSection({
-    Name = "- Base Önü Teleport -"
-})
+
 
 
 
@@ -2615,9 +2614,7 @@ Tab4:AddButton({
 
 
 
-local Section = Tab:AddSection({
-    Name = "- Diğer Teleport Bölgeleri -"
-})
+
 
 
 
