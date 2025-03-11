@@ -2479,7 +2479,6 @@ Tab4:AddButton({
 
 
 
-local Section2 = Tab:AddSection({ Name = "Bölüm 2" })
 
 
 
@@ -2617,7 +2616,6 @@ Tab4:AddButton({
 
 
 
-local Section3 = Tab:AddSection({ Name = "Bölüm 3" })
 
 
 
