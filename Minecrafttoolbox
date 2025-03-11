@@ -2333,9 +2333,7 @@ local Tab4 = Window:MakeTab({
 })
 
 
-local Section1 = Tab:AddSection({
-	Name = "Metro İstasyonları"
-})
+local Section1 = Tab:AddSection({ Name = "Bölüm 1" })
 
 
 
@@ -2481,9 +2479,7 @@ Tab4:AddButton({
 
 
 
-local Section2 = Tab:AddSection({
-	Name = "Base Önü Teleport"
-})
+local Section2 = Tab:AddSection({ Name = "Bölüm 2" })
 
 
 
@@ -2621,9 +2617,7 @@ Tab4:AddButton({
 
 
 
-local Section3 = Tab:AddSection({
-	Name = "Diğer Teleport Noktaları"
-})
+local Section3 = Tab:AddSection({ Name = "Bölüm 3" })
 
 
 
