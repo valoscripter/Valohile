@@ -2333,8 +2333,9 @@ local Tab4 = Window:MakeTab({
 })
 
 
-local Section1 = Tab:AddSection({ Name = "Bölüm 1" })
-
+local Section4 = Tab4:AddSection({
+    Name = "- Metro İstasyonları -"
+})
 
 
 
@@ -2479,7 +2480,9 @@ Tab4:AddButton({
 
 
 
-
+local Section4 = Tab4:AddSection({
+    Name = "- Pepeler -"
+})
 
 
 
@@ -2615,7 +2618,9 @@ Tab4:AddButton({
 })
 
 
-
+local Section4 = Tab4:AddSection({
+    Name = "- Erenler -"
+})
 
 
 
