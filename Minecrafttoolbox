@@ -2480,9 +2480,7 @@ Tab4:AddButton({
 
 
 
-local Section4 = Tab4:AddSection({
-    Name = "- Pepeler -"
-})
+
 
 
 
@@ -2618,9 +2616,7 @@ Tab4:AddButton({
 })
 
 
-local Section4 = Tab4:AddSection({
-    Name = "- Erenler -"
-})
+
 
 
 
