@@ -3025,6 +3025,29 @@ Tab5:AddButton({
 
 
 
+    Name = "• Silah Özelleştirmeleri",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/YAju0scd"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
 Tab5:AddButton({
     Name = "• Anti-AFK",
     Callback = function()
