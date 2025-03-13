@@ -2442,6 +2442,38 @@ Tab4:AddButton({
 })
 
 
+
+
+
+Tab4:AddButton({
+    Name = "• Sivil Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor3 = Vector3.new(985.43, 13.74, -1277.78)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor3")
+    end
+})
+
+
+
+
+
+
 Tab4:AddButton({
     Name = "• Safe Zone",
     Callback = function()
