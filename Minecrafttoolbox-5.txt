@@ -3025,7 +3025,7 @@ Tab5:AddButton({
 
 
 
-    Name = "• Silah Özelleştirmeleri",
+    Name = "• Silah Modifikasyonları",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/YAju0scd"
         
