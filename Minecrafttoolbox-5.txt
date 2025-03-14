@@ -2337,30 +2337,7 @@ local Section4 = Tab4:AddSection({
     Name = "- Teleport Bölgeleri -"
 })
 
--- Add TSK BASE button to Tab 3
-Tab4:AddButton({
-    Name = "• TSK Base",
-    Callback = function()
-        local teleportLocations = {
-            MetroDoor = Vector3.new(3077.62, 34.01, -252.62)
-        }
 
-        -- Karakter ve HumanoidRootPart'ı kontrol et
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-
-        local function teleportTo(locationName)
-            local destination = teleportLocations[locationName]
-            if destination then
-                humanoidRootPart.CFrame = CFrame.new(destination)
-            else
-                warn("Geçersiz konum: " .. tostring(locationName))
-            end
-        end
-
-        teleportTo("MetroDoor")
-    end
-})
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
@@ -2446,6 +2423,32 @@ Tab4:AddButton({
 
 
 Tab4:AddButton({
+    Name = "• Safe Zone",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(2641.71, 31.82, 198.66)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+Tab4:AddButton({
     Name = "• Sivil Base",
     Callback = function()
         local teleportLocations = {
@@ -2473,12 +2476,11 @@ Tab4:AddButton({
 
 
 
-
 Tab4:AddButton({
-    Name = "• Safe Zone",
+    Name = "• TSK Base",
     Callback = function()
         local teleportLocations = {
-            TPart = Vector3.new(2641.71, 31.82, 198.66)
+            MetroDoor = Vector3.new(3077.62, 34.01, -252.62)
         }
 
         -- Karakter ve HumanoidRootPart'ı kontrol et
@@ -2494,9 +2496,10 @@ Tab4:AddButton({
             end
         end
 
-        teleportTo("TPart")
+        teleportTo("MetroDoor")
     end
 })
+
 
 
 
@@ -2527,8 +2530,56 @@ Tab4:AddButton({
 
 
 
+Tab4:AddButton({
+    Name = "• Kara Kuvvetleri Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(1266.93, 13.75, 620.22)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
 
 
+
+
+Tab4:AddButton({
+    Name = "• Sınır Müfettişleri Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(664.41, 13.76, -975.37)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
 
 
 
@@ -2612,55 +2663,11 @@ Tab4:AddButton({
 
 
 
-Tab4:AddButton({
-    Name = "• Sınır Müfettişleri Base",
-    Callback = function()
-        local teleportLocations = {
-            TPart = Vector3.new(664.41, 13.76, -975.37)
-        }
-
-        -- Karakter ve HumanoidRootPart'ı kontrol et
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-
-        local function teleportTo(locationName)
-            local destination = teleportLocations[locationName]
-            if destination then
-                humanoidRootPart.CFrame = CFrame.new(destination)
-            else
-                warn("Geçersiz konum: " .. tostring(locationName))
-            end
-        end
-
-        teleportTo("TPart")
-    end
-})
 
 
 
-Tab4:AddButton({
-    Name = "• Kara Kuvvetleri Base",
-    Callback = function()
-        local teleportLocations = {
-            TPart = Vector3.new(1266.93, 13.75, 620.22)
-        }
 
-        -- Karakter ve HumanoidRootPart'ı kontrol et
-        local character = player.Character or player.CharacterAdded:Wait()
-        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
 
-        local function teleportTo(locationName)
-            local destination = teleportLocations[locationName]
-            if destination then
-                humanoidRootPart.CFrame = CFrame.new(destination)
-            else
-                warn("Geçersiz konum: " .. tostring(locationName))
-            end
-        end
-
-        teleportTo("TPart")
-    end
-})
 
 
 
