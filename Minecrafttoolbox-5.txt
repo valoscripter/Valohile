@@ -124,7 +124,25 @@ OrionLib:MakeNotification({
 })
 
 
-
+Tab2:AddButton({
+    Name = "• Oto JJ Çek!",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/hF5tGZBX"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 
 
