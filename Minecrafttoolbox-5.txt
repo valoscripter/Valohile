@@ -2,7 +2,7 @@ local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/SydearrHubLibrary'))()
 
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  V1.4",
+    Name = "Sydearr Hub - TA  V1.5",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
@@ -32,12 +32,7 @@ Tab1:AddParagraph("Sydearr Hub Sunar:", [[
 ]])
 
 
-Tab1:AddParagraph("Discord Sunucularımız:", [[
 
-- Ana Sunucumuz: https://discord.gg/xTafcNjWcd
-
-- Script Sunucumuz: https://discord.gg/AR2AeEnPDG
-]])
 
 Tab1:AddParagraph("GUI Developers:", [[
  
