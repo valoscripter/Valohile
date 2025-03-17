@@ -56,7 +56,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 
 local Tab8 = Window:MakeTab({
-    Name = "Discord:",
+    Name = "Discord",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -105,14 +105,14 @@ Tab8:AddButton({
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = "JJ ÇEK",
+    Name = "Jackler",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
 -- Add a section to the tab
 local Section2 = Tab2:AddSection({
-    Name = "- Jump Jack Toolları -"
+    Name = "- JJ, GJ & HJ' ler -"
 })
 
 -- Create a notification
