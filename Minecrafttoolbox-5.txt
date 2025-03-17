@@ -61,7 +61,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 
 local Tab8 = Window:MakeTab({
-    Name = "Discord Sunucularımız:",
+    Name = "Discord:",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -74,7 +74,7 @@ local Section8 = Tab8:AddSection({
 
 
 Tab8:AddButton({
-    Name = "Sydearr (Ana Sunucumuz) Linkini Kopyala.",
+    Name = "• Sydearr (Ana Sunucumuz) Linkini Kopyala.",
     Callback = function()
         setclipboard("https://discord.gg/9N4DbXKtX3")
         toclipboard("https://discord.gg/9N4DbXKtX3")
@@ -85,7 +85,7 @@ Tab8:AddButton({
 
 
 Tab8:AddButton({
-    Name = "Sydearr Script (Script Sunucumuz) Linkini Kopyala.",
+    Name = "• Sydearr Script (Script Sunucumuz) Linkini Kopyala.",
     Callback = function()
         setclipboard("https://discord.gg/FfSwMbAQBV")
         toclipboard("https://discord.gg/FfSwMbAQBV")
@@ -96,7 +96,7 @@ Tab8:AddButton({
 
 
 Tab8:AddButton({
-    Name = "Sydearr Hub (Sydearr Hub Script Sunucumuz) Linkini Kopyala.",
+    Name = "• Sydearr Hub (Sydearr Hub Sunucumuz) Linkini Kopyala.",
     Callback = function()
         setclipboard("https://discord.gg/MNpCQj6tXE")
         toclipboard("https://discord.gg/MNpCQj6tXE")
