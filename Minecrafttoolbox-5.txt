@@ -141,7 +141,7 @@ Tab2:AddButton({
 
 -- Tab 7 oluşturuluyor
 local Tab7 = Window:MakeTab({
-    Name = "Troll",
+    Name = "• TROLLER",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -840,7 +840,7 @@ Tab8:AddButton({
 
 -- Tab 4 oluşturuluyor
 local Tab5 = Window:MakeTab({
-    Name = "Diğer",
+    Name = "• DİĞERLERİ",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
