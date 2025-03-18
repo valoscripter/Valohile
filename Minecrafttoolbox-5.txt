@@ -463,7 +463,24 @@ Tab7:AddButton({
 
 
 
+local Tab4 = Window:MakeTab({
+    Name = "• TELEPORTLAR",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
+-- Add a section to the tab
+local Section4 = Tab4:AddSection({
+    Name = "- Bütün Teleport Bölgeleri -"
+})
+
+-- Create a notification
+OrionLib:MakeNotification({
+    Name = "Hoşgeldin!",
+    Content = "Sydearr Hub'a Hoşgeldin!",
+    Image = "rbxassetid://4483345998",
+    Time = 8
+})
 
 
            
