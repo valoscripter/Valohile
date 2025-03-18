@@ -139,6 +139,327 @@ Tab2:AddButton({
 
 
 
+-- Tab 7 oluşturuluyor
+local Tab7 = Window:MakeTab({
+    Name = "Troll",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Troll Scriptleri -"
+})
+
+
+-- Add TSK BASE button to Tab 3
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Bang FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/aPSHMV6K"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Suck Dick FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+Tab7:AddButton({
+    Name = "• R6 Get Fucked FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Invisible FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 & R15 Hug FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Animations FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/1p6xnBNf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Seraphic And Touch Fling FE",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 SCP-096 FE",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Fighter FE ( Punch & Defense)",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Drink Cola Tool FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/ShutUpJamesTheLoser/ferobloxscriptdrink/refs/heads/main/fedrinkscriptroblox2025"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Jerk Off Tool FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Teleport Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 To Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Ball FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/devEN5m8"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
 
 
 
@@ -495,327 +816,6 @@ Tab8:AddButton({
 
 
 
-
-
-
--- Tab 7 oluşturuluyor
-local Tab7 = Window:MakeTab({
-    Name = "Troll",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
--- Tab 7'e bölüm ekleniyor
-local Section7 = Tab7:AddSection({
-    Name = "- Troll Scriptleri -"
-})
-
-
--- Add TSK BASE button to Tab 3
-
-
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Bang FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/aPSHMV6K"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Suck Dick FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-Tab7:AddButton({
-    Name = "• R6 Get Fucked FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Invisible FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-
-
-
-
-
-
-Tab7:AddButton({
-    Name = "• R6 & R15 Hug FE",
-    Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Animations FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/1p6xnBNf"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Seraphic And Touch Fling FE",
-    Callback = function()
-        local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 SCP-096 FE",
-    Callback = function()
-        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Fighter FE ( Punch & Defense)",
-    Callback = function()
-        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Drink Cola Tool FE",
-    Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/ShutUpJamesTheLoser/ferobloxscriptdrink/refs/heads/main/fedrinkscriptroblox2025"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Jerk Off Tool FE",
-    Callback = function()
-        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
-        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Teleport Tool FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 To Tool FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Ball FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/devEN5m8"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
