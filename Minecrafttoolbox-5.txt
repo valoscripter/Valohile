@@ -269,6 +269,29 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
+    Name = "• Fake Lag Script FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/Qh587GES"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+Tab7:AddButton({
     Name = "• R6 Seraphic And Touch Fling FE",
     Callback = function()
         local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
@@ -777,25 +800,7 @@ local Section8 = Tab8:AddSection({
 
 
 
-Tab8:AddButton({
-    Name = "• Fake Lag Script FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/Qh587GES"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
+
 
 
 Tab8:AddButton({
