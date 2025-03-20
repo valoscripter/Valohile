@@ -10,7 +10,7 @@ local Window = OrionLib:MakeWindow({
 
 -- Create a tab
 local Tab1 = Window:MakeTab({
-    Name = "• Anasayfa",
+    Name = "🏡┆  Anasayfa",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -72,7 +72,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = "• Jackler",
+    Name = " 🔢┆ Jackler",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -164,7 +164,7 @@ Tab2:AddButton({
 
 -- Tab 7 oluşturuluyor
 local Tab7 = Window:MakeTab({
-    Name = "• Troller",
+    Name = "🤡┆ Troller",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -516,7 +516,7 @@ Tab7:AddButton({
 
 
 local Tab4 = Window:MakeTab({
-    Name = "• Teleportlar",
+    Name = "🚀┆ Teleportlar",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -838,7 +838,7 @@ Tab4:AddButton({
 
 
 local Tab8 = Window:MakeTab({
-    Name = "• Player",
+    Name = "👤┆ Player",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -959,7 +959,7 @@ end
 
 
 local Tab8 = Window:MakeTab({
-    Name = "• Discord",
+    Name = "🔗┆ Discord",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -1014,7 +1014,7 @@ Tab8:AddButton({
 
 -- Tab 4 oluşturuluyor
 local Tab5 = Window:MakeTab({
-    Name = "• Diğer",
+    Name = "🗂️┆ Diğer",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
