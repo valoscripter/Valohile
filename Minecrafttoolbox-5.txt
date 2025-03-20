@@ -72,7 +72,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = " 🔢┆ Jackler",
+    Name = "🔢┆ Jackler",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
