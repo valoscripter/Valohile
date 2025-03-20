@@ -22,19 +22,19 @@ local Section1 = Tab1:AddSection({
 
 Tab1:AddParagraph("Sydearr Hub TA V1.5 Update:", [[
  
-- Jackler Tek Kategori Altınta Toplandı.
+📜┆ Jackler Tek Kategori Altınta Toplandı.
  
-- Jacklere Durdurma Eklendi.
+📜┆ Jacklere Durdurma Eklendi.
  
-- Fake Lag Script Eklendi.
+📜┆ Fake Lag Script Eklendi.
  
-- Touch Kill Players Eklendi.
+📜┆ Touch Kill Players Eklendi.
 
-- Player Kategorisi Oluşturuldu.
+📜┆ Player Kategorisi Oluşturuldu.
  
-- Speed Menü Eklendi.
+📜┆ Speed Menü Eklendi.
  
-- FreeCam Eklendi.
+📜┆ FreeCam Eklendi.
 ]])
 
 
@@ -42,20 +42,20 @@ Tab1:AddParagraph("Sydearr Hub TA V1.5 Update:", [[
 
 Tab1:AddParagraph("GUI Developers:", [[
  
-- @kaansfriztche
+🛠️┆ @kaansfriztche
 
-- @ross_x1
+🛠️┆ @ross_x1
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
 
-- @swuuuxyzz
+🔎┆ @swuuuxyzz
 
-- @xenty1111
+🔎┆ @xenty1111
 
-- @chesterfield09
+🔎┆ @chesterfield09
 
-- @ross_x1
+🔎┆ @ross_x1
 ]])
 
 
