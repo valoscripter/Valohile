@@ -17,18 +17,24 @@ local Tab1 = Window:MakeTab({
 
 -- Add a section to the tab
 local Section1 = Tab1:AddSection({
-    Name = "- GUI Anasayfası -"
+    Name = "- UI Anasayfası -"
 })
 
-Tab1:AddParagraph("Sydearr Hub Sunar:", [[
+Tab1:AddParagraph("Sydearr Hub TA V1.5 Update:", [[
  
-- Yapılan ilk TA GUI hilesidir.
+- Jackler Tek Kategori Altınta Toplandı.
  
-- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.
+- Jacklere Durdurma Eklendi.
  
-- Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
+- Fake Lag Script Eklendi.
  
-- Teleport bölgeleri, sizin yakalanma ihtimalinizi en minimuma indirecek şekilde metro bölgeleri olarak ayarlandı.
+- Touch Kill Players Eklendi.
+
+- Player Kategorisi Oluşturuldu.
+ 
+- Speed Menü Eklendi.
+ 
+- FreeCam Eklendi.
 ]])
 
 
