@@ -43,13 +43,13 @@ Tab1:AddParagraph("GUI Developers:", [[
 
 Tab1:AddParagraph("Content Creators:", [[
 
-- @ross_x1 
-
-- @kaansfriztche
+- @swuuuxyzz
 
 - @xenty1111
 
-- @swuuuxyzz
+- @chesterfield09
+
+- @ross_x1
 ]])
 
 
