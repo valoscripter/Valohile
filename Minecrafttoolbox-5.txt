@@ -35,6 +35,8 @@ Tab1:AddParagraph("✨ Sydearr Hub – TA V1.5 Güncellemesi ✨", [[
 📜┆ Speed Menü Eklendi.
  
 📜┆ FreeCam Eklendi.
+
+📜┆ Menüye Daha Şık Bir Tasarım Eklendi.
 ]])
 
 
