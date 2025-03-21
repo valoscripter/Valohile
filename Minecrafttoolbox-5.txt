@@ -22,7 +22,7 @@ local Section1 = Tab1:AddSection({
 
 Tab1:AddParagraph("✨ Sydearr Hub – TA V1.5 Güncellemesi ✨", [[
  
-📜┆ Jackler Tek Kategori Altınta Toplandı.
+📜┆ Jackler Tek Kategori Altında Toplandı.
  
 📜┆ Jacklere Durdurma Eklendi.
  
