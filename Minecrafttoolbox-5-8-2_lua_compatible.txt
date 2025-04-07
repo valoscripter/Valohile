@@ -74,14 +74,14 @@ Tab1:AddParagraph("Content Creators:", [[
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = "▶┆ Jackler",
+    Name = "▶┆ OP & Eğitim",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
 -- Add a section to the tab
 local Section2 = Tab2:AddSection({
-    Name = "- JJ, GJ & HJ' ler -"
+    Name = "- OP , Eğitim , Alımlar -"
 })
 
 -- Create a notification
@@ -161,6 +161,26 @@ Tab2:AddButton({
     end
 })
 
+
+Tab2:AddButton({
+    Name = "• Oto Alım Yapma (Beta)",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/9Gv4ZtEc"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 
 
@@ -321,7 +341,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 Seraphic And Touch Fling FE",
+    Name = "• R6 Touch Fling FE",
     Callback = function()
         local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
         
@@ -406,30 +426,10 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 Drink Cola Tool FE",
-    Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/ShutUpJamesTheLoser/ferobloxscriptdrink/refs/heads/main/fedrinkscriptroblox2025"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Jerk Off Tool FE",
+    Name = "• Chat Draw FE",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
-        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
+        local scriptUrl = "https://raw.githubusercontent.com/ocfi/_/refs/heads/main/a"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
@@ -447,46 +447,8 @@ Tab7:AddButton({
 })
 
 
-Tab7:AddButton({
-    Name = "• R6 Teleport Tool FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
-Tab7:AddButton({
-    Name = "• R6 To Tool FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
@@ -513,7 +475,106 @@ Tab7:AddButton({
 })
 
 
+-- Tab 9 oluşturuluyor
+local Tab9 = Window:MakeTab({
+    Name = "▶┆ Toollar",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Toollar Scriptleri -"
+})
+
+
+-- Add TSK BASE button to Tab 3
+
+
+
+
+Tab9:AddButton({
+    Name = "• R6 Drink Cola Tool FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/ShutUpJamesTheLoser/ferobloxscriptdrink/refs/heads/main/fedrinkscriptroblox2025"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 Jerk Off Tool FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 Teleport Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 To Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 
 
@@ -1105,25 +1166,7 @@ Tab5:AddButton({
 
 
 
-Tab5:AddButton({
-    Name = "• Oto Alım Yapma (Beta)",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/9Gv4ZtEc"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
+
 
 
 
@@ -1152,26 +1195,7 @@ Tab5:AddButton({
 
 
 
-Tab5:AddButton({
-    Name = "• Chat Draw FE",
-    Callback = function()
-        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
-        local scriptUrl = "https://raw.githubusercontent.com/ocfi/_/refs/heads/main/a"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
+
 
 
 
