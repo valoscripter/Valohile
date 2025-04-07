@@ -10,7 +10,7 @@ local Window = OrionLib:MakeWindow({
 
 -- Create a tab
 local Tab1 = Window:MakeTab({
-    Name = "◦┆  Anasayfa",
+    Name = "▶┆  Anasayfa",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -20,7 +20,7 @@ local Section1 = Tab1:AddSection({
     Name = "- UI Anasayfası -"
 })
 
-Tab1:AddParagraph("✨Sydearr Hub – TA V1.5 Güncellemesi ✨", [[
+Tab1:AddParagraph("Sydearr Hub – TA V1.5 Güncellemesi ", [[
  
 ▶┆ Jackler Tek Kategori Altında Toplandı.
  
@@ -44,20 +44,20 @@ Tab1:AddParagraph("✨Sydearr Hub – TA V1.5 Güncellemesi ✨", [[
 
 Tab1:AddParagraph("GUI Developers:", [[
  
-◦┆ @kaansfriztche
+•┆ @kaansfriztche
 
-◦┆ @ross_x1
+•┆ @ross_x1
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
 
-◦┆ @swuuuxyzz
+•┆ @swuuuxyzz
 
-◦┆ @xenty1111
+•┆ @xenty1111
 
-◦┆ @chesterfield09
+•┆ @chesterfield09
 
-◦┆ @ross_x1
+•┆ @ross_x1
 ]])
 
 
@@ -74,7 +74,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = "◦┆ Jackler",
+    Name = "▶┆ Jackler",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -166,7 +166,7 @@ Tab2:AddButton({
 
 -- Tab 7 oluşturuluyor
 local Tab7 = Window:MakeTab({
-    Name = "◦┆ Troller",
+    Name = "▶┆ Troller",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -518,7 +518,7 @@ Tab7:AddButton({
 
 
 local Tab4 = Window:MakeTab({
-    Name = "◦┆ Teleportlar",
+    Name = "▶┆ Teleportlar",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -840,7 +840,7 @@ Tab4:AddButton({
 
 
 local Tab8 = Window:MakeTab({
-    Name = "◦┆ Player",
+    Name = "▶┆ Player",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -961,7 +961,7 @@ end
 
 
 local Tab8 = Window:MakeTab({
-    Name = "◦┆ Discord",
+    Name = "▶┆ Discord",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -1016,7 +1016,7 @@ Tab8:AddButton({
 
 -- Tab 4 oluşturuluyor
 local Tab5 = Window:MakeTab({
-    Name = "◦┆ Diğer",
+    Name = "▶┆ Diğer",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
