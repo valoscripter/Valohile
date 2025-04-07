@@ -81,7 +81,7 @@ local Tab2 = Window:MakeTab({
 
 -- Add a section to the tab
 local Section2 = Tab2:AddSection({
-    Name = "- OP , Eğitim , Alımlar -"
+    Name = "- Jackler -"
 })
 
 -- Create a notification
@@ -94,7 +94,7 @@ OrionLib:MakeNotification({
 
 
 Tab2:AddButton({
-    Name = "• Oto JJ Çek!",
+    Name = "• Oto JJ Çek! Tool",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/hF5tGZBX"
         
@@ -118,7 +118,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Oto GJ Çek!",
+    Name = "• Oto GJ Çek! Tool",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/n555thZR"
         
@@ -142,7 +142,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Oto HJ Çek!",
+    Name = "• Oto HJ Çek! Tool",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/ApFgSSAA"
         
@@ -162,8 +162,15 @@ Tab2:AddButton({
 })
 
 
+
+
+-- Tab 7'e bölüm ekleniyor
+local Section2 = Tab2:AddSection({
+    Name = "- Oto Alım -"
+})
+
 Tab2:AddButton({
-    Name = "• Oto Alım Yapma (Beta)",
+    Name = "• Oto Alım Yap (Beta)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/9Gv4ZtEc"
         
@@ -180,6 +187,11 @@ Tab2:AddButton({
             warn("Script yüklenemedi!")
         end
     end
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section2 = Tab2:AddSection({
+    Name = "- OP Kasma -"
 })
 
 
@@ -483,7 +495,7 @@ local Tab9 = Window:MakeTab({
 })
 
 -- Tab 7'e bölüm ekleniyor
-local Section7 = Tab7:AddSection({
+local Section9 = Tab9:AddSection({
     Name = "- Toollar Scriptleri -"
 })
 
