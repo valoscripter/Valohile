@@ -205,7 +205,7 @@ local Tab7 = Window:MakeTab({
 
 -- Tab 7'e bölüm ekleniyor
 local Section7 = Tab7:AddSection({
-    Name = "- Troll Scriptleri -"
+    Name = "- Animasyonlu -"
 })
 
 
@@ -327,6 +327,50 @@ Tab7:AddButton({
     end
 })
 
+Tab7:AddButton({
+    Name = "• R6 SCP-096 FE",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Fighter FE ( Punch & Defense)",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Troller -"
+})
 
 
 Tab7:AddButton({
@@ -372,6 +416,48 @@ Tab7:AddButton({
 })
 
 
+Tab7:AddButton({
+    Name = "• R6 Invisible FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+Tab7:AddButton({
+    Name = "• No Damage Menü",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/WLxY0LSA"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
 
 
 Tab7:AddButton({
@@ -394,46 +480,6 @@ Tab7:AddButton({
 })
 
 
-
-
-Tab7:AddButton({
-    Name = "• R6 SCP-096 FE",
-    Callback = function()
-        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-Tab7:AddButton({
-    Name = "• R6 Fighter FE ( Punch & Defense)",
-    Callback = function()
-        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
@@ -928,47 +974,7 @@ local Section8 = Tab8:AddSection({
 
 
 
-Tab8:AddButton({
-    Name = "• R6 Invisible FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
-        end
-    end
-})
 
-
-
-
-Tab8:AddButton({
-    Name = "• No Damage Menü",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/WLxY0LSA"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
