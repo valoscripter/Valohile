@@ -1,0 +1,1326 @@
+local player = game.Players.LocalPlayer
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - TA  V1.6",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "OrionTest"
+})
+
+-- Create a tab
+local Tab1 = Window:MakeTab({
+    Name = "▶┆  Anasayfa",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section1 = Tab1:AddSection({
+    Name = "- UI Anasayfası -"
+})
+
+Tab1:AddParagraph("Sydearr Hub – TA V1.6 Güncellemesi ", [[
+ 
+▶┆ Jackler, OP ve Alım scriptleri Tek Kategoriye Eeklendi.
+ 
+▶┆ Detaine Yakalanmama Eklendi.
+ 
+▶┆ Menüye Kategorilendirme Eklendi 
+ 
+▶┆ Speed Menü Eklendi.
+
+▶┆ Menüye Daha Şık Bir Tasarım Eklendi.
+
+▶┆ Menü PC' lerde de Sorunsuz Çalışır Oldu.
+]])
+
+
+
+
+Tab1:AddParagraph("GUI Developers:", [[
+ 
+•┆ @kaansfriztche
+
+•┆ @ross_x1
+]])
+
+Tab1:AddParagraph("Content Creators:", [[
+
+•┆ @swuuuxyzz
+
+•┆ @xenty1111
+
+•┆ @chesterfield09
+
+•┆ @ross_x1
+]])
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Create a tab
+local Tab2 = Window:MakeTab({
+    Name = "▶┆ OP & Eğitim",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section2 = Tab2:AddSection({
+    Name = "- Jackler -"
+})
+
+-- Create a notification
+OrionLib:MakeNotification({
+    Name = "Hoşgeldin!",
+    Content = "Sydearr Hub'a Hoşgeldin!",
+    Image = "rbxassetid://4483345998",
+    Time = 8
+})
+
+
+Tab2:AddButton({
+    Name = "• Oto JJ Çek! Tool",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/hF5tGZBX"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+Tab2:AddButton({
+    Name = "• Oto GJ Çek! Tool",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/n555thZR"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+Tab2:AddButton({
+    Name = "• Oto HJ Çek! Tool",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/ApFgSSAA"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+-- Tab 7'e bölüm ekleniyor
+local Section2 = Tab2:AddSection({
+    Name = "- Oto Alım -"
+})
+
+Tab2:AddButton({
+    Name = "• Oto Alım Yap (Beta)",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/9Gv4ZtEc"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section2 = Tab2:AddSection({
+    Name = "- OP Kasma -"
+})
+
+
+
+-- Tab 7 oluşturuluyor
+local Tab7 = Window:MakeTab({
+    Name = "▶┆ Troller",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Animasyonlu -"
+})
+
+
+-- Add TSK BASE button to Tab 3
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Bang FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/aPSHMV6K"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Suck Dick FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+Tab7:AddButton({
+    Name = "• R6 Get Fucked FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 & R15 Hug FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Animations FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/1p6xnBNf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+Tab7:AddButton({
+    Name = "• R6 SCP-096 FE",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Fighter FE ( Punch & Defense)",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Troller -"
+})
+
+
+Tab7:AddButton({
+    Name = "• Fake Lag Script FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/Qh587GES"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Touch Fling FE",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Invisible FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• Detaine Yakalanmama",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/QGf3xvJ5"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• Silah Modifikasyonları",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/sNT8DYX4"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• No Damage Menü",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/WLxY0LSA"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Touch Kill Players FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/GenesisFE/Genesis/main/Obfuscations/Motorcycle"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• Chat Draw FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://raw.githubusercontent.com/ocfi/_/refs/heads/main/a"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+Tab7:AddButton({
+    Name = "• R6 Ball FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/devEN5m8"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+-- Tab 9 oluşturuluyor
+local Tab9 = Window:MakeTab({
+    Name = "▶┆ Toollar",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section9 = Tab9:AddSection({
+    Name = "- Toollar Scriptleri -"
+})
+
+
+-- Add TSK BASE button to Tab 3
+
+
+
+
+Tab9:AddButton({
+    Name = "• R6 Drink Cola Tool FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/ShutUpJamesTheLoser/ferobloxscriptdrink/refs/heads/main/fedrinkscriptroblox2025"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 Jerk Off Tool FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 Teleport Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab9:AddButton({
+    Name = "• R6 To Tool FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/CkniGRGY"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+local Tab4 = Window:MakeTab({
+    Name = "▶┆ Teleportlar",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section4 = Tab4:AddSection({
+    Name = "- Bütün Teleport Bölgeleri -"
+})
+
+-- Create a notification
+OrionLib:MakeNotification({
+    Name = "Hoşgeldin!",
+    Content = "Sydearr Hub'a Hoşgeldin!",
+    Image = "rbxassetid://4483345998",
+    Time = 8
+})
+
+
+           
+            
+
+
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "• Düşman Adası",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor4 = Vector3.new(-2037.29, 17.98, -364.72)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor4")
+    end
+})
+
+
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "• Kafeterya",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor3 = Vector3.new(2927.18, 105.48, 536.67)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor3")
+    end
+})
+
+
+
+
+
+Tab4:AddButton({
+    Name = "• Safe Zone",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(2641.71, 31.82, 198.66)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+Tab4:AddButton({
+    Name = "• Sivil Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor3 = Vector3.new(985.43, 13.74, -1277.78)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor3")
+    end
+})
+
+
+
+
+
+Tab4:AddButton({
+    Name = "• TSK Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor = Vector3.new(3077.62, 34.01, -252.62)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor")
+    end
+})
+
+
+
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "• Hava Kuvvetleri Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor2 = Vector3.new(1278.45, 33.45, 1510.48)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+   end
+        end
+
+        teleportTo("MetroDoor2") 
+    end
+})
+
+
+
+Tab4:AddButton({
+    Name = "• Kara Kuvvetleri Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(1266.93, 13.75, 620.22)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+
+Tab4:AddButton({
+    Name = "• Sınır Müfettişleri Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(664.41, 13.76, -975.37)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+
+Tab4:AddButton({
+    Name = "• Özel Kuvvetler Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(1265.38, 13.76, -490.94)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+Tab4:AddButton({
+    Name = "• Jandarma Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(663.62, 13.76, 256.96)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+Tab4:AddButton({
+    Name = "• Askeri İnzibat Base",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(1265.04, 13.76, -947.38)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+
+
+
+local Tab8 = Window:MakeTab({
+    Name = "▶┆ Player",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+local Section8 = Tab8:AddSection({
+    Name = "- Karakter Scriptleri -"
+})
+
+
+
+
+
+
+
+
+
+
+
+Tab8:AddButton({
+    Name = "• Speed Menü FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/2aGKn3VG"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+Tab8:AddButton({
+    Name = "• Infinite Jump",
+    Callback = function()
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            if InfiniteJumpEnabled then
+                local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+                if humanoid then
+                    humanoid:ChangeState("Jumping")
+                end
+            end
+        end)
+    end
+})
+
+
+
+
+Tab8:AddButton({
+    Name = "• Rejoin Server",
+    Callback = function()
+local TeleportService = game:GetService("TeleportService")
+local Player = game.Players.LocalPlayer
+
+TeleportService:Teleport(game.PlaceId, Player)
+end
+
+})
+
+
+
+
+
+
+
+local Tab8 = Window:MakeTab({
+    Name = "▶┆ Discord",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+local Section8 = Tab8:AddSection({
+    Name = "- Bize Buralardan Ulaşabilirsiniz -"
+})
+
+
+
+Tab8:AddButton({
+    Name = "• Sydearr (Ana Sunucumuz) Linkini Kopyala.",
+    Callback = function()
+        setclipboard("https://discord.gg/9N4DbXKtX3")
+        toclipboard("https://discord.gg/9N4DbXKtX3")
+  end    
+})
+
+
+
+
+Tab8:AddButton({
+    Name = "• Sydearr Script (Script Sunucumuz) Linkini Kopyala.",
+    Callback = function()
+        setclipboard("https://discord.gg/FfSwMbAQBV")   toclipboard("https://discord.gg/FfSwMbAQBV")
+  end    
+})
+
+
+
+
+Tab8:AddButton({
+    Name = "• Sydearr Hub (Sydearr Hub Sunucumuz) Linkini Kopyala.",
+    Callback = function()
+        setclipboard("https://discord.gg/MNpCQj6tXE")
+        toclipboard("https://discord.gg/MNpCQj6tXE")
+  end    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Tab 4 oluşturuluyor
+local Tab5 = Window:MakeTab({
+    Name = "▶┆ Diğer",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 4'e bölüm ekleniyor
+local Section5 = Tab5:AddSection({
+    Name = "- Diğer Scriptler -"
+})
+
+-- Infinite Yield admin butonunu ekliyoruz
+Tab5:AddButton({
+    Name = "• İnfinite Yield Admin",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+Tab5:AddButton({
+    Name = "• FreeCam FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+
+
+Tab5:AddButton({
+    Name = "• Anti-AFK",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/cfdJvuSz"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
+
+
+
+
+
+
+Tab5:AddButton({
+    Name = "• Chat Logs",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/05XFAEHd"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+-- Infinite Yield admin butonunu ekliyoruz
+Tab5:AddButton({
+    Name = "• Sydearr Aim Menü",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastebin.com/raw/9wj1EWCQ"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab5:AddButton({
+    Name = "• FPS Booster (Potato Graphics)",
+    Callback = function()
+        -- Grafik düşürme fonksiyonu
+        local function optimizeGraphics()
+            -- Gereksiz parçacık efektlerini kaldır
+            for _, obj in pairs(game:GetDescendants()) do
+                if obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Smoke") or obj:IsA("Fire") then
+                    obj:Destroy()
+                elseif obj:IsA("BasePart") then
+                    obj.Material = Enum.Material.SmoothPlastic
+                    obj.CastShadow = false
+                    obj.Reflectance = 0 -- Yansımaları kapat
+                elseif obj:IsA("Decal") then
+                    obj:Destroy()
+                end
+            end
+
+            -- Aydınlatma ayarlarını optimize et
+            local lighting = game:GetService("Lighting")
+            lighting.GlobalShadows = false
+            lighting.FogEnd = 1e9 -- Sonsuz görüş alanı
+            lighting.Brightness = 1 -- Minimum parlaklık
+            lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128) -- Nötr ortam ışığı
+        end
+
+        -- Optimizasyonu başlat
+        optimizeGraphics()
+
+        -- Yeni eklenen nesneleri optimize et
+        game.DescendantAdded:Connect(function(obj)
+            if obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Smoke") or obj:IsA("Fire") then
+                obj:Destroy()
+            elseif obj:IsA("BasePart") then
+                obj.Material = Enum.Material.SmoothPlastic
+                obj.CastShadow = false
+                obj.Reflectance = 0
+            elseif obj:IsA("Decal") then
+                obj:Destroy()
+            end
+        end)
+
+        -- Bildirim gönder
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "FPS Booster",
+            Text = "Grafikler başarıyla düşürüldü.",
+            Duration = 5
+        })
+    end
+})
