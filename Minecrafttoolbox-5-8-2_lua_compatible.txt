@@ -2,7 +2,7 @@ local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  V1.5",
+    Name = "Sydearr Hub - TA  V1.6",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
@@ -20,23 +20,19 @@ local Section1 = Tab1:AddSection({
     Name = "- UI Anasayfası -"
 })
 
-Tab1:AddParagraph("Sydearr Hub – TA V1.5 Güncellemesi ", [[
+Tab1:AddParagraph("Sydearr Hub – TA V1.6 Güncellemesi ", [[
  
-▶┆ Jackler Tek Kategori Altında Toplandı.
+▶┆ Jackler, OP ve Alım scriptleri Tek Kategoriye Eeklendi.
  
-▶┆ Jacklere Durdurma Eklendi.
+▶┆ Detaine Yakalanmama Eklendi.
  
-▶┆ Fake Lag Script Eklendi.
- 
-▶┆ Touch Kill Players Eklendi.
-
-▶┆ Player Kategorisi Oluşturuldu.
+▶┆ Menüye Kategorilendirme Eklendi 
  
 ▶┆ Speed Menü Eklendi.
- 
-▶┆ FreeCam Eklendi.
 
 ▶┆ Menüye Daha Şık Bir Tasarım Eklendi.
+
+▶┆ Menü PC' lerde de Sorunsuz Çalışır Oldu.
 ]])
 
 
@@ -440,6 +436,27 @@ Tab7:AddButton({
     Name = "• Detaine Yakalanmama",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/QGf3xvJ5"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• Silah Modifikasyonları",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/sNT8DYX4"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
@@ -1174,32 +1191,6 @@ Tab5:AddButton({
     end
 })
 
-
-
-
-
-
-
-
-Tab5:AddButton({
-    Name = "• Silah Modifikasyonları",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/sNT8DYX4"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
