@@ -166,9 +166,9 @@ local Section2 = Tab2:AddSection({
 })
 
 Tab2:AddButton({
-    Name = "• Oto Alım Yap (Beta)",
+    Name = "• Oto Alım Yap",
     Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/9Gv4ZtEc"
+        local scriptUrl = "https://pastebin.com/raw/XK0MWY43"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
