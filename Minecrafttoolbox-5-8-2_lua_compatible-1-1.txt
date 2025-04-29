@@ -192,7 +192,7 @@ local Section2 = Tab2:AddSection({
 
 
 Tab2:AddButton({
-    Name = "• Tepeköy Farm           (7k/10min.)",
+    Name = "• Tepeköy Farm     (7k/10min.)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/AYm6BQSL"
         
@@ -213,7 +213,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Çöl Farm           (30k/10min.)",
+    Name = "• Çöl Farm     (30k/10min.)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/vXDdAGiW"
         
