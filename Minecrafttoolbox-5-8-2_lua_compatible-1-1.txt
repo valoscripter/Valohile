@@ -90,7 +90,7 @@ OrionLib:MakeNotification({
 
 
 Tab2:AddButton({
-    Name = "• Oto JJ Çek! Tool     (𝟏 - 𝟏𝟎.𝟎𝟎𝟎)",
+    Name = "• Oto JJ Çek! Tool     (1 - 10.000)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/hF5tGZBX"
         
@@ -114,7 +114,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Oto GJ Çek! Tool     (𝟏 - 𝟏𝟎.𝟎𝟎𝟎)",
+    Name = "• Oto GJ Çek! Tool     (1 - 10.000)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/n555thZR"
         
@@ -138,7 +138,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Oto HJ Çek! Tool     (𝟏 - 𝟏𝟎)",
+    Name = "• Oto HJ Çek! Tool     (1 - 10)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/ApFgSSAA"
         
@@ -192,7 +192,7 @@ local Section2 = Tab2:AddSection({
 
 
 Tab2:AddButton({
-    Name = "• Tepeköy Farm 𝟕𝐤/𝟏𝟎𝐦𝐢𝐧.",
+    Name = "• Tepeköy Farm           (7k/10min.)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/AYm6BQSL"
         
@@ -213,7 +213,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Çöl Farm 𝟑𝟎𝐤/𝟏𝟎𝐦𝐢𝐧.",
+    Name = "• Çöl Farm           (30k/10min.)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/vXDdAGiW"
         
