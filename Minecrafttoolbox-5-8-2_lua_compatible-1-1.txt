@@ -162,7 +162,7 @@ Tab2:AddButton({
 
 -- Tab 7'e bölüm ekleniyor
 local Section2 = Tab2:AddSection({
-    Name = "- Oto Alım -"
+    Name = "- İşinize Yarar -"
 })
 
 Tab2:AddButton({
@@ -184,6 +184,35 @@ Tab2:AddButton({
         end
     end
 })
+
+
+
+
+
+Tab2:AddButton({
+    Name = "• Doğru Yanlış Team Geçme",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/Yr8kb7b5"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+
 
 -- Tab 7'e bölüm ekleniyor
 local Section2 = Tab2:AddSection({
