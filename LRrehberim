@@ -699,6 +699,8 @@ Tab3:AddParagraph("[III] Müfettiş Eğitimi Cevapları ", [[
 
 9- Kabinden sadece rütbe siz sivil ler geçebilir.
 
+]])
+
 
 local Button3 = Section8:AddButton({
     Name = "1. Kabin Kuralını Kopyala.",
