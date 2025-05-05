@@ -579,8 +579,8 @@ local Button21 = Section12:AddButton({
 
 
 
-local Tab2 = Window:MakeTab({
-    Name = "▶┆ Hava Kuvvetleri",
+local Tab3 = Window:MakeTab({
+    Name = "▶┆ Sınır Müfettişleri",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
