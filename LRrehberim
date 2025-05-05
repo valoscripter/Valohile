@@ -8,17 +8,24 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "OrionTest"
 })
 
--- Create a tab
+-- Fonksiyon: Bildirim oluşturma (tekrarı önlemek için)
+local function createNotification(content)
+    OrionLib:MakeNotification({
+        Name = "Kopyalandı",
+        Content = content .. " kopyalandı.",
+        Image = "rbxassetid://4483345998",
+        Time = 3
+    })
+end
+
+-- Tab 1: Anasayfa
 local Tab1 = Window:MakeTab({
     Name = "▶┆  Anasayfa",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
--- Add a section to the tab
-local Section1 = Tab1:AddSection({
-    Name = "- UI Anasayfası -"
-})
+Tab1:AddSection({ Name = "- UI Anasayfası -" })
 
 Tab1:AddParagraph("Sydearr Hub – TA V1.6 Güncellemesi ", [[
  
@@ -34,7 +41,6 @@ Tab1:AddParagraph("Sydearr Hub – TA V1.6 Güncellemesi ", [[
 
 ▶┆ Menü PC' lerde de Sorunsuz Çalışır Oldu.
 ]])
-
 
 Tab1:AddParagraph("GUI Developers:", [[
  
@@ -54,367 +60,228 @@ Tab1:AddParagraph("Content Creators:", [[
 •┆ @ross_x1
 ]])
 
--- Create a tab
+-- Tab 2: Hava Kuvvetleri
 local Tab2 = Window:MakeTab({
     Name = "▶┆ Hava Kuvvetleri",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Öğrenci Eğitimi -"
-})
+-- Tab 2, Section 1: Öğrenci Eğitimi
+local Section2_1 = Tab2:AddSection({ Name = "- Öğrenci Eğitimi -" })
 
--- Add paragraphs first
-Tab2:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
+Section2_1:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
  
 1.) Sloganımız nedir?
-
 - İstikbal Göklerdedir!
 
 2.) Branş liderimiz kimdir?
-
 - 1EreNBaskaN
     
-
 ▶┆ Örnek Tekmil Şu Şekildedir:
-
 - İsim/TA rütbe/Branş/Branş rütbe/Birim/Birim rütbe/Emir ve görüşlerinize hazırdır Paşam!
 ]])
 
--- Add buttons after paragraphs
-local Section2 = Tab2:AddSection({
-    Name = "- Kopyalama Butonları -"
-})
+local Section2_1_Buttons = Tab2:AddSection({ Name = "- Öğrenci Eğitimi Kopyalama -" })
 
-local Button1 = Section3:AddButton({
+Section2_1_Buttons:AddButton({
     Name = "1.) Sloganımız nedir?",
     Callback = function()
         setclipboard("İstikbal Göklerdedir!")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "İstikbal Göklerdedir! kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("İstikbal Göklerdedir!")
     end
 })
 
-local Button2 = Section2:AddButton({
+Section2_1_Buttons:AddButton({
     Name = "2.) Branş liderimiz kimdir?",
     Callback = function()
         setclipboard("1EreNBaskaN")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "1EreNBaskaN kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("1EreNBaskaN")
     end
 })
 
-local Button3 = Section2:AddButton({
+Section2_1_Buttons:AddButton({
     Name = "Örnek Tekmil nedir?",
     Callback = function()
         setclipboard("İsim/TA rütbe/Branş/Branş rütbe/Birim/Birim rütbe/Emir ve görüşlerinize hazırdır Paşam!")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Örnek Tekmil kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Örnek Tekmil")
     end
 })
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Onbaşı Eğitimi -"
-})
+-- Tab 2, Section 2: Onbaşı Eğitimi
+local Section2_2 = Tab2:AddSection({ Name = "- Onbaşı Eğitimi -" })
 
-
--- Add paragraphs first
-Tab2:AddParagraph("Onbaşı Eğitimi Cevapları ", [[
+Section2_2:AddParagraph("Onbaşı Eğitimi Cevapları ", [[
  
 Soru 1: Otorite nedir?
-
 Cevap: Yaptırma yetkisi, güç. Bir emiri veya işe getirmeyi sağlayan işlev otoritedir.
 
-
 Soru 2: Emir-komuta zinciri nedir?
-
 Cevap: Emir verildiğinde ikiletmeden, kuşkusuz, sorgusuz, sualsiz yerine getirmektir.
 
-
 Soru 3: Disiplin nedir?
-
 Cevap: Bir grubu yönetmek amacıyla getirilen düzen’e verilir. Disiplin “Öz disiplin” ve “Genel Disiplin” olarak ikiye ayrılır.
 ]])
 
-local Section5 = Tab2:AddSection({
-    Name = "- Kopyalama Butonları -"
-})
+local Section2_2_Buttons = Tab2:AddSection({ Name = "- Onbaşı Eğitimi Kopyalama -" })
 
-local Button4 = Section2:AddButton({
+Section2_2_Buttons:AddButton({
     Name = "1.) Otorite nedir?",
     Callback = function()
         setclipboard("Yaptırma yetkisi, güç. Bir emiri veya işe getirmeyi sağlayan işlev otoritedir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Otorite nedir? kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Otorite nedir?")
     end
 })
 
-local Button5 = Section2:AddButton({
+Section2_2_Buttons:AddButton({
     Name = "2.) Emir-komuta zinciri nedir?",
     Callback = function()
         setclipboard("Emir verildiğinde ikiletmeden, kuşkusuz, sorgusuz, sualsiz yerine getirmektir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Emir-komuta zinciri nedir? kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Emir-komuta zinciri nedir?")
     end
 })
 
-local Button6 = Section2:AddButton({
+Section2_2_Buttons:AddButton({
     Name = "3.) Disiplin nedir?",
     Callback = function()
         setclipboard("Bir grubu yönetmek amacıyla getirilen düzen’e verilir. Disiplin “Öz disiplin” ve “Genel Disiplin” olarak ikiye ayrılır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Disiplin nedir? kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Disiplin nedir?")
     end
 })
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Kıdemli Onbaşı Eğitimi -"
-})
+-- Tab 2, Section 3: Kıdemli Onbaşı Eğitimi
+local Section2_3 = Tab2:AddSection({ Name = "- Kıdemli Onbaşı Eğitimi -" })
 
-
--- Add paragraphs first
-Tab2:AddParagraph("Kıdemli Onbaşı Eğitimi Cevapları ", [[
+Section2_3:AddParagraph("Kıdemli Onbaşı Eğitimi Cevapları ", [[
  
 1.) Ne mutlu Türk’üm diyene
-
 - Ne mutlu Türk’üm diyene!
 
 2.) Acaba bu gün ola cak deneTİMde kaç kisi olacagız?
-
 - Acaba bugün olacak denetimde kaç kişi olacağız?
 
 3.) Hiç bir eşya insan canından onemlı degıldir
-
 -Hiçbir eşya insan canından önemli değildir.
 
 Not: Diğer gramer sorularını siz yaparsınız.
 ]])
 
-local Section2 = Tab2:AddSection({
-    Name = "- Kopyalama Butonları -"
-})
+local Section2_3_Buttons = Tab2:AddSection({ Name = "- Kıdemli Onbaşı Eğitimi Kopyalama -" })
 
-local Button7 = Section2:AddButton({
+Section2_3_Buttons:AddButton({
     Name = "1.) Ne mutlu Türk’üm diyene!",
     Callback = function()
         setclipboard("Ne mutlu Türk’üm diyene!")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Gramer 1 kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Gramer 1")
     end
 })
 
-local Button8 = Section2:AddButton({
+Section2_3_Buttons:AddButton({
     Name = "2.) Acaba bugün olacak denetimde kaç kişi olacağız?",
     Callback = function()
         setclipboard("Acaba bugün olacak denetimde kaç kişi olacağız?")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Gramer 2 kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Gramer 2")
     end
 })
 
-local Button9 = Section2:AddButton({
+Section2_3_Buttons:AddButton({
     Name = "3.) Hiçbir eşya insan canından önemli değildir.",
     Callback = function()
         setclipboard("Hiçbir eşya insan canından önemli değildir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Gramer 3 kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Gramer 3")
     end
 })
 
--- Create a notification
-OrionLib:MakeNotification({
-    Name = "Hoşgeldin!",
-    Content = "Sydearr Hub'a Hoşgeldin!",
-    Image = "rbxassetid://4483345998",
-    Time = 8
-})
+-- Tab 2, Section 4: Çavuş Eğitimi
+local Section2_4 = Tab2:AddSection({ Name = "- Çavuş Eğitimi -" })
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Çavuş Eğitimi -"
-})
-
--- Add paragraphs first
-Tab2:AddParagraph("Çavuş Eğitimi Cevapları ", [[
+Section2_4:AddParagraph("Çavuş Eğitimi Cevapları ", [[
  
 1.) Dönmeler ve Çaprazlar İçin Oto Alım Yap Kullanabilirsiniz.
-
 Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Bağlıdır.
 ]])
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Uzman Çavuş Eğitimi -"
-})
+-- Tab 2, Section 5: Uzman Çavuş Eğitimi
+local Section2_5 = Tab2:AddSection({ Name = "- Uzman Çavuş Eğitimi -" })
 
--- Add paragraphs first
-Tab2:AddParagraph("Uzman Çavuş Eğitimi Cevapları ", [[
- 
+Section2_5:AddParagraph("Uzman Çavuş Eğitimi Cevapları ", [[
                                [PC BÖLÜM]
 
 Soru 1: Helikopteri hangi tuş sola döndürür?
-
 Cevap 1: ‘’Q’’ tuşu sola döndürür.
 
 Soru 2: Helikopter nereye indirilebilir? 
-
 Cevap 2: Helikopter sadece piste indirilebilir.
 
 Soru 3: Helikopterin gücünü hangi tuş azaltır? 
-
 Cevap 3: ‘’CTRL’’ tuşu ile azaltır.
-
 
                                [MOBİL BÖLÜM]
 
-
 Soru 1: Ekranın solundaki yukarı tuşu ne işe yarar?
-
 Cevap 1: Helinin burnunu aşağıya doğru eğer.
 
 Soru 2: Helikopter nereye indirilebilir? 
-
 Cevap 2: Helikopter sadece piste indirilebilir.
 
 Soru 3: Helikopterin gücünü hangi tuş azaltır? 
-
 Cevap 3: Ekranın sağındaki aşağı ok tuşu.
 ]])
 
-local Section2 = Tab2:AddSection({
-    Name = "- Kopyalama Butonları -"
-})
+local Section2_5_Buttons = Tab2:AddSection({ Name = "- Uzman Çavuş Eğitimi Kopyalama -" })
 
-local Button10 = Section2:AddButton({
+Section2_5_Buttons:AddButton({
     Name = "PC 1.) Helikopteri hangi tuş sola döndürür?",
     Callback = function()
         setclipboard("‘’Q’’ tuşu sola döndürür.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "‘’Q’’ tuşu sola döndürür. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("‘’Q’’ tuşu sola döndürür.")
     end
 })
 
-local Button11 = Section2:AddButton({
-    Name = "PC 2.) Helikopter nereye indirilebilir? ",
+Section2_5_Buttons:AddButton({
+    Name = "PC 2.) Helikopter nereye indirilebilir?",
     Callback = function()
         setclipboard("Helikopter sadece piste indirilebilir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Helikopter sadece piste indirilebilir. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Helikopter sadece piste indirilebilir.")
     end
 })
 
-local Button12 = Section2:AddButton({
-    Name = "PC 3.) Helikopterin gücünü hangi tuş azaltır? ",
+Section2_5_Buttons:AddButton({
+    Name = "PC 3.) Helikopterin gücünü hangi tuş azaltır?",
     Callback = function()
         setclipboard("‘’CTRL’’ tuşu ile azaltır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "‘’CTRL’’ tuşu ile azaltır. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("‘’CTRL’’ tuşu ile azaltır.")
     end
 })
 
-local Button13 = Section2:AddButton({
+Section2_5_Buttons:AddButton({
     Name = "Mobil 1.) Ekranın solundaki yukarı tuşu ne işe yarar?",
     Callback = function()
         setclipboard("Helinin burnunu aşağıya doğru eğer.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Helinin burnunu aşağıya doğru eğer. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Helinin burnunu aşağıya doğru eğer.")
     end
 })
 
-local Button14 = Section2:AddButton({
+Section2_5_Buttons:AddButton({
     Name = "Mobil 2.) Helikopter nereye indirilebilir?",
     Callback = function()
         setclipboard("Helikopter sadece piste indirilebilir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Helikopter sadece piste indirilebilir. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Helikopter sadece piste indirilebilir.")
     end
 })
 
-local Button15 = Section2:AddButton({
+Section2_5_Buttons:AddButton({
     Name = "Mobil 3.) Helikopterin gücünü hangi tuş azaltır?",
     Callback = function()
         setclipboard("Ekranın sağındaki aşağı ok tuşu.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Ekranın sağındaki aşağı ok tuşu. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Ekranın sağındaki aşağı ok tuşu.")
     end
 })
 
+-- Tab 2, Section 6: Üstçavuş Eğitimi
+local Section2_6 = Tab2:AddSection({ Name = "- Üstçavuş Eğitimi -" })
 
-
-
-
-local Section2 = Tab2:AddSection({
-    Name = "- Üstçavuş Eğitimi -"
-})
-
-
-Tab2:AddParagraph("- Bilgilendirme - ", [[
-
-
+Section2_6:AddParagraph("- Bilgilendirme - ", [[
  [PC BÖLÜM]
 
 Jetin motoru "Y" tuşu ile çalıştırılır.
@@ -438,7 +305,6 @@ Yukarı ok: Jetin burnunu aşağıya doğru eğer.
 Aşağı ok: Jetin burnunu havaya doğru kaldırır.
 Sağ ok: Jeti sağa yatırır.
 Sol ok: Jeti sola yatırır.
-
 Ekranın sağ tarafında bulunan tuşlar şu şekilde çalışır:
 
 Yukarı ok: Jete güç verir.
@@ -447,156 +313,93 @@ Sağ ok: Jeti sağa döndürür.
 Sol ok: Jeti sola döndürür.
 ]])
 
-
-
-
-
-
-
-
--- Add paragraphs first
-Tab2:AddParagraph("Üstçavuş Eğitimi Cevapları ", [[
- 
+Section2_6:AddParagraph("Üstçavuş Eğitimi Cevapları ", [[
                     [PC BÖLÜM]
 
 Soru 1: Jetin tekerlekleri hangi tuş ile açılır?
-
 Cevap 1: ‘’G’’ Tuşu ile açılır.
 
 Soru 2: Jeti hangi tuş sağa döndürür?
-
 Cevap 2: ‘’E’’ tuşu sağa döndürür.
 
 Soru 3: Jetin kapağını hangi tuş açar? 
-
 Cevap 3: ‘’T’’ tuşu açar.
-
---
 
                     [ MOBİL BÖLÜM]
 
 Soru 1: Jeti hangi tuş sağa döndürür?
-
 Cevap 1: Ekranın sağındaki sağ ok tuşu.
 
 Soru 2: Motoru hangi tuş çalıştırır?
-
 Cevap 2:Motor tuşu çalıştırır.
 
 Soru 3: Jete hangi tuş ile güç verilir?
-
 Cevap 3: Jetin sağındaki yukarı ok tuşu.
-
 ]])
 
+local Section2_6_Buttons = Tab2:AddSection({ Name = "- Üstçavuş Eğitimi Kopyalama -" })
 
-local Section2 = Tab2:AddSection({
-    Name = "- Kopyalama Butonları -"
-})
-
-local Button16 = Section12:AddButton({
+Section2_6_Buttons:AddButton({
     Name = "PC 1.) Jetin tekerlekleri hangi tuş ile açılır?",
     Callback = function()
         setclipboard(" ‘’G’’ Tuşu ile açılır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Jetin tekerlekleri hangi tuş ile açılır?")
     end
 })
 
-local Button17 = Section2:AddButton({
+Section2_6_Buttons:AddButton({
     Name = "PC 2.) Jeti hangi tuş sağa döndürür?",
     Callback = function()
         setclipboard("‘’E’’ tuşu sağa döndürür.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Helikopter sadece piste indirilebilir. kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Jeti hangi tuş sağa döndürür?")
     end
 })
 
-local Button18 = Section2:AddButton({
-    Name = "PC 3.) Jetin tekerlekleri hangi tuş ile açılır? ",
+Section2_6_Buttons:AddButton({
+    Name = "PC 3.) Jetin tekerlekleri hangi tuş ile açılır?",
     Callback = function()
         setclipboard(" ‘’T’’ tuşu açar.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Jetin tekerlekleri hangi tuş ile açılır?")
     end
 })
 
-local Button19 = Section2:AddButton({
+Section2_6_Buttons:AddButton({
     Name = "Mobil 1.) Jeti hangi tuş sağa döndürür?",
     Callback = function()
         setclipboard(" Ekranın sağındaki sağ ok tuşu.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "Ekranın sağındaki sağ ok tuşu.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-
-
-
+        createNotification("Jeti hangi tuş sağa döndürür?")
     end
 })
 
-local Button20 = Section2:AddButton({
+Section2_6_Buttons:AddButton({
     Name = "Mobil 2.) Motoru hangi tuş çalıştırır?",
     Callback = function()
         setclipboard("Motor tuşu çalıştırır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Motoru hangi tuş çalıştırır?")
     end
 })
 
-local Button21 = Section2:AddButton({
+Section2_6_Buttons:AddButton({
     Name = "Mobil 3.) Jete hangi tuş ile güç verilir?",
     Callback = function()
         setclipboard("Jetin sağındaki yukarı ok tuşu.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
+        createNotification("Jete hangi tuş ile güç verilir?")
     end
 })
 
-
-
-
-
+-- Tab 3: Sınır Müfettişleri
 local Tab3 = Window:MakeTab({
     Name = "▶┆ Sınır Müfettişleri",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
+-- Tab 3, Section 1: Öğrenci Eğitimi
+local Section3_1 = Tab3:AddSection({ Name = "- Öğrenci Eğitimi -" })
 
-
--- Add a section to the tab
-local Section3 = Tab3:AddSection({
-    Name = "- Öğrenci Eğitimi -"
-})
-
-
--- Add paragraphs first
-Tab3:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
- 
-Sizlerden İstenilen Şey MR' nin Kabine Geçmesi ve Sizin de Ona Bir Sivil Gibi Davranmanız. Her Şeyi Aşağıda Listeledim:
+Section3_1:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
+ Sizlerden İstenilen Şey MR' nin Kabine Geçmesi ve Sizin de Ona Bir Sivil Gibi Davranmanız.
+Her Şeyi Aşağıda Listeledim:
 
 1.) Siz: Merhaba, geliş amacınız nedir?
 MR: Asker olmak istiyorum (v.b)
@@ -604,225 +407,6 @@ MR: Asker olmak istiyorum (v.b)
 2.) Siz: TA’nın grubuna, ekranda bulunan “?” işareti simgesine basarak katılabilirsiniz.
 MR: Tamam, teşekkürler. (v.b.)
 
-Daha Sonra MR' den Pasaport İsteyin ve Pasaportu Verdiğinde Onaylayın. Benimle Gelin Diyin ve Kurallar Yazan Bölgeye Kadar Eşlik edin.
-
+Daha Sonra MR' den Pasaport İsteyin ve Pasaportu Verdiğinde Onaylayın.
+Benimle Gelin Diyin ve Kurallar Yazan Bölgeye Kadar Eşlik edin.
 ]])
-
-local Button1 = Section3:AddButton({
-    Name = "1.) Merhaba, geliş amacınız nedir?",
-    Callback = function()
-        setclipboard("Merhaba, geliş amacınız nedir?")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button2 = Section3:AddButton({
-    Name = "2.) TA grubuna yönlendirme",
-    Callback = function()
-        setclipboard("TA’nın grubuna, ekranda bulunan “?” işareti simgesine basarak katılabilirsiniz.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
--- Add a section to the tab
-local Section3 = Tab3:AddSection({
-    Name = "- [I] Müfettiş Eğitimi -"
-})
-
-
-Tab3:AddParagraph("[I] Müfettiş Eğitimi Cevapları ", [[
- 
-1.) Dönmeler ve Çaprazlar İçin Oto Alım Yap Kullanabilirsiniz.
-
-Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Bağlıdır.
-]])
-
-
--- Add a section to the tab
-local Section3 = Tab3:AddSection({
-    Name = "- [II] Müfettiş Eğitimi -"
-})
-
-
--- Add paragraphs first
-Tab3:AddParagraph("[II] Müfettiş Eğitimi Cevapları ", [[
- 
- 
-1.) Bu Eğitim 2 tane etkinlikten oluşmaktadır.
-
-Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Bağlıdır.
-]])
-
-
-
-
--- Add a section to the tab
-local Section3 = Tab3:AddSection({
-    Name = "- [III] Müfettiş Eğitimi -"
-})
-
-
--- Add paragraphs first
-Tab3:AddParagraph("[III] Müfettiş Eğitimi Cevapları ", [[
- 
-- MR Sizden 4 Tane Kabin Kuralı İsteyecektir. Ben Size 9 Tane Kural Veriyorum, 4 Tane Seçer Kullanırsınız.
-
-              [Kabin Kuralları]
-
-1- “Öğrenci” rütbesinde bulunan personeller kabini kullanamaz.
-
-2- Kabine sadece Sınır Müfettişleri personelleri girebilir.
-
-3- Kabinin içini kalabalık etmek yasaktır.
-
-4- Aynı anda birden fazla sivil geçirmek yasaktır.
-
-5- Sivil pasaportunu vermek zorundadır.
-
-6- Kabin kapılarını açık bırakmak yasaktır.
-
-7- Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.
-
-8- Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.
-
-9- Kabinden sadece rütbe siz sivil ler geçebilir.
-
-]])
-
-
-local Button3 = Section3:AddButton({
-    Name = "1. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("“Öğrenci” rütbesinde bulunan personeller kabini kullanamaz.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button4 = Section3:AddButton({
-    Name = "2. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Kabine sadece Sınır Müfettişleri personelleri girebilir.
-")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button5 = Section3:AddButton({
-    Name = "3. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Kabinin içini kalabalık etmek yasaktır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button6 = Section3:AddButton({
-    Name = "4. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Aynı anda birden fazla sivil geçirmek yasaktır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-local Button7 = Section3:AddButton({
-    Name = "5. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Sivil pasaportunu vermek zorundadır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button8 = Section3:AddButton({
-    Name = "6. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Kabin kapılarını açık bırakmak yasaktır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button9 = Section3:AddButton({
-    Name = "7. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button10 = Section3:AddButton({
-    Name = "8. Kabin Kuralını Kopyala",
-    Callback = function()
-        setclipboard("Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
-
-
-local Button11 = Section3:AddButton({
-    Name = "9. Kabin Kuralını Kopyala.",
-    Callback = function()
-        setclipboard("Kabinden sadece rütbe siz sivil ler geçebilir.")
-        OrionLib:MakeNotification({
-            Name = "Kopyalandı",
-            Content = "kopyalandı.",
-            Image = "rbxassetid://4483345998",
-            Time = 3
-        })
-    end
-})
