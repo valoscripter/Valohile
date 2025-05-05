@@ -115,7 +115,7 @@ local Button2 = Section3:AddButton({
 })
 
 local Button3 = Section3:AddButton({
-    Name = "Örnek Tekmil",
+    Name = "Örnek Tekmil nedir?",
     Callback = function()
         setclipboard("İsim/TA rütbe/Branş/Branş rütbe/Birim/Birim rütbe/Emir ve görüşlerinize hazırdır Paşam!")
         OrionLib:MakeNotification({
@@ -543,6 +543,9 @@ local Button19 = Section12:AddButton({
             Image = "rbxassetid://4483345998",
             Time = 3
         })
+
+
+
     end
 })
 
@@ -573,3 +576,253 @@ local Button21 = Section12:AddButton({
 })
 
 
+
+
+
+local Tab2 = Window:MakeTab({
+    Name = "▶┆ Hava Kuvvetleri",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+
+-- Add a section to the tab
+local Section2 = Tab3:AddSection({
+    Name = "- Öğrenci Eğitimi -"
+})
+
+
+-- Add paragraphs first
+Tab2:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
+ 
+Sizlerden İstenilen Şey MR' nin Kabine Geçmesi ve Sizin de Ona Bir Sivil Gibi Davranmanız. Her Şeyi Aşağıda Listeledim:
+
+1.) Siz: Merhaba, geliş amacınız nedir?
+MR: Asker olmak istiyorum (v.b)
+
+2.) Siz: TA’nın grubuna, ekranda bulunan “?” işareti simgesine basarak katılabilirsiniz.
+MR: Tamam, teşekkürler. (v.b.)
+
+Daha Sonra MR' den Pasaport İsteyin ve Pasaportu Verdiğinde Onaylayın. Benimle Gelin Diyin ve Kurallar Yazan Bölgeye Kadar Eşlik edin.
+
+
+
+local Button1 = Section3:AddButton({
+    Name = "1.) Merhaba, geliş amacınız nedir?",
+    Callback = function()
+        setclipboard("Merhaba, geliş amacınız nedir?")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button2 = Section4:AddButton({
+    Name = "2.) TA grubuna yönlendirme",
+    Callback = function()
+        setclipboard("TA’nın grubuna, ekranda bulunan “?” işareti simgesine basarak katılabilirsiniz.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+-- Add a section to the tab
+local Section5 = Tab3:AddSection({
+    Name = "- [I] Müfettiş Eğitimi -"
+})
+
+
+Tab3:AddParagraph("[I] Müfettiş Eğitimi Cevapları ", [[
+ 
+1.) Dönmeler ve Çaprazlar İçin Oto Alım Yap Kullanabilirsiniz.
+
+Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Bağlıdır.
+]])
+
+
+-- Add a section to the tab
+local Section6 = Tab3:AddSection({
+    Name = "- [II] Müfettiş Eğitimi -"
+})
+
+
+-- Add paragraphs first
+Tab3:AddParagraph("[II] Müfettiş Eğitimi Cevapları ", [[
+ 
+ 
+1.) Bu Eğitim 2 tane etkinlikten oluşmaktadır.
+
+Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Bağlıdır.
+]])
+
+
+
+
+-- Add a section to the tab
+local Section7 = Tab3:AddSection({
+    Name = "- [III] Müfettiş Eğitimi -"
+})
+
+
+-- Add paragraphs first
+Tab3:AddParagraph("[III] Müfettiş Eğitimi Cevapları ", [[
+ 
+- MR Sizden 4 Tane Kabin Kuralı İsteyecektir. Ben Size 9 Tane Kural Veriyorum, 4 Tane Seçer Kullanırsınız.
+
+              [Kabin Kuralları]
+
+1- “Öğrenci” rütbesinde bulunan personeller kabini kullanamaz.
+
+2- Kabine sadece Sınır Müfettişleri personelleri girebilir.
+
+3- Kabinin içini kalabalık etmek yasaktır.
+
+4- Aynı anda birden fazla sivil geçirmek yasaktır.
+
+5- Sivil pasaportunu vermek zorundadır.
+
+6- Kabin kapılarını açık bırakmak yasaktır.
+
+7- Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.
+
+8- Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.
+
+9- Kabinden sadece rütbe siz sivil ler geçebilir.
+
+
+local Button3 = Section8:AddButton({
+    Name = "1. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("“Öğrenci” rütbesinde bulunan personeller kabini kullanamaz.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button4 = Section9:AddButton({
+    Name = "2. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Kabine sadece Sınır Müfettişleri personelleri girebilir.
+")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button5 = Section10:AddButton({
+    Name = "3. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Kabinin içini kalabalık etmek yasaktır.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button6 = Section11:AddButton({
+    Name = "4. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Aynı anda birden fazla sivil geçirmek yasaktır.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+local Button7 = Section12:AddButton({
+    Name = "5. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Sivil pasaportunu vermek zorundadır.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button8 = Section13:AddButton({
+    Name = "6. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Kabin kapılarını açık bırakmak yasaktır.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button9 = Section14:AddButton({
+    Name = "7. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.
+")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button10 = Section15:AddButton({
+    Name = "8. Kabin Kuralını Kopyala",
+    Callback = function()
+        setclipboard("Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.
+")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
+
+
+local Button11 = Section16:AddButton({
+    Name = "9. Kabin Kuralını Kopyala.",
+    Callback = function()
+        setclipboard("Kabinden sadece rütbe siz sivil ler geçebilir.")
+        OrionLib:MakeNotification({
+            Name = "Kopyalandı",
+            Content = "kopyalandı.",
+            Image = "rbxassetid://4483345998",
+            Time = 3
+        })
+    end
+})
