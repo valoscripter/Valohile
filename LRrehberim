@@ -606,7 +606,7 @@ MR: Tamam, teşekkürler. (v.b.)
 
 Daha Sonra MR' den Pasaport İsteyin ve Pasaportu Verdiğinde Onaylayın. Benimle Gelin Diyin ve Kurallar Yazan Bölgeye Kadar Eşlik edin.
 
-
+]])
 
 local Button1 = Section3:AddButton({
     Name = "1.) Merhaba, geliş amacınız nedir?",
