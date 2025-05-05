@@ -84,7 +84,7 @@ Tab2:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
 ]])
 
 -- Add buttons after paragraphs
-local Section3 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Kopyalama Butonları -"
 })
 
@@ -101,7 +101,7 @@ local Button1 = Section3:AddButton({
     end
 })
 
-local Button2 = Section3:AddButton({
+local Button2 = Section2:AddButton({
     Name = "2.) Branş liderimiz kimdir?",
     Callback = function()
         setclipboard("1EreNBaskaN")
@@ -114,7 +114,7 @@ local Button2 = Section3:AddButton({
     end
 })
 
-local Button3 = Section3:AddButton({
+local Button3 = Section2:AddButton({
     Name = "Örnek Tekmil nedir?",
     Callback = function()
         setclipboard("İsim/TA rütbe/Branş/Branş rütbe/Birim/Birim rütbe/Emir ve görüşlerinize hazırdır Paşam!")
@@ -128,7 +128,7 @@ local Button3 = Section3:AddButton({
 })
 
 -- Add a section to the tab
-local Section4 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Onbaşı Eğitimi -"
 })
 
@@ -155,7 +155,7 @@ local Section5 = Tab2:AddSection({
     Name = "- Kopyalama Butonları -"
 })
 
-local Button4 = Section5:AddButton({
+local Button4 = Section2:AddButton({
     Name = "1.) Otorite nedir?",
     Callback = function()
         setclipboard("Yaptırma yetkisi, güç. Bir emiri veya işe getirmeyi sağlayan işlev otoritedir.")
@@ -168,7 +168,7 @@ local Button4 = Section5:AddButton({
     end
 })
 
-local Button5 = Section5:AddButton({
+local Button5 = Section2:AddButton({
     Name = "2.) Emir-komuta zinciri nedir?",
     Callback = function()
         setclipboard("Emir verildiğinde ikiletmeden, kuşkusuz, sorgusuz, sualsiz yerine getirmektir.")
@@ -181,7 +181,7 @@ local Button5 = Section5:AddButton({
     end
 })
 
-local Button6 = Section5:AddButton({
+local Button6 = Section2:AddButton({
     Name = "3.) Disiplin nedir?",
     Callback = function()
         setclipboard("Bir grubu yönetmek amacıyla getirilen düzen’e verilir. Disiplin “Öz disiplin” ve “Genel Disiplin” olarak ikiye ayrılır.")
@@ -195,7 +195,7 @@ local Button6 = Section5:AddButton({
 })
 
 -- Add a section to the tab
-local Section6 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Kıdemli Onbaşı Eğitimi -"
 })
 
@@ -218,11 +218,11 @@ Tab2:AddParagraph("Kıdemli Onbaşı Eğitimi Cevapları ", [[
 Not: Diğer gramer sorularını siz yaparsınız.
 ]])
 
-local Section7 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Kopyalama Butonları -"
 })
 
-local Button7 = Section7:AddButton({
+local Button7 = Section2:AddButton({
     Name = "1.) Ne mutlu Türk’üm diyene!",
     Callback = function()
         setclipboard("Ne mutlu Türk’üm diyene!")
@@ -235,7 +235,7 @@ local Button7 = Section7:AddButton({
     end
 })
 
-local Button8 = Section7:AddButton({
+local Button8 = Section2:AddButton({
     Name = "2.) Acaba bugün olacak denetimde kaç kişi olacağız?",
     Callback = function()
         setclipboard("Acaba bugün olacak denetimde kaç kişi olacağız?")
@@ -248,7 +248,7 @@ local Button8 = Section7:AddButton({
     end
 })
 
-local Button9 = Section7:AddButton({
+local Button9 = Section2:AddButton({
     Name = "3.) Hiçbir eşya insan canından önemli değildir.",
     Callback = function()
         setclipboard("Hiçbir eşya insan canından önemli değildir.")
@@ -270,7 +270,7 @@ OrionLib:MakeNotification({
 })
 
 -- Add a section to the tab
-local Section8 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Çavuş Eğitimi -"
 })
 
@@ -283,7 +283,7 @@ Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Ba�
 ]])
 
 -- Add a section to the tab
-local Section9 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Uzman Çavuş Eğitimi -"
 })
 
@@ -321,11 +321,11 @@ Soru 3: Helikopterin gücünü hangi tuş azaltır?
 Cevap 3: Ekranın sağındaki aşağı ok tuşu.
 ]])
 
-local Section10 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Kopyalama Butonları -"
 })
 
-local Button10 = Section10:AddButton({
+local Button10 = Section2:AddButton({
     Name = "PC 1.) Helikopteri hangi tuş sola döndürür?",
     Callback = function()
         setclipboard("‘’Q’’ tuşu sola döndürür.")
@@ -338,7 +338,7 @@ local Button10 = Section10:AddButton({
     end
 })
 
-local Button11 = Section10:AddButton({
+local Button11 = Section2:AddButton({
     Name = "PC 2.) Helikopter nereye indirilebilir? ",
     Callback = function()
         setclipboard("Helikopter sadece piste indirilebilir.")
@@ -351,7 +351,7 @@ local Button11 = Section10:AddButton({
     end
 })
 
-local Button12 = Section10:AddButton({
+local Button12 = Section2:AddButton({
     Name = "PC 3.) Helikopterin gücünü hangi tuş azaltır? ",
     Callback = function()
         setclipboard("‘’CTRL’’ tuşu ile azaltır.")
@@ -364,7 +364,7 @@ local Button12 = Section10:AddButton({
     end
 })
 
-local Button13 = Section10:AddButton({
+local Button13 = Section2:AddButton({
     Name = "Mobil 1.) Ekranın solundaki yukarı tuşu ne işe yarar?",
     Callback = function()
         setclipboard("Helinin burnunu aşağıya doğru eğer.")
@@ -377,7 +377,7 @@ local Button13 = Section10:AddButton({
     end
 })
 
-local Button14 = Section10:AddButton({
+local Button14 = Section2:AddButton({
     Name = "Mobil 2.) Helikopter nereye indirilebilir?",
     Callback = function()
         setclipboard("Helikopter sadece piste indirilebilir.")
@@ -390,7 +390,7 @@ local Button14 = Section10:AddButton({
     end
 })
 
-local Button15 = Section10:AddButton({
+local Button15 = Section2:AddButton({
     Name = "Mobil 3.) Helikopterin gücünü hangi tuş azaltır?",
     Callback = function()
         setclipboard("Ekranın sağındaki aşağı ok tuşu.")
@@ -407,7 +407,7 @@ local Button15 = Section10:AddButton({
 
 
 
-local Section11 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Üstçavuş Eğitimi -"
 })
 
@@ -490,7 +490,7 @@ Cevap 3: Jetin sağındaki yukarı ok tuşu.
 ]])
 
 
-local Section12 = Tab2:AddSection({
+local Section2 = Tab2:AddSection({
     Name = "- Kopyalama Butonları -"
 })
 
@@ -507,7 +507,7 @@ local Button16 = Section12:AddButton({
     end
 })
 
-local Button17 = Section12:AddButton({
+local Button17 = Section2:AddButton({
     Name = "PC 2.) Jeti hangi tuş sağa döndürür?",
     Callback = function()
         setclipboard("‘’E’’ tuşu sağa döndürür.")
@@ -520,7 +520,7 @@ local Button17 = Section12:AddButton({
     end
 })
 
-local Button18 = Section12:AddButton({
+local Button18 = Section2:AddButton({
     Name = "PC 3.) Jetin tekerlekleri hangi tuş ile açılır? ",
     Callback = function()
         setclipboard(" ‘’T’’ tuşu açar.")
@@ -533,7 +533,7 @@ local Button18 = Section12:AddButton({
     end
 })
 
-local Button19 = Section12:AddButton({
+local Button19 = Section2:AddButton({
     Name = "Mobil 1.) Jeti hangi tuş sağa döndürür?",
     Callback = function()
         setclipboard(" Ekranın sağındaki sağ ok tuşu.")
@@ -549,7 +549,7 @@ local Button19 = Section12:AddButton({
     end
 })
 
-local Button20 = Section12:AddButton({
+local Button20 = Section2:AddButton({
     Name = "Mobil 2.) Motoru hangi tuş çalıştırır?",
     Callback = function()
         setclipboard("Motor tuşu çalıştırır.")
@@ -562,7 +562,7 @@ local Button20 = Section12:AddButton({
     end
 })
 
-local Button21 = Section12:AddButton({
+local Button21 = Section2:AddButton({
     Name = "Mobil 3.) Jete hangi tuş ile güç verilir?",
     Callback = function()
         setclipboard("Jetin sağındaki yukarı ok tuşu.")
@@ -588,7 +588,7 @@ local Tab3 = Window:MakeTab({
 
 
 -- Add a section to the tab
-local Section2 = Tab3:AddSection({
+local Section3 = Tab3:AddSection({
     Name = "- Öğrenci Eğitimi -"
 })
 
@@ -622,7 +622,7 @@ local Button1 = Section3:AddButton({
 })
 
 
-local Button2 = Section4:AddButton({
+local Button2 = Section3:AddButton({
     Name = "2.) TA grubuna yönlendirme",
     Callback = function()
         setclipboard("TA’nın grubuna, ekranda bulunan “?” işareti simgesine basarak katılabilirsiniz.")
@@ -637,7 +637,7 @@ local Button2 = Section4:AddButton({
 
 
 -- Add a section to the tab
-local Section5 = Tab3:AddSection({
+local Section3 = Tab3:AddSection({
     Name = "- [I] Müfettiş Eğitimi -"
 })
 
@@ -651,7 +651,7 @@ Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Ba�
 
 
 -- Add a section to the tab
-local Section6 = Tab3:AddSection({
+local Section3 = Tab3:AddSection({
     Name = "- [II] Müfettiş Eğitimi -"
 })
 
@@ -669,7 +669,7 @@ Not: Burada Gösterilecek Soru Bulunmamaktadır. Tamamen Sizin Yeteneğinize Ba�
 
 
 -- Add a section to the tab
-local Section7 = Tab3:AddSection({
+local Section3 = Tab3:AddSection({
     Name = "- [III] Müfettiş Eğitimi -"
 })
 
@@ -702,7 +702,7 @@ Tab3:AddParagraph("[III] Müfettiş Eğitimi Cevapları ", [[
 ]])
 
 
-local Button3 = Section8:AddButton({
+local Button3 = Section3:AddButton({
     Name = "1. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("“Öğrenci” rütbesinde bulunan personeller kabini kullanamaz.")
@@ -716,7 +716,7 @@ local Button3 = Section8:AddButton({
 })
 
 
-local Button4 = Section9:AddButton({
+local Button4 = Section3:AddButton({
     Name = "2. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Kabine sadece Sınır Müfettişleri personelleri girebilir.
@@ -731,7 +731,7 @@ local Button4 = Section9:AddButton({
 })
 
 
-local Button5 = Section10:AddButton({
+local Button5 = Section3:AddButton({
     Name = "3. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Kabinin içini kalabalık etmek yasaktır.")
@@ -745,7 +745,7 @@ local Button5 = Section10:AddButton({
 })
 
 
-local Button6 = Section11:AddButton({
+local Button6 = Section3:AddButton({
     Name = "4. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Aynı anda birden fazla sivil geçirmek yasaktır.")
@@ -758,7 +758,7 @@ local Button6 = Section11:AddButton({
     end
 })
 
-local Button7 = Section12:AddButton({
+local Button7 = Section3:AddButton({
     Name = "5. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Sivil pasaportunu vermek zorundadır.")
@@ -772,7 +772,7 @@ local Button7 = Section12:AddButton({
 })
 
 
-local Button8 = Section13:AddButton({
+local Button8 = Section3:AddButton({
     Name = "6. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Kabin kapılarını açık bırakmak yasaktır.")
@@ -786,7 +786,7 @@ local Button8 = Section13:AddButton({
 })
 
 
-local Button9 = Section14:AddButton({
+local Button9 = Section3:AddButton({
     Name = "7. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.")
@@ -800,7 +800,7 @@ local Button9 = Section14:AddButton({
 })
 
 
-local Button10 = Section15:AddButton({
+local Button10 = Section3:AddButton({
     Name = "8. Kabin Kuralını Kopyala",
     Callback = function()
         setclipboard("Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.")
@@ -814,7 +814,7 @@ local Button10 = Section15:AddButton({
 })
 
 
-local Button11 = Section16:AddButton({
+local Button11 = Section3:AddButton({
     Name = "9. Kabin Kuralını Kopyala.",
     Callback = function()
         setclipboard("Kabinden sadece rütbe siz sivil ler geçebilir.")
