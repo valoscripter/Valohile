@@ -594,7 +594,7 @@ local Section2 = Tab3:AddSection({
 
 
 -- Add paragraphs first
-Tab2:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
+Tab3:AddParagraph("Öğrenci Eğitimi Cevapları ", [[
  
 Sizlerden İstenilen Şey MR' nin Kabine Geçmesi ve Sizin de Ona Bir Sivil Gibi Davranmanız. Her Şeyi Aşağıda Listeledim:
 
@@ -789,8 +789,7 @@ local Button8 = Section13:AddButton({
 local Button9 = Section14:AddButton({
     Name = "7. Kabin Kuralını Kopyala.",
     Callback = function()
-        setclipboard("Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.
-")
+        setclipboard("Dış işleri (F A) personellerinin izni olmadan bir sivile “Müt tefik” etiketi vermek yasaktır.")
         OrionLib:MakeNotification({
             Name = "Kopyalandı",
             Content = "kopyalandı.",
@@ -804,8 +803,7 @@ local Button9 = Section14:AddButton({
 local Button10 = Section15:AddButton({
     Name = "8. Kabin Kuralını Kopyala",
     Callback = function()
-        setclipboard("Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.
-")
+        setclipboard("Sivilin ge çiş ka rtı var sa bilg ileri kon trol edilir ve ku ral tabela sına götürülüp geçirilir.")
         OrionLib:MakeNotification({
             Name = "Kopyalandı",
             Content = "kopyalandı.",
