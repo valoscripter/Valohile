@@ -777,6 +777,30 @@ Tab9:AddButton({
 
 
 Tab9:AddButton({
+    Name = "• Telekinesis Tool FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://raw.githubusercontent.com/randomstring0/Qwerty/refs/heads/main/qwerty1.lua"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+Tab9:AddButton({
     Name = "• R6 Mevlana Tool FE",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
