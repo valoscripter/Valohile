@@ -42,28 +42,28 @@ Tab1:AddParagraph("Sydearr Hub – TA V1.6.1 Güncellemesi ", [[
 
 ▶┆ Anti - Track Eklendi
 
+▶┆ Sahte OP Eklendi
+
 
 ]])
 
 
 
 
-Tab1:AddParagraph("GUI Developers:", [[
+Tab1:AddParagraph("UI Developers:", [[
  
 •┆ @kaansfriztche
 
 •┆ @ross_x1
+
+•┆ @void_friztche
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
 
-•┆ @swuuuxyzz
-
 •┆ @xenty1111
 
 •┆ @chesterfield09
-
-•┆ @ross_x1
 ]])
 
 
@@ -220,7 +220,25 @@ Tab2:AddButton({
 })
 
 
-
+Tab2:AddButton({
+    Name = "• Sahte OP",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/YRkH2e5v"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 
 
@@ -231,7 +249,7 @@ local Section2 = Tab2:AddSection({
 
 
 Tab2:AddButton({
-    Name = "• Tepeköy Farm     (7k/10min.)",
+    Name = "• Tepeköy Farm   (24 Saatte 1M OP)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/AYm6BQSL"
         
@@ -252,7 +270,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Çöl Farm     (30k/10min.)",
+    Name = "• Çöl Farm   (6 Saatte 1M OP)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/vXDdAGiW"
         
