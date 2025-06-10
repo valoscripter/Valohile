@@ -1,7 +1,7 @@
 local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/SydearrHubLibraryMobile')))()
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  V1.6.1",
+    Name = "Sydearr Hub - TA  V1.6.2",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
@@ -663,6 +663,31 @@ Tab7:AddButton({
         end
     end
 })
+
+
+
+Tab7:AddButton({
+    Name = "• Fling All",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/etYavudm"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
 
 Tab7:AddButton({
     Name = "• Detaine Yakalanmama",
