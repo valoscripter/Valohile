@@ -1,5 +1,5 @@
 local player = game.Players.LocalPlayer
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/SydearrHubLibraryMobile')))()
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA  V1.6.1",
     HidePremium = false,
@@ -625,7 +625,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• Görünmez Ol",
+    Name = "• Görünmez Ol (Bize Özel)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/DAEdSXb8"
         
