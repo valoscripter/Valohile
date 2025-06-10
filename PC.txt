@@ -201,7 +201,7 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Doğru Yanlış Team Change",
+    Name = "• Doğru Yanlış Takım Değiştirme",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/Yr8kb7b5"
         
@@ -514,7 +514,7 @@ local Section7 = Tab7:AddSection({
 
 
 Tab7:AddButton({
-    Name = "• Fake Lag Script FE",
+    Name = "• Fake Lag FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/Qh587GES"
         
@@ -625,7 +625,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• Görünmez Ol (Bize Özel)",
+    Name = "• Görünmez Ol (Sydearr Made)",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/DAEdSXb8"
         
@@ -708,7 +708,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• No Damage Menü",
+    Name = "• Hasar Almama",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/WLxY0LSA"
         
@@ -723,27 +723,6 @@ Tab7:AddButton({
         else
             -- Hata durumunda kullanıcıya uyarı veriyoruz
             warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-Tab7:AddButton({
-    Name = "• R6 Touch Kill Players FE",
-    Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/GenesisFE/Genesis/main/Obfuscations/Motorcycle"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-       warn("Script yüklenemedi!")
         end
     end
 })
@@ -841,7 +820,7 @@ Tab9:AddButton({
 
 
 Tab9:AddButton({
-    Name = "• R6 Jerk Off Tool FE",
+    Name = "• R6 31 Çek Tool FE",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
