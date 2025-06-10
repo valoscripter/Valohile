@@ -55,6 +55,8 @@ Tab1:AddParagraph("UI Developers:", [[
 
 •┆ @ross_x1
 
+•┆ @spyta666
+
 •┆ @void_friztche
 ]])
 
@@ -79,7 +81,7 @@ Tab1:AddParagraph("Content Creators:", [[
 
 -- Create a tab
 local Tab2 = Window:MakeTab({
-    Name = "▶┆ OP & Eğitim",
+    Name = "▶┆ OP & Rütbe",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
@@ -238,6 +240,50 @@ Tab2:AddButton({
         end
     end
 })
+
+
+Tab2:AddButton({
+    Name = "• Araba Sürme",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/7dksbpxuw8/TA/refs/heads/main/SpyTA"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab2:AddButton({
+    Name = "• Herkesi AS.İZ Yapma (Asteğmen +)",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Herkesi-AS.IZ-YAPMA"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
 
 
 
@@ -577,6 +623,46 @@ Tab7:AddButton({
 
 
 
+
+Tab7:AddButton({
+    Name = "• Görünmez Ol",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/DAEdSXb8"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+Tab7:AddButton({
+    Name = "• Kill All (İsyancı)",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/7dksbpxuw8/TA/refs/heads/main/SpyTA333"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 Tab7:AddButton({
     Name = "• Detaine Yakalanmama",
