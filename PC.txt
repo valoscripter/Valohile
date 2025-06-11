@@ -29,11 +29,13 @@ Tab1:AddParagraph("Sydearr Hub – TA V1.6.2 Güncellemesi ", [[
  
 ▶┆ Kill All (İsyancı) Eklendi.
 
-▶┆ Kendi Görünmezlik Scriptimizi Ekledik.
+▶┆ Kendi Görünmezlik Scriptimiz Eklendi.
 
 ▶┆ Bazı Scriptler Türkçeleştirildi.
 
-▶┆ PC Ui Tamamen Sorunsuz Çalışır Oldu
+▶┆ General Listesi Eklendi.
+
+▶┆ PC Ui Tamamen Sorunsuz Çalışır Hale Geldi.
 
 
 
@@ -254,6 +256,28 @@ Tab2:AddButton({
         end
     end
 })
+
+
+Tab2:AddButton({
+    Name = "• General Listesi",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/SRERuEYi"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
 
 
 Tab2:AddButton({
