@@ -50,7 +50,7 @@ Tab1:AddParagraph("UI Developers:", [[
 
 •┆ @spyta666
 
-•┆ @void_friztche
+•┆ @void_x11
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
