@@ -19,29 +19,22 @@ local Section1 = Tab1:AddSection({
     Name = "- UI Anasayfası -"
 })
 
-Tab1:AddParagraph("Sydearr Hub – TA V1.6.1 Güncellemesi ", [[
+Tab1:AddParagraph("Sydearr Hub – TA V1.6.2 Güncellemesi ", [[
  
-▶┆ Jackler 10.000' e Kadar Uzatıldı.
+▶┆ Araba Sürme Eklendi.
  
-▶┆ Oto Alım Yapma Geliştirildi.
+▶┆ Herkesi AS.İZ Yapma (Asteğmen +) Eklendi.
  
-▶┆ Doğru - Yanlış Team Change Eklendi.
+▶┆ Fling All Eklendi
  
-▶┆ Tepeköy Farm Eklendi.
+▶┆ Kill All (İsyancı) Eklendi.
 
-▶┆ Çöl Farm Eklendi.
+▶┆ Kendi Görünmezlik Scriptimizi Ekledik.
 
-▶┆ Teleportlar 3 Ana Başlık Üzerinde Ayrıldı.
+▶┆ Bazı Scriptler Türkçeleştirildi.
 
-▶┆ PC Ui Tamamen Sorunsuz Çalışır Oldu.
+▶┆ PC Ui Tamamen Sorunsuz Çalışır Oldu
 
-▶┆ Her Şey Sydearr Gui Eklendi
-
-▶┆ Mevlana Tool Eklendi
-
-▶┆ Anti - Track Eklendi
-
-▶┆ Sahte OP Eklendi
 
 
 ]])
