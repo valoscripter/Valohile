@@ -31,9 +31,9 @@ Tab1:AddParagraph("Sydearr Hub – TA V1.6.2 Güncellemesi ", [[
 
 ▶┆ Kendi Görünmezlik Scriptimiz Eklendi.
 
-▶┆ Bazı Scriptler Türkçeleştirildi.
-
 ▶┆ General Listesi Eklendi.
+
+▶┆ Bazı Scriptler Türkçeleştirildi.
 
 ▶┆ PC Ui Tamamen Sorunsuz Çalışır Hale Geldi.
 
