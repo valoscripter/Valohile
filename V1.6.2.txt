@@ -241,7 +241,7 @@ Tab2:AddButton({
 Tab2:AddButton({
     Name = "• Sydearr Sohbet Alanı",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SydearrChat.lua"
+        local scriptUrl = "https://raw.githubusercontent.com/valoscripter/Salamsucuksosis/refs/heads/main/SydearrChat.lua"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
