@@ -1838,9 +1838,9 @@ Tab5:AddButton({
 
 
 Tab5:AddButton({
-    Name = "• Chat Logs",
+    Name = "• Aimbot",
     Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/05XFAEHd"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Aimbot"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
