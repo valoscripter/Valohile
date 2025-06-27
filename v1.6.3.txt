@@ -1778,9 +1778,9 @@ Tab5:AddButton({
 
 
 Tab5:AddButton({
-    Name = "• FreeCam FE",
+    Name = "• Hitbox Expander",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/zephyr10101/CameraSpy/main/Script"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/HitboxExpander"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
@@ -1810,7 +1810,7 @@ Tab5:AddButton({
 Tab5:AddButton({
     Name = "• Anti-AFK",
     Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/cfdJvuSz"
+        local scriptUrl = "https://raw.githubusercontent.com/Genesisuii/Genesisuii/refs/heads/main/Anti%20AFK%20script"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
