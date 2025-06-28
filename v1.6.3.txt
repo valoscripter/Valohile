@@ -1647,34 +1647,7 @@ Tab8:AddButton({
 
 
 
-Tab8:AddButton({
-    Name = "• Infinite Jump",
-    Callback = function()
-        local InfiniteJumpEnabled = true
-        game:GetService("UserInputService").JumpRequest:Connect(function()
-            if InfiniteJumpEnabled then
-                local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-                if humanoid then
-                    humanoid:ChangeState("Jumping")
-                end
-            end
-        end)
-    end
-})
 
-
-
-
-Tab8:AddButton({
-    Name = "• Rejoin Server",
-    Callback = function()
-local TeleportService = game:GetService("TeleportService")
-local Player = game.Players.LocalPlayer
-
-TeleportService:Teleport(game.PlaceId, Player)
-end
-
-})
 
 
 
@@ -1859,10 +1832,10 @@ Tab5:AddButton({
 
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
-    Name = "• Sydearr Aim Menü",
+    Name = "• Walkspeed Changer",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
-        local scriptUrl = "https://pastebin.com/raw/9wj1EWCQ"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SpeedMen%C3%BC.lua"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
@@ -1877,6 +1850,36 @@ Tab5:AddButton({
             warn("Script yüklenemedi!")
         end
     end
+})
+
+
+Tab5:AddButton({
+    Name = "• Infinite Jump",
+    Callback = function()
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            if InfiniteJumpEnabled then
+                local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+                if humanoid then
+                    humanoid:ChangeState("Jumping")
+                end
+            end
+        end)
+    end
+})
+
+
+
+
+Tab5:AddButton({
+    Name = "• Rejoin Server",
+    Callback = function()
+local TeleportService = game:GetService("TeleportService")
+local Player = game.Players.LocalPlayer
+
+TeleportService:Teleport(game.PlaceId, Player)
+end
+
 })
 
 
