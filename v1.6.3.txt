@@ -1601,53 +1601,6 @@ Tab4:AddButton({
 
 
 
-local Tab8 = Window:MakeTab({
-    Name = "▶┆ Player",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-
-local Section8 = Tab8:AddSection({
-    Name = "- Karakter Scriptleri -"
-})
-
-
-
-
-
-
-
-
-
-
-
-Tab8:AddButton({
-    Name = "• Speed Menü FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/2aGKn3VG"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
-
-
-
-
-
-
-
 
 
 
