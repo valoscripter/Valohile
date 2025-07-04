@@ -1605,7 +1605,7 @@ local Tab6 = Window:MakeTab({
 })
 
 
-local Section6 = Tab8:AddSection({
+local Section6 = Tab6:AddSection({
     Name = "- Tüm Kamp Scriptleri -"
 })
 
