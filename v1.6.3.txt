@@ -48,8 +48,6 @@ Tab1:AddParagraph("UI Developers:", [[
 
 •┆ @ross_x1
 
-•┆ @chesterfield09
-
 •┆ @void_x11
 ]])
 
@@ -1681,6 +1679,30 @@ Tab12:AddButton({
         end
     end
 })
+
+
+
+
+Tab12:AddButton({
+    Name = "• TA Sahte Çark Çevirme",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SahteCark.txt"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
 
 
 
