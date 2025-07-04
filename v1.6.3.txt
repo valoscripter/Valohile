@@ -1598,14 +1598,14 @@ Tab4:AddButton({
 
 
 
-local Tab12 = Window:MakeTab({
+local Tab6 = Window:MakeTab({
     Name = "▶┆ Tüm Kamplar",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
 
-local Section12 = Tab8:AddSection({
+local Section6 = Tab8:AddSection({
     Name = "- Tüm Kamp Scriptleri -"
 })
 
@@ -1613,7 +1613,7 @@ local Section12 = Tab8:AddSection({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• THO Para Hilesi",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/THOParaHilesi.txt"
@@ -1637,7 +1637,7 @@ Tab12:AddButton({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• TPT Eğitim Açma",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/TPTegitim.txt"
@@ -1660,7 +1660,7 @@ Tab12:AddButton({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• Team Changer",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Free-Kamp-Team-Changer"
@@ -1683,7 +1683,7 @@ Tab12:AddButton({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• TA Sahte Çark Çevirme",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SahteCark.txt"
@@ -1707,7 +1707,7 @@ Tab12:AddButton({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• Sahte Sohbet Mesajı",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SahteMesaj.txt"
@@ -1731,7 +1731,7 @@ Tab12:AddButton({
 
 
 
-Tab12:AddButton({
+Tab6:AddButton({
     Name = "• TA Sahte Transfer",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/SahtegTransfer.txt"
