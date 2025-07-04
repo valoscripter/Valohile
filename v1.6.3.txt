@@ -1600,6 +1600,20 @@ Tab4:AddButton({
 
 
 
+local Tab12 = Window:MakeTab({
+    Name = "▶┆ Tüm Kamplar",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+
+local Section12 = Tab8:AddSection({
+    Name = "- Tüm Kamp Scriptleri -"
+})
+
+
+
+
 
 
 
