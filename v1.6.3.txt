@@ -1,7 +1,7 @@
 local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/SydearrHubLibraryMobile')))()
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  V1.6.3",
+    Name = "Sydearr Hub - TA  V1.6.4",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
@@ -19,7 +19,7 @@ local Section1 = Tab1:AddSection({
     Name = "- UI Anasayfası -"
 })
 
-Tab1:AddParagraph("Sydearr Hub – TA V1.6.3 Güncellemesi ", [[
+Tab1:AddParagraph("Sydearr Hub – TA V1.6.4 Büyük Güncelleme! ", [[
  
 ▶┆ Sydearr Sohbet Alanı Eklendi.
  
@@ -49,6 +49,8 @@ Tab1:AddParagraph("UI Developers:", [[
 •┆ @ross_x1
 
 •┆ @void_x11
+
+•┆ @sametaslan37373
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
@@ -256,9 +258,9 @@ Tab2:AddButton({
 
 
 Tab2:AddButton({
-    Name = "• Araba Sürme (Yakında)",
+    Name = "• Araba Sürme",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/7dksbpxuw8/TA/refs/heads/main/SpyTA"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Araba-S%C3%BCrme"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
@@ -613,25 +615,7 @@ Tab7:AddButton({
 
 
 
-Tab7:AddButton({
-    Name = "• Her Şey Sydearr",
-    Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Her%C5%9EeySydearr.lua"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
+
 
 
 
@@ -791,26 +775,6 @@ Tab7:AddButton({
 
 
 
-Tab7:AddButton({
-    Name = "• Chat Draw FE",
-    Callback = function()
-        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
-        local scriptUrl = "https://raw.githubusercontent.com/ocfi/_/refs/heads/main/a"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
@@ -820,25 +784,8 @@ Tab7:AddButton({
 
 
 
-Tab7:AddButton({
-    Name = "• R6 Ball FE",
-    Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/devEN5m8"
-        
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
+
+
 
 
 -- Tab 9 oluşturuluyor
@@ -1930,6 +1877,76 @@ Tab5:AddButton({
         end
     end
 })
+
+
+
+Tab5:AddButton({
+    Name = "• Silent Aim Menü (PC)",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/godwarekrafiq/universalscript/refs/heads/main/universalscript"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
+Tab5:AddButton({
+    Name = "• Chat Draw",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://raw.githubusercontent.com/ocfi/_/refs/heads/main/a"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab5:AddButton({
+    Name = "• Her Şey Sydearr",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Her%C5%9EeySydearr.lua"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
 
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
