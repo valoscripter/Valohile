@@ -35,9 +35,12 @@ Tab1:AddParagraph("Sydearr Hub – TA V1.6.4 Büyük Güncelleme! ", [[
 
 ▶┆ PC Ui Tamamen Sorunsuz Çalışır Hale Geldi.
 
+NOT: Bu hile tamamen ücretsizdir, para ile satan olur ise bizimle iletişime geçin.
+
 
 
 ]])
+
 
 
 
@@ -57,7 +60,6 @@ Tab1:AddParagraph("Content Creators:", [[
 
 •┆ @xenty1111 (Saygılarımızla.)
 ]])
-
 
 
 
@@ -1716,29 +1718,10 @@ local Section8 = Tab8:AddSection({
 
 
 
-Tab8:AddButton({
-    Name = "• Sydearr (Ana Sunucumuz) Linkini Kopyala.",
-    Callback = function()
-        setclipboard("https://discord.gg/9N4DbXKtX3")
-        toclipboard("https://discord.gg/9N4DbXKtX3")
-  end    
-})
-
-
 
 
 Tab8:AddButton({
-    Name = "• Sydearr Script (Script Sunucumuz) Linkini Kopyala.",
-    Callback = function()
-        setclipboard("https://discord.gg/FfSwMbAQBV")   toclipboard("https://discord.gg/FfSwMbAQBV")
-  end    
-})
-
-
-
-
-Tab8:AddButton({
-    Name = "• Sydearr Hub (Sydearr Hub Sunucumuz) Linkini Kopyala.",
+    Name = "• Sydearr Team Linkini Kopyala.",
     Callback = function()
         setclipboard("https://discord.gg/MNpCQj6tXE")
         toclipboard("https://discord.gg/MNpCQj6tXE")
@@ -1750,6 +1733,21 @@ Tab8:AddButton({
 
 
 
+Tab8:AddParagraph("UI Developers:", [[
+ 
+•┆ @kaansfriztche
+
+•┆ @ross_x1
+
+•┆ @void_x11
+
+•┆ @sametaslan37373
+]])
+
+Tab8:AddParagraph("Content Creators:", [[
+
+•┆ @xenty1111 (Saygılarımızla.)
+]])
 
 
 
