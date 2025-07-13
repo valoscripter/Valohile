@@ -1,0 +1,364 @@
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+local POSITION_SETS = {
+    OR = {
+        {
+            Name = "• 1. Parkur",
+            Positions = {
+                Vector3.new(2803.49, 36.69, -849.68),
+                Vector3.new(2801.20, 38.85, -847.44),
+                Vector3.new(2798.35, 38.99, -845.94),
+                Vector3.new(2795.23, 36.95, -845.97),
+                Vector3.new(2792.64, 33.63, -847.64)
+            }
+        },
+        {
+            Name = "• 2. Parkur",
+            Positions = {
+                Vector3.new(2577.29, 31.84, -984.10),
+                Vector3.new(2577.15, 34.09, -989.52),
+                Vector3.new(2577.07, 37.57, -992.72),
+                Vector3.new(2576.98, 39.13, -996.32),
+                Vector3.new(2576.73, 38.29, -999.78)
+            }
+        },
+        {
+            Name = "• 3. Parkur",
+            Positions = {
+                Vector3.new(2464.44, 31.84, -1051.09),
+                Vector3.new(2464.27, 35.14, -1056.09),
+                Vector3.new(2464.88, 38.43, -1059.24),
+                Vector3.new(2466.65, 39.06, -1059.35),
+                Vector3.new(2466.92, 41.21, -1059.93)
+            }
+        }
+    },
+    TA = {
+        {
+            Name = "• 1. Parkur",
+            Positions = {
+                Vector3.new(2897.69, 32.10, -1119.19),
+                Vector3.new(2899.03, 32.10, -1119.23),
+                Vector3.new(2900.63, 32.10, -1119.27),
+                Vector3.new(2902.23, 32.32, -1119.31),
+                Vector3.new(2903.96, 36.97, -1119.36)
+            }
+        },
+        {
+            Name = "• 2. Parkur",
+            Positions = {
+                Vector3.new(2530.75, 43.75, -849.56),
+                Vector3.new(2527.69, 41.54, -849.32),
+                Vector3.new(2524.22, 44.93, -849.33),
+                Vector3.new(2521.16, 47.83, -849.33),
+                Vector3.new(2517.69, 48.93, -849.33)
+            }
+        },
+        {
+            Name = "• 3. Parkur",
+            Positions = {
+                Vector3.new(2430.48, 36.49, -1087.72),
+                Vector3.new(2430.48, 31.62, -1088.33),
+                Vector3.new(2430.47, 31.83, -1087.34),
+                Vector3.new(2430.50, 36.42, -1085.77),
+                Vector3.new(2430.51, 38.71, -1085.36)
+            }
+        },
+        {
+            Name = "• 4. Parkur",
+            Positions = {
+                Vector3.new(2974.51, 32.10, -1066.85),
+                Vector3.new(2974.51, 30.88, -1066.85),
+                Vector3.new(2974.51, 32.06, -1066.85),
+                Vector3.new(2974.51, 48.43, -1066.85),
+                Vector3.new(2974.51, 67.67, -1066.85)
+            }
+        }
+    }
+}
+
+local MovementSystem = {}
+MovementSystem.__index = MovementSystem
+
+function MovementSystem.new()
+    local self = setmetatable({}, MovementSystem)
+    self.Active = false
+    self.CurrentRoute = nil
+    self.CurrentIndex = 1
+    self.Connection = nil
+    return self
+end
+
+function MovementSystem:SmoothMove(startPos, endPos, duration)
+    local startTime = os.clock()
+    local character = LocalPlayer.Character
+    if not character or not character:FindFirstChild("HumanoidRootPart") then return false end
+    
+    local rootPart = character.HumanoidRootPart
+    local startCFrame = rootPart.CFrame
+    
+    while os.clock() - startTime < duration and self.Active do
+        local progress = (os.clock() - startTime) / duration
+        progress = math.min(progress, 1)
+        
+        local currentPos = startPos:Lerp(endPos, progress)
+        local lookDir = (endPos - currentPos) * Vector3.new(1, 0, 1)
+        
+        if lookDir.Magnitude > 0 then
+            rootPart.CFrame = CFrame.new(currentPos, currentPos + lookDir.Unit)
+        else
+            rootPart.CFrame = CFrame.new(currentPos)
+        end
+        
+        RunService.Heartbeat:Wait()
+    end
+    
+    if self.Active then
+        rootPart.CFrame = CFrame.new(endPos)
+        return true
+    end
+    return false
+end
+
+function MovementSystem:ProcessPositions()
+    self.CurrentIndex = 1
+    while self.Active and self.CurrentIndex <= #self.CurrentRoute.Positions do
+        local targetPos = self.CurrentRoute.Positions[self.CurrentIndex]
+        local character = LocalPlayer.Character
+        
+        if character and character:FindFirstChild("HumanoidRootPart") then
+            local startPos = character.HumanoidRootPart.Position
+            local distance = (targetPos - startPos).Magnitude
+            local duration = distance / 40
+            
+            if not self:SmoothMove(startPos, targetPos, duration) then
+                break
+            end
+        end
+        
+        self.CurrentIndex = self.CurrentIndex + 1
+    end
+    
+    self.Active = false
+end
+
+function MovementSystem:StartRoute(route)
+    self:Stop()
+    self.Active = true
+    self.CurrentRoute = route
+    self.Connection = task.spawn(function() self:ProcessPositions() end)
+end
+
+function MovementSystem:Stop()
+    self.Active = false
+    if self.Connection then
+        task.cancel(self.Connection)
+        self.Connection = nil
+    end
+end
+
+local gui = Instance.new("ScreenGui", PlayerGui)
+gui.Name = "SydearrUI"
+gui.ResetOnSpawn = false
+
+local main = Instance.new("Frame", gui)
+main.AnchorPoint = Vector2.new(0.5, 0.5)
+main.Position = UDim2.new(0.5, 0, 0.5, 0)
+main.Size = UDim2.new(0, 300, 0, 260)
+main.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+main.BackgroundTransparency = 0.05
+main.BorderSizePixel = 0
+main.Active = true
+main.Draggable = true
+Instance.new("UICorner", main).CornerRadius = UDim.new(0, 12)
+
+local topBar = Instance.new("Frame", main)
+topBar.Size = UDim2.new(1, 0, 0, 36)
+topBar.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+topBar.BorderSizePixel = 0
+Instance.new("UICorner", topBar).CornerRadius = UDim.new(0, 12)
+
+local catLayout = Instance.new("UIListLayout", topBar)
+catLayout.FillDirection = Enum.FillDirection.Horizontal
+catLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+catLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+catLayout.Padding = UDim.new(0, 4)
+
+local buttonHolder = Instance.new("Frame", main)
+buttonHolder.Size = UDim2.new(1, -20, 1, -85)
+buttonHolder.Position = UDim2.new(0, 10, 0, 46)
+buttonHolder.BackgroundTransparency = 1
+buttonHolder.ClipsDescendants = true
+local layout = Instance.new("UIListLayout", buttonHolder)
+layout.Padding = UDim.new(0, 6)
+layout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local function makeTab(text)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(0, 140, 1, -8)
+    btn.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    btn.Text = text
+    btn.Font = Enum.Font.GothamBold
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.TextSize = 13
+    btn.BorderSizePixel = 0
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+    btn.Parent = topBar
+    return btn
+end
+
+local function createButton(text)
+    local btn = Instance.new("TextButton")
+    btn.Size = UDim2.new(1, 0, 0, 34)
+    btn.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    btn.Font = Enum.Font.Gotham
+    btn.TextSize = 13
+    btn.Text = text
+    btn.BorderSizePixel = 0
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
+    btn.Parent = buttonHolder
+    return btn
+end
+
+local function clearButtons()
+    for _, child in pairs(buttonHolder:GetChildren()) do
+        if child:IsA("TextButton") then
+            child:Destroy()
+        end
+    end
+end
+
+local function animateIn(textList)
+    for i, text in ipairs(textList) do
+        task.delay((i - 1) * 0.08, function()
+            local btn = createButton(text)
+            btn.Position = UDim2.new(1, 0, 0, 0)
+            local tween = TweenService:Create(btn, TweenInfo.new(0.3, Enum.EasingStyle.Sine), {Position = UDim2.new(0, 0, 0, 0)})
+            tween:Play()
+        end)
+    end
+end
+
+local function resizeGUI(count)
+    local baseHeight = 135 + (count * 40)
+    local tween = TweenService:Create(main, TweenInfo.new(0.35, Enum.EasingStyle.Quad), {Size = UDim2.new(0, 300, 0, baseHeight)})
+    tween:Play()
+end
+
+local currentTab = nil
+local function setActiveTab(tabButton)
+    if currentTab then
+        currentTab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+    end
+    currentTab = tabButton
+    tabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+end
+
+local orBtn = makeTab("▶┆OR-2/OR-9")
+local taBtn = makeTab("▶┆TA İçi")
+
+local movementController = MovementSystem.new()
+
+orBtn.MouseButton1Click:Connect(function()
+    setActiveTab(orBtn)
+    clearButtons()
+    resizeGUI(4)
+    animateIn({"• 1. Parkur", "• 2. Parkur", "• 3. Parkur", "⏹️ DURDUR"})
+    
+    for _, btn in pairs(buttonHolder:GetChildren()) do
+        if btn:IsA("TextButton") then
+            if btn.Text == "⏹️ DURDUR" then
+                btn.MouseButton1Click:Connect(function()
+                    movementController:Stop()
+                end)
+            else
+                btn.MouseButton1Click:Connect(function()
+                    movementController:StartRoute(POSITION_SETS.OR[tonumber(string.match(btn.Text, "%d+"))])
+                end)
+            end
+        end
+    end
+end)
+
+taBtn.MouseButton1Click:Connect(function()
+    setActiveTab(taBtn)
+    clearButtons()
+    resizeGUI(5)
+    animateIn({"• 1. Parkur", "• 2. Parkur", "• 3. Parkur", "• 4. Parkur", "⏹️ DURDUR"})
+    
+    for _, btn in pairs(buttonHolder:GetChildren()) do
+        if btn:IsA("TextButton") then
+            if btn.Text == "⏹️ DURDUR" then
+                btn.MouseButton1Click:Connect(function()
+                    movementController:Stop()
+                end)
+            else
+                btn.MouseButton1Click:Connect(function()
+                    movementController:StartRoute(POSITION_SETS.TA[tonumber(string.match(btn.Text, "%d+"))])
+                end)
+            end
+        end
+    end
+end)
+
+setActiveTab(orBtn)
+resizeGUI(4)
+animateIn({"• 1. Parkur", "• 2. Parkur", "• 3. Parkur", "⏹️ DURDUR"})
+
+for _, btn in pairs(buttonHolder:GetChildren()) do
+    if btn:IsA("TextButton") then
+        if btn.Text == "⏹️ DURDUR" then
+            btn.MouseButton1Click:Connect(function()
+                movementController:Stop()
+            end)
+        else
+            btn.MouseButton1Click:Connect(function()
+                movementController:StartRoute(POSITION_SETS.OR[tonumber(string.match(btn.Text, "%d+"))])
+            end)
+        end
+    end
+end
+
+local credit = Instance.new("TextLabel", main)
+credit.Size = UDim2.new(1, 0, 0, 28)
+credit.AnchorPoint = Vector2.new(0.5, 0.5)
+credit.Position = UDim2.new(0.5, 0, 1, -45)
+credit.BackgroundTransparency = 1
+credit.Text = "Sydearr Team"
+credit.Font = Enum.Font.GothamBlack
+credit.TextSize = 16
+credit.TextXAlignment = Enum.TextXAlignment.Center
+credit.TextYAlignment = Enum.TextYAlignment.Center
+credit.TextColor3 = Color3.fromRGB(100, 200, 255)
+credit.TextStrokeTransparency = 0.4
+
+local gradient = Instance.new("UIGradient", credit)
+gradient.Rotation = 0
+gradient.Color = ColorSequence.new{
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(100, 200, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 200, 255))
+}
+gradient.Transparency = NumberSequence.new{
+    NumberSequenceKeypoint.new(0, 0),
+    NumberSequenceKeypoint.new(0.5, 0.05),
+    NumberSequenceKeypoint.new(1, 0)
+}
+
+task.spawn(function()
+    while true do
+        local tweenInfo = TweenInfo.new(2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+        local tween1 = TweenService:Create(gradient, tweenInfo, {Offset = Vector2.new(1, 0)})
+        local tween2 = TweenService:Create(gradient, tweenInfo, {Offset = Vector2.new(-1, 0)})
+        tween1:Play()
+        tween1.Completed:Wait()
+        tween2:Play()
+        tween2.Completed:Wait()
+    end
+end)
