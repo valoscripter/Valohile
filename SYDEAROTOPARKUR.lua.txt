@@ -13,7 +13,7 @@ local POSITION_SETS = {
     {
         Name = "Parkur 1",
         Color = Color3.fromRGB(80, 80, 80),
-        Icon = "⚪",
+        Icon = "•",
         Positions = {
  Vector3.new(2803.49, 36.69, -849.68),
  Vector3.new(2801.20, 38.85, -847.44),
@@ -393,7 +393,7 @@ local POSITION_SETS = {
     {
         Name = "Parkur 2",
         Color = Color3.fromRGB(70, 70, 70),
-        Icon = "⚪",
+        Icon = "•",
         Positions = {
  Vector3.new(2577.29, 31.84, -984.10),
  Vector3.new(2577.29, 31.84, -984.10),
@@ -637,7 +637,7 @@ local POSITION_SETS = {
     {
         Name = "Parkur 3",
         Color = Color3.fromRGB(60, 60, 60),
-        Icon = "⚪",
+        Icon = "•",
         Positions = {
  Vector3.new(2464.44, 31.84, -1051.09),
  Vector3.new(2464.44, 31.84, -1051.09),
@@ -850,7 +850,7 @@ local POSITION_SETS = {
     {
         Name = "Parkur 4 (Zor Olan)",
         Color = Color3.fromRGB(50, 50, 50),
-        Icon = "⚪",
+        Icon = "•",
         Positions = {
  Vector3.new(2897.69, 32.10, -1119.19),
  Vector3.new(2897.69, 32.10, -1119.19),
@@ -1419,7 +1419,7 @@ local POSITION_SETS = {
     {
         Name = "Eğitim 1. Parkur (Sadece Eğitimlerde Çalışır)",
         Color = Color3.fromRGB(60, 60, 60),
-        Icon = "⚪",
+        Icon = "•",
         Positions = {
  Vector3.new(212.03, 7.71, 602.26),
  Vector3.new(212.03, 7.71, 602.26),
@@ -1651,7 +1651,7 @@ local POSITION_SETS = {
     {
         Name = "Eğitim 2. Parkur (Yakında...)",
         Color = Color3.fromRGB(128, 128, 128),
-        Icon = "⚫",
+        Icon = "•",
         Positions = {
 
         }
@@ -1659,7 +1659,7 @@ local POSITION_SETS = {
     {
         Name = "Eğitim 3. Parkur (Yakında...)",
         Color = Color3.fromRGB(128, 128, 128),
-        Icon = "⚫",
+        Icon = "•",
         Positions = {
 
         }
@@ -1819,7 +1819,7 @@ function MovementSystem:ResetCharacter()
     local character = LocalPlayer.Character
     if character and character:FindFirstChild("Humanoid") then
         character.Humanoid:ChangeState(Enum.HumanoidStateType.Freefall)
-        task.wait(0.1)
+        task.wait(0.01)
         character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
     end
 end
@@ -2025,7 +2025,7 @@ end)
 -- DURMA butonu oluşturma
 local stopBtn = Instance.new("TextButton")
 stopBtn.Name = "StopButton"
-stopBtn.Text = "DURMA"
+stopBtn.Text = "Durdur"
 stopBtn.BackgroundColor3 = Color3.fromRGB(220, 60, 60)
 stopBtn.TextColor3 = Color3.new(1, 1, 1)
 stopBtn.Font = Enum.Font.GothamBold
