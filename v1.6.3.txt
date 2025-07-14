@@ -21,21 +21,43 @@ local Section1 = Tab1:AddSection({
 
 Tab1:AddParagraph("Sydearr Hub – TA V1.6.4 Büyük Güncelleme! ", [[
  
-▶┆ Sydearr Sohbet Alanı Eklendi.
+▶┆ Oto Parkur Yapma Eklendi.
  
-▶┆ Silinen Dosyalar Geri Eklendi.
+▶┆ Araba Sürme Eklendi.
  
-▶┆ İşlevini Kaybetmiş Guiler Çalışır Hale Geldi.
+▶┆ Lag Server Eklendi.
  
-▶┆ Kill All (İsyancı) Geliştirildi.
+▶┆ Modlu Glock-17 Eklendi.
 
-▶┆ Fling All Geliştirildi.
+▶┆ Anti-Track Geliştirildi.
 
-▶┆ Anti - Track Geliştirildi.
+▶┆ Kill All İçin Menü Eklendi.
 
-▶┆ PC Ui Tamamen Sorunsuz Çalışır Hale Geldi.
+▶┆ Yüz Değiştirme Eklendi.
 
-NOT: Bu hile tamamen ücretsizdir, para ile satan olur ise bizimle iletişime geçin.
+▶┆ NPC Kontrol Eklendi.
+
+▶┆ Animasyon Toolları Eklendi.
+
+▶┆ THO Para Hilesi Eklendi.
+
+▶┆ TPT Eğitim Açma Eklendi.
+
+▶┆ Basit Kamplar İçin Team Changer Eklendi.
+
+▶┆ TA Sahte Çark Çevirme Eklendi.
+
+▶┆ TA Sahte Transfer Eklendi.
+
+▶┆ Sahte Sohbet Mesajı Eklendi.
+
+▶┆ Hitbox Expander Eklendi.
+
+▶┆ Aimbot Eklendi.
+
+▶┆ Silent Aim Eklendi.
+
+•┆ Not: Bu hile tamamen ücretsizdir, para ile satan olur ise bizimle iletişime geçin.
 
 
 
