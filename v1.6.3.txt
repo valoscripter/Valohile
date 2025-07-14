@@ -78,6 +78,8 @@ Tab1:AddParagraph("UI Developers:", [[
 •┆ @void_x11
 
 •┆ @sametaslan37373
+
+•┆ @krafi_q
 ]])
 
 Tab1:AddParagraph("Content Creators:", [[
@@ -1905,6 +1907,8 @@ Tab8:AddParagraph("UI Developers:", [[
 •┆ @void_x11
 
 •┆ @sametaslan37373
+
+•┆ @krafi_q
 ]])
 
 Tab8:AddParagraph("Content Creators:", [[
