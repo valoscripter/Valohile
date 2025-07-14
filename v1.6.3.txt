@@ -781,7 +781,25 @@ Tab7:AddButton({
 })
 
 
-
+Tab7:AddButton({
+    Name = "• Yüz Değiştirme FE",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Y%C3%BCz-De%C4%9Fi%C5%9Ftirme.lua"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
 
 
 
