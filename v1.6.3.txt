@@ -737,6 +737,28 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
+    Name = "• Lag Server",
+    Callback = function()
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/LagServer"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
     Name = "• Silah Modifikasyonları",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/gunmods.lua"
