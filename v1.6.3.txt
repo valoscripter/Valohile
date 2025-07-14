@@ -812,7 +812,7 @@ Tab7:AddButton({
 Tab7:AddButton({
     Name = "• Modlu Glock-17",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/LagServer"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/ModluGlock.lua"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
