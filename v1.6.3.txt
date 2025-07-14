@@ -630,7 +630,7 @@ Tab7:AddButton({
 Tab7:AddButton({
     Name = "• Anti - Track",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/antitrack.lua"
+        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/Anti-Track.lua"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
