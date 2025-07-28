@@ -198,22 +198,7 @@ local Section2 = Tab2:AddSection({
 Tab2:AddButton({
     Name = "• Oto Alım Yap",
     Callback = function()
-        local scriptUrl = "https://raw.githubusercontent.com/KaanFriztche/Open-source-/refs/heads/main/otoal%C4%B1m"
         
-        -- HttpGet komutu ile scripti almak
-        local success, response = pcall(function()
-            return game:HttpGet(scriptUrl)
-        end)
-        
-        if success and response then
-            -- loadstring ile scripti çalıştırıyoruz
-            loadstring(response)()
-        else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
-        end
-    end
-})
 
 
 
@@ -233,10 +218,198 @@ Tab2:AddButton({
             -- loadstring ile scripti çalıştırıyoruz
             loadstring(response)()
         else
-            -- Hata durumunda kullanıcıya uyarı veriyoruz
-            warn("Script yüklenemedi!")
+            -- Hata durumunda kullanıcıya u
+-- 📌 Oyunun tamamen yüklenmesini bekle
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+-- 📌 LocalPlayer hazır olana kadar bekle
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+while not LocalPlayer or not LocalPlayer:FindFirstChild("PlayerGui") do
+    task.wait()
+    LocalPlayer = Players.LocalPlayer
+end
+
+-- 📌 GUI Elemanlarını Oluşturma
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "KomutSistemiGUI"
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Frame.Position = UDim2.new(1, -260, 0.3, 0)
+Frame.Size = UDim2.new(0, 250, 0, 240)
+Frame.BorderSizePixel = 0
+Frame.BackgroundTransparency = 0.1
+Frame.Active = true
+Frame.Draggable = true
+
+local UICorner1 = Instance.new("UICorner", Frame)
+UICorner1.CornerRadius = UDim.new(0, 10)
+
+local SearchBox = Instance.new("TextBox", Frame)
+SearchBox.PlaceholderText = "İsim ara..."
+SearchBox.Text = ""
+SearchBox.Position = UDim2.new(0.05, 0, 0.05, 0)
+SearchBox.Size = UDim2.new(0.6, 0, 0, 30)
+SearchBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+SearchBox.Font = Enum.Font.GothamBold
+SearchBox.TextSize = 12
+
+local UICorner2 = Instance.new("UICorner", SearchBox)
+UICorner2.CornerRadius = UDim.new(0, 8)
+
+local SearchButton = Instance.new("TextButton", Frame)
+SearchButton.Text = "Takip Et"
+SearchButton.Position = UDim2.new(0.7, 0, 0.05, 0)
+SearchButton.Size = UDim2.new(0.25, 0, 0, 30)
+SearchButton.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+SearchButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+SearchButton.Font = Enum.Font.GothamBold
+SearchButton.TextSize = 12
+
+local FollowedPlayerLabel = Instance.new("TextLabel", Frame)
+FollowedPlayerLabel.Text = "Takip edilen kişi: -"
+FollowedPlayerLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+FollowedPlayerLabel.BackgroundTransparency = 1
+FollowedPlayerLabel.Position = UDim2.new(0.05, 0, 0.25, 0)
+FollowedPlayerLabel.Size = UDim2.new(0.9, 0, 0, 30)
+FollowedPlayerLabel.Font = Enum.Font.GothamBold
+FollowedPlayerLabel.TextSize = 12
+FollowedPlayerLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local GivenCommand = Instance.new("TextLabel", Frame)
+GivenCommand.Text = "Verilen komut: -"
+GivenCommand.TextColor3 = Color3.fromRGB(255, 255, 255)
+GivenCommand.BackgroundTransparency = 1
+GivenCommand.Position = UDim2.new(0.05, 0, 0.45, 0)
+GivenCommand.Size = UDim2.new(0.9, 0, 0, 30)
+GivenCommand.Font = Enum.Font.GothamBold
+GivenCommand.TextSize = 12
+GivenCommand.TextXAlignment = Enum.TextXAlignment.Left
+
+local ApplyButton = Instance.new("TextButton", Frame)
+ApplyButton.Text = "Komutu Uygula"
+ApplyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ApplyButton.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ApplyButton.Position = UDim2.new(0.5, 0, 0.75, 0)
+ApplyButton.Size = UDim2.new(0, 150, 0, 30)
+ApplyButton.AnchorPoint = Vector2.new(0.5, 0)
+ApplyButton.Font = Enum.Font.GothamBold
+ApplyButton.TextSize = 12
+
+local UICorner3 = Instance.new("UICorner", ApplyButton)
+UICorner3.CornerRadius = UDim.new(0, 8)
+
+-- 📌 Cache
+local followedPlayer = nil
+local lastCommand = nil
+local commandLocked = false
+local controlling = false
+
+-- 📌 Komutlar
+local commandActions = {
+    ["Sağ yüz."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-90), 0) end end,
+    ["Sağ yüz!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-90), 0) end end,
+    ["Sol yüz."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(90), 0) end end,
+    ["Sol yüz!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(90), 0) end end,
+    ["Arka yüz."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(180), 0) end end,
+    ["Arka yüz!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(180), 0) end end,
+    ["Sağa dön."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-90), 0) end end,
+    ["Sağa dön!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-90), 0) end end,
+    ["Sola dön."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(90), 0) end end,
+    ["Sola dön!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(90), 0) end end,
+    ["Geriye dön."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(180), 0) end end,
+    ["Geriye dön!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(180), 0) end end,
+    ["Sağ çapraz."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-45), 0) end end,
+    ["Sağ çapraz!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(-45), 0) end end,
+    ["Sol çapraz."] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(45), 0) end end,
+    ["Sol çapraz!"] = function(char) if not commandLocked then char.HumanoidRootPart.CFrame *= CFrame.Angles(0, math.rad(45), 0) end end,
+    ["Merkez yüz."] = function(char, source)
+        commandLocked = false
+        if source and source.Character and source.Character:FindFirstChild("HumanoidRootPart") then
+            local dir = source.Character.HumanoidRootPart.Position - char.HumanoidRootPart.Position
+            char.HumanoidRootPart.CFrame = CFrame.new(char.HumanoidRootPart.Position, char.HumanoidRootPart.Position + Vector3.new(dir.X, 0, dir.Z))
+        end
+    end,
+    ["Merkez yüz!"] = function(char, source) commandActions["Merkez yüz."](char, source) end,
+    ["Kilit yüz."] = function(char) commandLocked = true controlling = false end,
+    ["Kilit yüz!"] = function(char) commandLocked = true controlling = false end,
+    ["Kontrol yüz."] = function(char, source)
+        commandLocked = false
+        controlling = true
+        coroutine.wrap(function()
+            while controlling and followedPlayer and followedPlayer.Character and followedPlayer.Character:FindFirstChild("HumanoidRootPart") do
+                local root = char:FindFirstChild("HumanoidRootPart")
+                local targetRoot = followedPlayer.Character.HumanoidRootPart
+                local distance = (root.Position - targetRoot.Position).Magnitude
+                if distance < 7 then -- Çok yakınsa anında hızlı dön
+                    local dir = targetRoot.Position - root.Position
+                    root.CFrame = CFrame.new(root.Position, root.Position + Vector3.new(dir.X, 0, dir.Z))
+                elseif distance < 70 then -- Normal mesafe
+                    local dir = targetRoot.Position - root.Position
+                    root.CFrame = CFrame.new(root.Position, root.Position + Vector3.new(dir.X, 0, dir.Z))
+                else -- Uzaksa hızlı hızlı etrafında dön
+                    root.CFrame *= CFrame.Angles(0, math.rad(60), 0)
+                end
+                task.wait(0.05)
+            end
+        end)()
+    end,
+    ["Kontrol yüz!"] = function(char, source) commandActions["Kontrol yüz."](char, source) end,
+}
+
+-- 📌 Komut kontrol
+local function checkMessage(message)
+    if not message then return end
+    message = message:match("^%s*(.-)%s*$")
+    if commandActions[message] then
+        lastCommand = message
+        GivenCommand.Text = "Verilen komut: " .. message
+    end
+end
+
+-- 📌 Takip edilen oyuncuya bağlan
+local function followPlayer(player)
+    if player then
+        player.Chatted:Connect(function(msg)
+            checkMessage(msg)
+        end)
+    end
+end
+
+-- 📌 Butonlar
+SearchButton.MouseButton1Click:Connect(function()
+    local text = SearchBox.Text:lower()
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player.Name:lower():find(text) then
+            followedPlayer = player
+            FollowedPlayerLabel.Text = "Takip edilen kişi: " .. player.Name
+            followPlayer(player)
+            break
         end
     end
+end)
+
+ApplyButton.MouseButton1Click:Connect(function()
+    if lastCommand and followedPlayer then
+        local char = LocalPlayer.Character
+        if char and char:FindFirstChild("HumanoidRootPart") then
+            local action = commandActions[lastCommand]
+            if action then
+                action(char, followedPlayer)
+                print("Komut uygulandı:", lastCommand)
+            end
+        end
+        lastCommand = nil
+        GivenCommand.Text = "Verilen komut: -"
+    end
+end)
 })
 
 
