@@ -75,7 +75,7 @@ Tab1:AddParagraph("UI Developers:", [[
 
 •┆ @ross_x1
 
-•┆ @void_x11
+•┆ @chesterfield09
 
 •┆ @sametaslan37373
 
@@ -1904,7 +1904,7 @@ Tab8:AddParagraph("UI Developers:", [[
 
 •┆ @ross_x1
 
-•┆ @void_x11
+•┆ @chesterfield09
 
 •┆ @sametaslan37373
 
