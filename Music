@@ -203,7 +203,7 @@ local songs={
  {Name="Royalty",Artist="Egzod & Maestro Chives",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Egzod%20&%20Maestro%20Chives%20-%20Royalty%20(Lyrics)%20ft.%20Neoni.mp3"},
  {Name="Homage",Artist="Mild High Club",URL="https://example.com/Calm_Melody.mp3"},
  {Name="Freaks",Artist="Surf Curse",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Freaks%20-%20Surf%20Curse%20(Lyrics).mp3"},
- {Name="Little Dark Age",MGMT",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/MGMT%20-%20Little%20Dark%20Age%20(Lyrics).mp3"},
+ {Name="Little Dark Age",MGMT",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/MGMT%20-%20Little%20Dark%20Age%20(Lyrics).mp3"}
 }
 local index=1
 local pausedTime=0
