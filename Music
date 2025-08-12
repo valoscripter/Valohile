@@ -43,7 +43,7 @@ local songs={
     {Name="Sunroof",Artist="Nicky Youre, dazy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Nicky%20Youre,%20dazy%20-%20Sunroof%20(Lyrics).mp3"},
     {Name="House Of Memories",Artist="Panic! At The Disco",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Panic!%20At%20The%20Disco%20-%20House%20of%20Memories.mp3"},
     {Name="Rockstar",Artist="Post Malone",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Post%20Malone%20-%20rockstar%20(Lyrics)%20ft.%2021%20Savage.mp3"},
-
+    {Name="There's Nothing Holding Me Back",Artist="Shawn Mendes",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Shawn%20Mendes%20%20There's%20Nothing%20Holding%20Me%20Back%20(Lyrics).mp3"},
 
 }
 local index=1 local pausedTime=0 local soundInstance
