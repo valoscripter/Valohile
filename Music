@@ -1,375 +1,45 @@
 if game.CoreGui:FindFirstChild("SpotifyPlayer")then return end
-local SoundService=game:GetService("SoundService")
-local Players=game:GetService("Players")
-local lp=Players.LocalPlayer
-local UserInputService=game:GetService("UserInputService")
-local HttpService=game:GetService("HttpService")
-local TweenService=game:GetService("TweenService")
-local RunService=game:GetService("RunService")
-local music=Instance.new("Sound",SoundService)
-music.Name="SpotifySound"
-music.Volume=1
-music.Looped=false
-local gui=Instance.new("ScreenGui",game.CoreGui)
-gui.Name="SpotifyPlayer"
-gui.ResetOnSpawn=false
-local function addDrag(frame)
- local dragging=false
- local dragInput,dragStart,startPos
- frame.InputBegan:Connect(function(input)
-  if input.UserInputType==Enum.UserInputType.MouseButton1 then
-   dragging=true
-   dragStart=input.Position
-   startPos=frame.Position
-   input.Changed:Connect(function()
-    if input.UserInputState==Enum.UserInputState.End then
-     dragging=false
-    end
-   end)
-  end
- end)
- frame.InputChanged:Connect(function(input)
-  if input.UserInputType==Enum.UserInputType.MouseMovement then
-   dragInput=input
-  end
- end)
- UserInputService.InputChanged:Connect(function(input)
-  if input==dragInput and dragging then
-   local delta=input.Position-dragStart
-   frame.Position=UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
-  end
- end)
-end
-local bg=Instance.new("Frame",gui)
-bg.Size=UDim2.new(0,550,0,150)
-bg.Position=UDim2.new(0.5,-275,1,-160)
-bg.BackgroundColor3=Color3.fromRGB(18,18,18)
-bg.BorderSizePixel=0
-bg.Name="PlayerBar"
-Instance.new("UICorner",bg).CornerRadius=UDim.new(0,12)
-addDrag(bg)
-local toggleBtn=Instance.new("TextButton",bg)
-toggleBtn.Size=UDim2.new(0,40,0,30)
-toggleBtn.Position=UDim2.new(1,-45,0,5)
-toggleBtn.Text="≡"
-toggleBtn.TextColor3=Color3.fromRGB(255,255,255)
-toggleBtn.Font=Enum.Font.GothamBold
-toggleBtn.TextSize=18
-toggleBtn.BackgroundColor3=Color3.fromRGB(40,40,40)
-toggleBtn.BorderSizePixel=0
-Instance.new("UICorner",toggleBtn).CornerRadius=UDim.new(0,6)
-local iconFrame=Instance.new("TextButton",gui)
-iconFrame.Size=UDim2.new(0,60,0,60)
-iconFrame.Position=UDim2.new(1,-80,0,20)
-iconFrame.AnchorPoint=Vector2.new(0,0)
-iconFrame.BackgroundColor3=Color3.fromRGB(18,18,18)
-iconFrame.BorderSizePixel=0
-iconFrame.Visible=false
-iconFrame.Text=""
-Instance.new("UICorner",iconFrame).CornerRadius=UDim.new(0,12)
-addDrag(iconFrame)
-local eqBars={}
-for i=1,3 do
- local bar=Instance.new("Frame",iconFrame)
- bar.Size=UDim2.new(0,6,0,20)
- bar.Position=UDim2.new(0,10+(i-1)*15,0.5,-10)
- bar.BackgroundColor3=Color3.fromRGB(120,255,120)
- bar.BorderSizePixel=0
- Instance.new("UICorner",bar).CornerRadius=UDim.new(0,3)
- eqBars[i]=bar
-end
-toggleBtn.MouseButton1Click:Connect(function()
- bg.Visible=false
- iconFrame.Visible=true
-end)
-iconFrame.MouseButton1Click:Connect(function()
- iconFrame.Visible=false
- bg.Visible=true
-end)
-local cover=Instance.new("Frame",bg)
-cover.Size=UDim2.new(0,60,0,60)
-cover.Position=UDim2.new(0,10,0,10)
-cover.BackgroundColor3=Color3.fromRGB(40,40,40)
-Instance.new("UICorner",cover).CornerRadius=UDim.new(0,6)
-local coverLabel=Instance.new("TextLabel",cover)
-coverLabel.Size=UDim2.new(1,0,1,0)
-coverLabel.Text="♪"
-coverLabel.TextColor3=Color3.fromRGB(120,255,120)
-coverLabel.Font=Enum.Font.GothamBold
-coverLabel.TextSize=32
-coverLabel.BackgroundTransparency=1
-local songName=Instance.new("TextLabel",bg)
-songName.Position=UDim2.new(0,80,0,15)
-songName.Size=UDim2.new(0,200,0,20)
-songName.Text="Şarkı Seçilmedi"
-songName.Font=Enum.Font.GothamBold
-songName.TextColor3=Color3.fromRGB(255,255,255)
-songName.TextSize=14
-songName.BackgroundTransparency=1
-songName.TextXAlignment=Enum.TextXAlignment.Left
-local artist=Instance.new("TextLabel",bg)
-artist.Position=UDim2.new(0,80,0,37)
-artist.Size=UDim2.new(0,200,0,16)
-artist.Text="Sanatçı Bilgisi"
-artist.Font=Enum.Font.Gotham
-artist.TextColor3=Color3.fromRGB(170,170,170)
-artist.TextSize=12
-artist.BackgroundTransparency=1
-artist.TextXAlignment=Enum.TextXAlignment.Left
-local function makeTextBtn(label)
- local btn=Instance.new("TextButton")
- btn.Size=UDim2.new(0,50,0,36)
- btn.Text=label
- btn.TextColor3=Color3.fromRGB(255,255,255)
- btn.Font=Enum.Font.GothamBold
- btn.TextSize=14
- btn.BackgroundColor3=Color3.fromRGB(40,40,40)
- btn.BorderSizePixel=0
- Instance.new("UICorner",btn).CornerRadius=UDim.new(0,6)
- return btn
-end
-local buttonHolder=Instance.new("Frame",bg)
-buttonHolder.Size=UDim2.new(0,270,0,36)
-buttonHolder.Position=UDim2.new(0.5,-135,0,75)
-buttonHolder.BackgroundTransparency=1
-local UIListLayout=Instance.new("UIListLayout",buttonHolder)
-UIListLayout.FillDirection=Enum.FillDirection.Horizontal
-UIListLayout.HorizontalAlignment=Enum.HorizontalAlignment.Center
-UIListLayout.SortOrder=Enum.SortOrder.LayoutOrder
-UIListLayout.Padding=UDim.new(0,10)
-local prev=makeTextBtn("Prev")
-prev.Parent=buttonHolder
-local play=makeTextBtn("Play")
-play.Parent=buttonHolder
-local pause=makeTextBtn("Pause")
-pause.Parent=buttonHolder
-pause.Visible=false
-local next=makeTextBtn("Next")
-next.Parent=buttonHolder
-local repeatBtn=makeTextBtn("Loop")
-repeatBtn.Parent=buttonHolder
+local SoundService=game:GetService("SoundService")local Players=game:GetService("Players")local lp=Players.LocalPlayer
+local UserInputService=game:GetService("UserInputService")local HttpService=game:GetService("HttpService")local TweenService=game:GetService("TweenService")local RunService=game:GetService("RunService")
+local music=Instance.new("Sound",SoundService)music.Name="SpotifySound"music.Volume=1 music.Looped=false
+local gui=Instance.new("ScreenGui",game.CoreGui)gui.Name="SpotifyPlayer"gui.ResetOnSpawn=false
+local function addDrag(frame)local dragging=false local dragInput,dragStart,startPos frame.InputBegan:Connect(function(input)if input.UserInputType==Enum.UserInputType.MouseButton1 then dragging=true dragStart=input.Position startPos=frame.Position input.Changed:Connect(function()if input.UserInputState==Enum.UserInputState.End then dragging=false end end)end end)frame.InputChanged:Connect(function(input)if input.UserInputType==Enum.UserInputType.MouseMovement then dragInput=input end end)UserInputService.InputChanged:Connect(function(input)if input==dragInput and dragging then local delta=input.Position-dragStart frame.Position=UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)end end)end
+local bg=Instance.new("Frame",gui)bg.Size=UDim2.new(0,550,0,150)bg.Position=UDim2.new(0.5,-275,1,-160)bg.BackgroundColor3=Color3.fromRGB(18,18,18)bg.BorderSizePixel=0 bg.Name="PlayerBar"Instance.new("UICorner",bg).CornerRadius=UDim.new(0,12)addDrag(bg)
+local toggleBtn=Instance.new("TextButton",bg)toggleBtn.Size=UDim2.new(0,40,0,30)toggleBtn.Position=UDim2.new(1,-45,0,5)toggleBtn.Text="≡"toggleBtn.TextColor3=Color3.fromRGB(255,255,255)toggleBtn.Font=Enum.Font.GothamBold toggleBtn.TextSize=18 toggleBtn.BackgroundColor3=Color3.fromRGB(40,40,40)toggleBtn.BorderSizePixel=0 Instance.new("UICorner",toggleBtn).CornerRadius=UDim.new(0,6)
+local iconFrame=Instance.new("TextButton",gui)iconFrame.Size=UDim2.new(0,60,0,60)iconFrame.Position=UDim2.new(1,-80,0,20)iconFrame.AnchorPoint=Vector2.new(0,0)iconFrame.BackgroundColor3=Color3.fromRGB(18,18,18)iconFrame.BorderSizePixel=0 iconFrame.Visible=false iconFrame.Text=""Instance.new("UICorner",iconFrame).CornerRadius=UDim.new(0,12)addDrag(iconFrame)
+local eqBars={}for i=1,3 do local bar=Instance.new("Frame",iconFrame)bar.Size=UDim2.new(0,6,0,20)bar.Position=UDim2.new(0,10+(i-1)*15,0.5,-10)bar.BackgroundColor3=Color3.fromRGB(120,255,120)bar.BorderSizePixel=0 Instance.new("UICorner",bar).CornerRadius=UDim.new(0,3)eqBars[i]=bar end
+toggleBtn.MouseButton1Click:Connect(function()bg.Visible=false iconFrame.Visible=true end)
+iconFrame.MouseButton1Click:Connect(function()iconFrame.Visible=false bg.Visible=true end)
+local cover=Instance.new("Frame",bg)cover.Size=UDim2.new(0,60,0,60)cover.Position=UDim2.new(0,10,0,10)cover.BackgroundColor3=Color3.fromRGB(40,40,40)Instance.new("UICorner",cover).CornerRadius=UDim.new(0,6)
+local coverLabel=Instance.new("TextLabel",cover)coverLabel.Size=UDim2.new(1,0,1,0)coverLabel.Text="♪"coverLabel.TextColor3=Color3.fromRGB(120,255,120)coverLabel.Font=Enum.Font.GothamBold coverLabel.TextSize=32 coverLabel.BackgroundTransparency=1
+local songName=Instance.new("TextLabel",bg)songName.Position=UDim2.new(0,80,0,15)songName.Size=UDim2.new(0,200,0,20)songName.Text="Şarkı Seçilmedi"songName.Font=Enum.Font.GothamBold songName.TextColor3=Color3.fromRGB(255,255,255)songName.TextSize=14 songName.BackgroundTransparency=1 songName.TextXAlignment=Enum.TextXAlignment.Left
+local artist=Instance.new("TextLabel",bg)artist.Position=UDim2.new(0,80,0,37)artist.Size=UDim2.new(0,200,0,16)artist.Text="Sanatçı Bilgisi"artist.Font=Enum.Font.Gotham artist.TextColor3=Color3.fromRGB(170,170,170)artist.TextSize=12 artist.BackgroundTransparency=1 artist.TextXAlignment=Enum.TextXAlignment.Left
+local function makeTextBtn(label)local btn=Instance.new("TextButton")btn.Size=UDim2.new(0,50,0,36)btn.Text=label btn.TextColor3=Color3.fromRGB(255,255,255)btn.Font=Enum.Font.GothamBold btn.TextSize=14 btn.BackgroundColor3=Color3.fromRGB(40,40,40)btn.BorderSizePixel=0 Instance.new("UICorner",btn).CornerRadius=UDim.new(0,6)return btn end
+local buttonHolder=Instance.new("Frame",bg)buttonHolder.Size=UDim2.new(0,270,0,36)buttonHolder.Position=UDim2.new(0.5,-135,0,75)buttonHolder.BackgroundTransparency=1
+local UIListLayout=Instance.new("UIListLayout",buttonHolder)UIListLayout.FillDirection=Enum.FillDirection.Horizontal UIListLayout.HorizontalAlignment=Enum.HorizontalAlignment.Center UIListLayout.SortOrder=Enum.SortOrder.LayoutOrder UIListLayout.Padding=UDim.new(0,10)
+local prev=makeTextBtn("Prev")prev.Parent=buttonHolder
+local play=makeTextBtn("Play")play.Parent=buttonHolder
+local pause=makeTextBtn("Pause")pause.Parent=buttonHolder pause.Visible=false
+local next=makeTextBtn("Next")next.Parent=buttonHolder
+local repeatBtn=makeTextBtn("Loop")repeatBtn.Parent=buttonHolder
 local repeatCount=0
-local repeatText=Instance.new("TextLabel",bg)
-repeatText.Size=UDim2.new(0,50,0,20)
-repeatText.Position=UDim2.new(0,490,0,50)
-repeatText.BackgroundTransparency=1
-repeatText.Text="x0"
-repeatText.Font=Enum.Font.GothamBold
-repeatText.TextColor3=Color3.fromRGB(120,255,120)
-repeatText.TextSize=14
-repeatText.TextXAlignment=Enum.TextXAlignment.Center
-local progressBarBg=Instance.new("Frame",bg)
-progressBarBg.Size=UDim2.new(0.85,0,0,6)
-progressBarBg.Position=UDim2.new(0.075,0,1,-18)
-progressBarBg.BackgroundColor3=Color3.fromRGB(50,50,50)
-progressBarBg.BorderSizePixel=0
-Instance.new("UICorner",progressBarBg).CornerRadius=UDim.new(1,0)
-local progressBarFill=Instance.new("Frame",progressBarBg)
-progressBarFill.Size=UDim2.new(0,0,1,0)
-progressBarFill.BackgroundColor3=Color3.fromRGB(120,255,120)
-progressBarFill.BorderSizePixel=0
-progressBarFill.Name="Fill"
-Instance.new("UICorner",progressBarFill).CornerRadius=UDim.new(1,0)
-local progressDot=Instance.new("Frame",progressBarBg)
-progressDot.Size=UDim2.new(0,12,0,12)
-progressDot.Position=UDim2.new(0,-6,0.5,-6)
-progressDot.BackgroundColor3=Color3.fromRGB(255,255,255)
-progressDot.BorderSizePixel=0
-Instance.new("UICorner",progressDot).CornerRadius=UDim.new(1,0)
-local currentTime=Instance.new("TextLabel",bg)
-currentTime.Position=UDim2.new(0.06,0,1,-45)
-currentTime.Size=UDim2.new(0,50,0,20)
-currentTime.Text="00:00"
-currentTime.Font=Enum.Font.GothamBold
-currentTime.TextSize=14
-currentTime.TextColor3=Color3.fromRGB(200,255,200)
-currentTime.BackgroundTransparency=1
-currentTime.TextXAlignment=Enum.TextXAlignment.Left
-local totalTime=Instance.new("TextLabel",bg)
-totalTime.Position=UDim2.new(0.87,0,1,-45)
-totalTime.Size=UDim2.new(0,50,0,20)
-totalTime.Text="00:00"
-totalTime.Font=Enum.Font.GothamBold
-totalTime.TextSize=14
-totalTime.TextColor3=Color3.fromRGB(200,255,200)
-totalTime.BackgroundTransparency=1
-totalTime.TextXAlignment=Enum.TextXAlignment.Right
-local songs={
- {Name="Revenge",Artist="XXXTENTACION",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/XXXTENTACION%20-%20Revenge%20(Lyrics)%20%20I've%20dug%20two%20graves%20for%20us%20my%20dear.mp3"},
- {Name="See You Again",Artist="Wiz Khalifa",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Wiz%20Khalifa%20-%20See%20You%20Again%20ft.%20Charlie%20Puth%20(Lyrics).mp3"},
- {Name="Danza Kuduro",Artist="Don Omar",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Don%20Omar%20-%20Danza%20Kuduro%20(Lyrics)%20ft.%20Lucenzo.mp3"},
- {Name="Snoop Dog",Artist="Dr. Dre",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Dr.%20Dre%20-%20Still%20D.R.E.%20(Lyrics)%20ft.%20Snoop%20Dogg.mp3"},
- {Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"},
- {Name="Royalty",Artist="Egzod & Maestro Chives",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Egzod%20&%20Maestro%20Chives%20-%20Royalty%20(Lyrics)%20ft.%20Neoni.mp3"},
- {Name="Homage",Artist="Mild High Club",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Mild%20High%20Club%20-%20Homage.mp3"},
- {Name="Freaks",Artist="Surf Curse",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Freaks%20-%20Surf%20Curse%20(Lyrics).mp3"},
- {Name="Little Dark Age",MGMT",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/MGMT%20-%20Little%20Dark%20Age%20(Lyrics).mp3"}
-}
-local index=1
-local pausedTime=0
-local soundInstance
-local function playSong(i)
- local s=songs[i]
- if s and s.URL~="" then
-  if soundInstance then
-   soundInstance:Stop()
-   soundInstance:Destroy()
-   soundInstance=nil
-  end
-  local fileName=s.URL:match(".+/([^/?#]+)$")or("file_"..HttpService:GenerateGUID(false)..".mp3")
-  if not isfile(fileName)then
-   local success,data=pcall(function()
-    return game:HttpGet(s.URL)
-   end)
-   if success then
-    writefile(fileName,data)
-   else
-    return
-   end
-  end
-  local path=getcustomasset(fileName)
-  local snd=Instance.new("Sound")
-  snd.SoundId=path
-  snd.Parent=SoundService
-  snd.Volume=1
-  snd.Looped=false
-  snd:Play()
-  soundInstance=snd
-  songName.Text=s.Name
-  artist.Text=s.Artist
-  pausedTime=0
-  play.Visible=false
-  pause.Visible=true
-  index=i
-  snd.Ended:Connect(function()
-   if repeatCount>0 then
-    repeatCount=repeatCount-1
-    repeatText.Text="x"..repeatCount
-    snd.TimePosition=0
-    snd:Play()
-   else
-    play.Visible=true
-    pause.Visible=false
-    index=index+1
-    if index>#songs then index=1 end
-    playSong(index)
-   end
-  end)
- end
-end
-prev.MouseButton1Click:Connect(function()
- index=index-1
- if index<1 then index=#songs end
- playSong(index)
-end)
-next.MouseButton1Click:Connect(function()
- index=index+1
- if index>#songs then index=1 end
- playSong(index)
-end)
-play.MouseButton1Click:Connect(function()
- if soundInstance and pausedTime>0 then
-  soundInstance.TimePosition=pausedTime
- end
- if soundInstance then
-  soundInstance:Play()
- end
- play.Visible=false
- pause.Visible=true
-end)
-pause.MouseButton1Click:Connect(function()
- if soundInstance and soundInstance.IsPlaying then
-  pausedTime=soundInstance.TimePosition
-  soundInstance:Pause()
-  play.Visible=true
-  pause.Visible=false
- end
-end)
-local loopHold=false
-local holdStartTime=0
-local holdTriggered=false
-local resetCountdown=3
-repeatBtn.MouseButton1Down:Connect(function()
- loopHold=true
- holdTriggered=false
- holdStartTime=tick()
- task.spawn(function()
-  while loopHold do
-   if tick()-holdStartTime>=2 and not holdTriggered then
-    holdTriggered=true
-    local countdown=resetCountdown
-    while countdown>0 and loopHold do
-     repeatText.Text="Reset in "..countdown
-     task.wait(1)
-     countdown=countdown-1
-    end
-    if loopHold then
-     repeatCount=0
-     repeatText.Text="x0"
-    else
-     repeatText.Text="x"..repeatCount
-    end
-    loopHold=false
-    break
-   end
-   task.wait(0.1)
-  end
- end)
-end)
-repeatBtn.MouseButton1Up:Connect(function()
- loopHold=false
- if not holdTriggered then
-  repeatCount=repeatCount+1
-  repeatText.Text="x"..repeatCount
-  repeatText.TextColor3=Color3.fromRGB(30,255,30)
- else
-  repeatText.Text="x"..repeatCount
- end
-end)
--- Animasyon sesiyle uyumlu yapalım (basit bir tahmini animasyon)
-local baseSize=20
-local amplitude=12
-local freq=5
-task.spawn(function()
- while true do
-  task.wait(0.05)
-  if soundInstance and soundInstance.IsPlaying and iconFrame.Visible then
-   local loudness=(soundInstance.PlaybackLoudness or 0)
-   -- Loudness yoksa tahmini olarak TimePosition ile salınım
-   local intensity=math.clamp(loudness/100,0,1)
-   for i,bar in ipairs(eqBars) do
-    local sizeY=baseSize+amplitude*intensity*math.sin(tick()*freq+i*2)
-    sizeY=math.clamp(sizeY,6,30)
-    bar:TweenSize(UDim2.new(0,6,0,sizeY),"Out","Quad",0.05,true)
-    local posY=-sizeY/2
-    bar:TweenPosition(UDim2.new(0,10+(i-1)*15,0.5,posY),"Out","Quad",0.05,true)
-   end
-  else
-   for _,bar in ipairs(eqBars) do
-    bar:TweenSize(UDim2.new(0,6,0,8),"Out","Quad",0.2,true)
-    bar:TweenPosition(UDim2.new(0,bar.Position.X.Offset,0.5,-10),"Out","Quad",0.2,true)
-   end
-  end
- end
-end)
-task.spawn(function()
- while true do
-  task.wait(0.1)
-  if soundInstance and soundInstance.TimeLength>0 then
-   local function fmt(sec)
-    return ("%d:%02d"):format(math.floor(sec/60),sec%60)
-   end
-   local ratio=soundInstance.TimePosition/soundInstance.TimeLength
-   progressBarFill.Size=UDim2.new(ratio,0,1,0)
-   progressDot.Position=UDim2.new(ratio,-6,0.5,-6)
-   currentTime.Text=fmt(math.floor(soundInstance.TimePosition))
-   totalTime.Text=fmt(math.floor(soundInstance.TimeLength))
-  else
-   currentTime.Text="00:00"
-   totalTime.Text="00:00"
-   progressBarFill.Size=UDim2.new(0,0,1,0)
-   progressDot.Position=UDim2.new(0,-6,0.5,-6)
-  end
- end
-end)
+local repeatText=Instance.new("TextLabel",bg)repeatText.Size=UDim2.new(0,50,0,20)repeatText.Position=UDim2.new(0,490,0,50)repeatText.BackgroundTransparency=1 repeatText.Text="x0"repeatText.Font=Enum.Font.GothamBold repeatText.TextColor3=Color3.fromRGB(120,255,120)repeatText.TextSize=14 repeatText.TextXAlignment=Enum.TextXAlignment.Center
+local progressBarBg=Instance.new("Frame",bg)progressBarBg.Size=UDim2.new(0.85,0,0,6)progressBarBg.Position=UDim2.new(0.075,0,1,-18)progressBarBg.BackgroundColor3=Color3.fromRGB(50,50,50)progressBarBg.BorderSizePixel=0 Instance.new("UICorner",progressBarBg).CornerRadius=UDim.new(1,0)
+local progressBarFill=Instance.new("Frame",progressBarBg)progressBarFill.Size=UDim2.new(0,0,1,0)progressBarFill.BackgroundColor3=Color3.fromRGB(120,255,120)progressBarFill.BorderSizePixel=0 progressBarFill.Name="Fill"Instance.new("UICorner",progressBarFill).CornerRadius=UDim.new(1,0)
+local progressDot=Instance.new("Frame",progressBarBg)progressDot.Size=UDim2.new(0,12,0,12)progressDot.Position=UDim2.new(0,-6,0.5,-6)progressDot.BackgroundColor3=Color3.fromRGB(255,255,255)progressDot.BorderSizePixel=0 Instance.new("UICorner",progressDot).CornerRadius=UDim.new(1,0)
+local currentTime=Instance.new("TextLabel",bg)currentTime.Position=UDim2.new(0.06,0,1,-45)currentTime.Size=UDim2.new(0,50,0,20)currentTime.Text="00:00"currentTime.Font=Enum.Font.GothamBold currentTime.TextSize=14 currentTime.TextColor3=Color3.fromRGB(200,255,200)currentTime.BackgroundTransparency=1 currentTime.TextXAlignment=Enum.TextXAlignment.Left
+local totalTime=Instance.new("TextLabel",bg)totalTime.Position=UDim2.new(0.87,0,1,-45)totalTime.Size=UDim2.new(0,50,0,20)totalTime.Text="00:00"totalTime.Font=Enum.Font.GothamBold totalTime.TextSize=14 totalTime.TextColor3=Color3.fromRGB(200,255,200)totalTime.BackgroundTransparency=1 totalTime.TextXAlignment=Enum.TextXAlignment.Right
+local songs={{Name="Bass Test",Artist="Reprenzy",URL="https://github.com/reprenzy-hue/config/raw/refs/heads/main/Bass_Test.mp3"},{Name="Revenge",Artist="XXXTENTACION",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/XXXTENTACION%20-%20Revenge%20(Lyrics)%20%20I've%20dug%20two%20graves%20for%20us%20my%20dear.mp3"},{Name="See You Again",Artist="Wiz Khalifa",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Wiz%20Khalifa%20-%20See%20You%20Again%20ft.%20Charlie%20Puth%20(Lyrics).mp3"},{Name="Danza Kuduro",Artist="Don Omar",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Don%20Omar%20-%20Danza%20Kuduro%20(Lyrics)%20ft.%20Lucenzo.mp3"},{Name="Snoop Dog",Artist="Dr. Dre",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Dr.%20Dre%20-%20Still%20D.R.E.%20(Lyrics)%20ft.%20Snoop%20Dogg.mp3"},{Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"},{Name="Royalty",Artist="Egzod & Maestro Chives",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Egzod%20&%20Maestro%20Chives%20-%20Royalty%20(Lyrics)%20ft.%20Neoni.mp3"},{Name="Homage",Artist="Mild High Club",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Mild%20High%20Club%20-%20Homage.mp3"},{Name="Freaks",Artist="Surf Curse",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Freaks%20-%20Surf%20Curse%20(Lyrics).mp3"},{Name="Little Dark Age",Artist="MGMT",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/MGMT%20-%20Little%20Dark%20Age%20(Lyrics).mp3"}}
+local index=1 local pausedTime=0 local soundInstance
+local function playSong(i)local s=songs[i]if s and s.URL~=""then if soundInstance then pausedTime=0 if soundInstance.IsPlaying then soundInstance:Stop()end soundInstance:Destroy()soundInstance=nil end songName.Text=s.Name artist.Text=s.Artist play.Visible=false pause.Visible=true pausedTime=0 index=i task.wait(0.25)local fileName=s.URL:match(".+/([^/?#]+)$")or("file_"..HttpService:GenerateGUID(false)..".mp3")if not isfile(fileName)then local success,data=pcall(function()return game:HttpGet(s.URL)end)if success then writefile(fileName,data)else return end end local path=getcustomasset(fileName)local snd=Instance.new("Sound")snd.SoundId=path snd.Parent=SoundService snd.Volume=1 snd.Looped=false snd:Play()soundInstance=snd snd.Ended:Connect(function()if repeatCount>0 then repeatCount=repeatCount-1 repeatText.Text="x"..repeatCount snd.TimePosition=0 snd:Play()else play.Visible=true pause.Visible=false index=index+1 if index>#songs then index=1 end playSong(index)end end)end end
+prev.MouseButton1Click:Connect(function()index=index-1 if index<1 then index=#songs end playSong(index)end)
+next.MouseButton1Click:Connect(function()index=index+1 if index>#songs then index=1 end playSong(index)end)
+play.MouseButton1Click:Connect(function()if soundInstance and pausedTime>0 then soundInstance.TimePosition=pausedTime end if soundInstance then soundInstance:Play()end play.Visible=false pause.Visible=true end)
+pause.MouseButton1Click:Connect(function()if soundInstance then if soundInstance.IsPlaying then pausedTime=soundInstance.TimePosition soundInstance:Pause()soundInstance.Playing=false end play.Visible=true pause.Visible=false end end)
+local loopHold=false local holdStartTime=0 local holdTriggered=false local resetCountdown=3
+repeatBtn.MouseButton1Down:Connect(function()loopHold=true holdTriggered=false holdStartTime=tick()task.spawn(function()while loopHold do if tick()-holdStartTime>=2 and not holdTriggered then holdTriggered=true local countdown=resetCountdown while countdown>0 and loopHold do repeatText.Text="Reset in "..countdown task.wait(1)countdown=countdown-1 end if loopHold then repeatCount=0 repeatText.Text="x0"else repeatText.Text="x"..repeatCount end loopHold=false break end task.wait(0.1)end end)end)
+repeatBtn.MouseButton1Up:Connect(function()loopHold=false if not holdTriggered then repeatCount=repeatCount+1 repeatText.Text="x"..repeatCount repeatText.TextColor3=Color3.fromRGB(30,255,30)else repeatText.Text="x"..repeatCount end end)
+local baseSize=20 local amplitude=12 local freq=5
+task.spawn(function()while true do task.wait(0.05)if soundInstance and soundInstance.IsPlaying and iconFrame.Visible then local loudness=(soundInstance.PlaybackLoudness or 0)local intensity=math.clamp(loudness/100,0,1)for i,bar in ipairs(eqBars)do local sizeY=baseSize+amplitude*intensity*math.sin(tick()*freq+i*2)sizeY=math.clamp(sizeY,6,30)bar:TweenSize(UDim2.new(0,6,0,sizeY),"Out","Quad",0.05,true)local posY=-sizeY/2 bar:TweenPosition(UDim2.new(0,10+(i-1)*15,0.5,posY),"Out","Quad",0.05,true)end else for _,bar in ipairs(eqBars)do bar:TweenSize(UDim2.new(0,6,0,8),"Out","Quad",0.2,true)bar:TweenPosition(UDim2.new(0,bar.Position.X.Offset,0.5,-10),"Out","Quad",0.2,true)end end end end)
+task.spawn(function()while true do task.wait(0.1)if soundInstance and soundInstance.TimeLength>0 then local function fmt(sec)return("%d:%02d"):format(math.floor(sec/60),sec%60)end local ratio=soundInstance.TimePosition/soundInstance.TimeLength progressBarFill.Size=UDim2.new(ratio,0,1,0)progressDot.Position=UDim2.new(ratio,-6,0.5,-6)currentTime.Text=fmt(math.floor(soundInstance.TimePosition))totalTime.Text=fmt(math.floor(soundInstance.TimeLength))else currentTime.Text="00:00"totalTime.Text="00:00"progressBarFill.Size=UDim2.new(0,0,1,0)progressDot.Position=UDim2.new(0,-6,0.5,-6)end end end)
 playSong(1)
