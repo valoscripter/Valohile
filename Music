@@ -44,6 +44,9 @@ local songs={
     {Name="House Of Memories",Artist="Panic! At The Disco",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Panic!%20At%20The%20Disco%20-%20House%20of%20Memories.mp3"},
     {Name="Rockstar",Artist="Post Malone",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Post%20Malone%20-%20rockstar%20(Lyrics)%20ft.%2021%20Savage.mp3"},
     {Name="There's Nothing Holding Me Back",Artist="Shawn Mendes",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Shawn%20Mendes%20%20There's%20Nothing%20Holding%20Me%20Back%20(Lyrics).mp3"},
+    {Name="MOONLIGHT",Artist="XXXTENTACION",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/XXXTENTACION%20-%20MOONLIGHT%20(OFFICIAL%20MUSIC%20VIDEO).mp3"},
+    {Name="She Said Shes From The Island",Artist="kompa - roma x frozy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/kompa%20-%20roma%20x%20frozy%20(she%20said%20shes%20from%20the%20island)%20%20(tiktok,%20sped%20up)%20%5Blyrics%5D.mp3"},
+
 
 }
 local index=1 local pausedTime=0 local soundInstance
