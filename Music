@@ -40,6 +40,11 @@ local songs={
     {Name="Homage",Artist="Mild High Club",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Mild%20High%20Club%20-%20Homage.mp3"},
     {Name="Freaks",Artist="Surf Curse",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Freaks%20-%20Surf%20Curse%20(Lyrics).mp3"},
     {Name="Little Dark Age",Artist="MGMT",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/MGMT%20-%20Little%20Dark%20Age%20(Lyrics).mp3"}
+    {Name="Sunroof",Artist="Nicky Youre, dazy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Nicky%20Youre,%20dazy%20-%20Sunroof%20(Lyrics).mp3"},
+    {Name="House Of Memories",Artist="Panic! At The Disco",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Panic!%20At%20The%20Disco%20-%20House%20of%20Memories.mp3"},
+    {Name="Rockstar",Artist="Post Malone",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Post%20Malone%20-%20rockstar%20(Lyrics)%20ft.%2021%20Savage.mp3"},
+
+
 }
 local index=1 local pausedTime=0 local soundInstance
 local function playSong(i)local s=songs[i]if s and s.URL~=""then if soundInstance then pausedTime=0 if soundInstance.IsPlaying then soundInstance:Stop()end soundInstance:Destroy()soundInstance=nil end songName.Text=s.Name artist.Text=s.Artist play.Visible=false pause.Visible=true pausedTime=0 index=i task.wait(0.25)local fileName=s.URL:match(".+/([^/?#]+)$")or("file_"..HttpService:GenerateGUID(false)..".mp3")if not isfile(fileName)then local success,data=pcall(function()return game:HttpGet(s.URL)end)if success then writefile(fileName,data)else return end end local path=getcustomasset(fileName)local snd=Instance.new("Sound")snd.SoundId=path snd.Parent=SoundService snd.Volume=1 snd.Looped=false snd:Play()soundInstance=snd snd.Ended:Connect(function()if repeatCount>0 then repeatCount=repeatCount-1 repeatText.Text="x"..repeatCount snd.TimePosition=0 snd:Play()else play.Visible=true pause.Visible=false index=index+1 if index>#songs then index=1 end playSong(index)end end)end end
