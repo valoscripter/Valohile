@@ -52,7 +52,7 @@ local songs={
     {Name="Gangsta's Paradise",Artist="Coolio",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Coolio%20-%20Gangsta's%20Paradise%20(Lyrics)%20ft.%20L.V..mp3"},
     {Name="If We Being Rëal",Artist="Yeat",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Yeat%20-%20If%20We%20Being%20R%C3%ABal%20(Lyrics).mp3"},
     {Name="Centuries",Artist="Fall Out Boy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Fall%20Out%20Boy%20-%20Centuries%20(Lyrics).mp3"},
-{Name="isim",Artist="sarkici",URL=""},
+    {Name="Not Afraid",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Not%20Afraid.mp3"},
 {Name="isim",Artist="sarkici",URL=""},
     {Name="She Said Shes From The Island",Artist="kompa - roma x frozy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/kompa%20-%20roma%20x%20frozy%20(she%20said%20shes%20from%20the%20island)%20%20(tiktok,%20sped%20up)%20%5Blyrics%5D.mp3"},
     {Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"}
