@@ -35,7 +35,6 @@ local songs={
     {Name="See You Again",Artist="Wiz Khalifa",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Wiz%20Khalifa%20-%20See%20You%20Again%20ft.%20Charlie%20Puth%20(Lyrics).mp3"},
     {Name="Danza Kuduro",Artist="Don Omar",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Don%20Omar%20-%20Danza%20Kuduro%20(Lyrics)%20ft.%20Lucenzo.mp3"},
     {Name="Snoop Dog",Artist="Dr. Dre",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Dr.%20Dre%20-%20Still%20D.R.E.%20(Lyrics)%20ft.%20Snoop%20Dogg.mp3"},
-    {Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"},
     {Name="Royalty",Artist="Egzod & Maestro Chives",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Egzod%20&%20Maestro%20Chives%20-%20Royalty%20(Lyrics)%20ft.%20Neoni.mp3"},
     {Name="Homage",Artist="Mild High Club",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Mild%20High%20Club%20-%20Homage.mp3"},
     {Name="Freaks",Artist="Surf Curse",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Freaks%20-%20Surf%20Curse%20(Lyrics).mp3"},
@@ -50,7 +49,10 @@ local songs={
     {Name="Believer",Artist="Imagine Dragons",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Imagine%20Dragons%20-%20Believer%20(Lyrics).mp3"},
     {Name="Legend",Artist="The Score",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Legend%20-%20The%20Score%20(Lyrics).mp3"},
     {Name="The Real Slim Shady",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/The%20Real%20Slim%20Shady.mp3"},
-    {Name="Mockingbird",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Mockingbird%20(Lyrics).mp3"}
+    {Name="Mockingbird",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Mockingbird%20(Lyrics).mp3"},
+    {Name="Gangsta's Paradise",Artist="Coolio",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Coolio%20-%20Gangsta's%20Paradise%20(Lyrics)%20ft.%20L.V..mp3"}
+{Name="isim",Artist="sarkici",URL=""}
+    {Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"}
 }
 local index=1 local pausedTime=0 local soundInstance
 local function playSong(i)local s=songs[i]if s and s.URL~=""then if soundInstance then pausedTime=0 if soundInstance.IsPlaying then soundInstance:Stop()end soundInstance:Destroy()soundInstance=nil end songName.Text=s.Name artist.Text=s.Artist play.Visible=false pause.Visible=true pausedTime=0 index=i task.wait(0.25)local fileName=s.URL:match(".+/([^/?#]+)$")or("file_"..HttpService:GenerateGUID(false)..".mp3")if not isfile(fileName)then local success,data=pcall(function()return game:HttpGet(s.URL)end)if success then writefile(fileName,data)else return end end local path=getcustomasset(fileName)local snd=Instance.new("Sound")snd.SoundId=path snd.Parent=SoundService snd.Volume=1 snd.Looped=false snd:Play()soundInstance=snd snd.Ended:Connect(function()if repeatCount>0 then repeatCount=repeatCount-1 repeatText.Text="x"..repeatCount snd.TimePosition=0 snd:Play()else play.Visible=true pause.Visible=false index=index+1 if index>#songs then index=1 end playSong(index)end end)end end
