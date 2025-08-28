@@ -51,7 +51,6 @@ local songs={
     {Name="Legend",Artist="The Score",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Legend%20-%20The%20Score%20(Lyrics).mp3"},
     {Name="The Real Slim Shady",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/The%20Real%20Slim%20Shady.mp3"},
     {Name="Mockingbird",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Mockingbird%20(Lyrics).mp3"}
-
 }
 local index=1 local pausedTime=0 local soundInstance
 local function playSong(i)local s=songs[i]if s and s.URL~=""then if soundInstance then pausedTime=0 if soundInstance.IsPlaying then soundInstance:Stop()end soundInstance:Destroy()soundInstance=nil end songName.Text=s.Name artist.Text=s.Artist play.Visible=false pause.Visible=true pausedTime=0 index=i task.wait(0.25)local fileName=s.URL:match(".+/([^/?#]+)$")or("file_"..HttpService:GenerateGUID(false)..".mp3")if not isfile(fileName)then local success,data=pcall(function()return game:HttpGet(s.URL)end)if success then writefile(fileName,data)else return end end local path=getcustomasset(fileName)local snd=Instance.new("Sound")snd.SoundId=path snd.Parent=SoundService snd.Volume=1 snd.Looped=false snd:Play()soundInstance=snd snd.Ended:Connect(function()if repeatCount>0 then repeatCount=repeatCount-1 repeatText.Text="x"..repeatCount snd.TimePosition=0 snd:Play()else play.Visible=true pause.Visible=false index=index+1 if index>#songs then index=1 end playSong(index)end end)end end
