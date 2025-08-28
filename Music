@@ -50,7 +50,7 @@ local songs={
     {Name="Legend",Artist="The Score",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Legend%20-%20The%20Score%20(Lyrics).mp3"},
     {Name="The Real Slim Shady",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/The%20Real%20Slim%20Shady.mp3"},
     {Name="Mockingbird",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Mockingbird%20(Lyrics).mp3"},
-    {Name="Gangsta's Paradise",Artist="Coolio",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Coolio%20-%20Gangsta's%20Paradise%20(Lyrics)%20ft.%20L.V..mp3"},
+    {Name="Gangsta's Paradise",Artist="Coolio",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Coolio%20-%20Gangsta's%20Paradise%20(Lyrics).mp3"},
     {Name="If We Being Rëal",Artist="Yeat",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Yeat%20-%20If%20We%20Being%20R%C3%ABal%20(Lyrics).mp3"},
     {Name="Centuries",Artist="Fall Out Boy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Fall%20Out%20Boy%20-%20Centuries%20(Lyrics).mp3"},
     {Name="Not Afraid",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Not%20Afraid.mp3"},
