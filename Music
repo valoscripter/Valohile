@@ -30,7 +30,8 @@ local progressDot=Instance.new("Frame",progressBarBg)progressDot.Size=UDim2.new(
 local currentTime=Instance.new("TextLabel",bg)currentTime.Position=UDim2.new(0.06,0,1,-45)currentTime.Size=UDim2.new(0,50,0,20)currentTime.Text="00:00"currentTime.Font=Enum.Font.GothamBold currentTime.TextSize=14 currentTime.TextColor3=Color3.fromRGB(200,255,200)currentTime.BackgroundTransparency=1 currentTime.TextXAlignment=Enum.TextXAlignment.Left
 local totalTime=Instance.new("TextLabel",bg)totalTime.Position=UDim2.new(0.87,0,1,-45)totalTime.Size=UDim2.new(0,50,0,20)totalTime.Text="00:00"totalTime.Font=Enum.Font.GothamBold totalTime.TextSize=14 totalTime.TextColor3=Color3.fromRGB(200,255,200)totalTime.BackgroundTransparency=1 totalTime.TextXAlignment=Enum.TextXAlignment.Right
 local songs={
-    {Name="Bass Test",Artist="Reprenzy",URL="https://github.com/reprenzy-hue/config/raw/refs/heads/main/Bass_Test.mp3"},
+    {Name="Mehter Marşı",Artist="Osmanlı Bandosu",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/06-Ceddin%20Deden%20%5B1080p%5D.mp3"},
+    {Name="It's Raining Tacos",Artist="Parry Gripp",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/It's%20Raining%20Tacos%20(Lyrics).mp3"},
     {Name="Revenge",Artist="XXXTENTACION",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/XXXTENTACION%20-%20Revenge%20(Lyrics)%20%20I've%20dug%20two%20graves%20for%20us%20my%20dear.mp3"},
     {Name="See You Again",Artist="Wiz Khalifa",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Wiz%20Khalifa%20-%20See%20You%20Again%20ft.%20Charlie%20Puth%20(Lyrics).mp3"},
     {Name="Danza Kuduro",Artist="Don Omar",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Don%20Omar%20-%20Danza%20Kuduro%20(Lyrics)%20ft.%20Lucenzo.mp3"},
@@ -53,7 +54,6 @@ local songs={
     {Name="If We Being Rëal",Artist="Yeat",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Yeat%20-%20If%20We%20Being%20R%C3%ABal%20(Lyrics).mp3"},
     {Name="Centuries",Artist="Fall Out Boy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Fall%20Out%20Boy%20-%20Centuries%20(Lyrics).mp3"},
     {Name="Not Afraid",Artist="Eminem",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Eminem%20-%20Not%20Afraid.mp3"},
-{Name="isim",Artist="sarkici",URL=""},
     {Name="She Said Shes From The Island",Artist="kompa - roma x frozy",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/kompa%20-%20roma%20x%20frozy%20(she%20said%20shes%20from%20the%20island)%20%20(tiktok,%20sped%20up)%20%5Blyrics%5D.mp3"},
     {Name="Shape Of You",Artist="Lo-Fi Artist",URL="https://github.com/wenshertt/Music/raw/refs/heads/main/Ed%20Sheeran%20-%20Shape%20of%20You%20(Lyrics).mp3"}
 }
